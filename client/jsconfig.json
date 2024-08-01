@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@slices/*": ["./src/slices/*"],
+      "@components/*": ["./src/components/*"],
+      "@thunk/*": ["./src/thunk/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@config/*": ["./src/config/*"],
+      "@api/*": ["./src/api/*"]
+    }
+  }
+}
