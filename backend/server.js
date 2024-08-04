@@ -1,6 +1,8 @@
-require("dotenv").config();
-const mongoose = require("mongoose");
-const app = require("./app");
+import { config } from "dotenv";
+import mongoose from "mongoose";
+config()
+import { app } from './app.js'
+
 
 // Shut down server if Uncaught Exception occurs
 
@@ -10,7 +12,7 @@ process.on("uncaughtException", (err) => {
   process.exit(1);
 });
 
-const activeEnviroment = process.env.NODE_ENV;
+export const activeEnviroment = process.env.NODE_ENV;
 const activeDbString = {
   local: process.env.MONGODB_LOCAL,
   test: process.env.MONGODB_TEST,
@@ -19,7 +21,7 @@ const activeDbString = {
 
 const URI = activeDbString[activeEnviroment];
 
-mongoose
+URI && mongoose
   .connect(URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

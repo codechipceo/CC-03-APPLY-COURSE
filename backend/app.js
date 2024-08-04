@@ -1,7 +1,8 @@
-const express = require("express");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import { indexRouter } from "./src/Modules/indexRouter.js";
+import {GlobalErrorHandler} from './src/Error/GlobalError.js'
 const app = express();
 
 // initialise required modules
@@ -14,6 +15,13 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+
+// routes
+app.use('/api' , indexRouter)
+
+// Global error handler
+app.use(GlobalErrorHandler);
+
 // to manage incorrect routes
 app.use("*", (req, res) => {
   return res
@@ -21,4 +29,4 @@ app.use("*", (req, res) => {
     .json({ msg: `Requested Route ${req.originalUrl} does not exist ` });
 });
 
-module.exports = app;
+export { app };
