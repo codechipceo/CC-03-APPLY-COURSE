@@ -1,13 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 import {Home } from './pages/Home'
+import { School } from "./pages/School/School";
+import { Program } from "./pages/Program/Program";
 const routes = [
   {
     path: "/",
     element: <Home />,
   },
   {
-    path: "/project/add",
-    element: <h1>ubaid</h1>,
+    path: "/school",
+    element: <School />,
+  },
+  {
+    path: "/program",
+    element: <Program />,
   },
 ];
 

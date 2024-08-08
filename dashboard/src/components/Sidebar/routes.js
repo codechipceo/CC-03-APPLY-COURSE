@@ -20,9 +20,8 @@ export const routes = [
   },
   {
     name: "Schools",
-    path: "",
+    path: "/school",
     icon: AssignmentSharpIcon,
-
   },
   {
     name: "Program",
@@ -39,5 +38,4 @@ export const routes = [
     path: "",
     icon: ScienceSharpIcon,
   },
-
 ];

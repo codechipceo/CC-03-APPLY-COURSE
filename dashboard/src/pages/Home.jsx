@@ -1,6 +1,6 @@
 import { useTools } from "@/hooks/useTools";
 import { login } from "@/thunk/indexThunk";
-import React from "react";
+
 import { useEffect } from "react";
 
 export const Home = () => {

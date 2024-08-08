@@ -9,6 +9,7 @@ import mongoose from "mongoose";
   },
   location: {
     type: ObjectId,
+    ref:'Location',
     required: true,
   },
   schoolBanner: {

@@ -7,7 +7,8 @@
       "@thunk/*": ["./src/thunk/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@config/*": ["./src/config/*"],
-      "@api/*": ["./src/api/*"]
+      "@api/*": ["./src/api/*"],
+      "@constants/*":["./src/constants/*"]
     }
   }
 }

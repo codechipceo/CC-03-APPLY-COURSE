@@ -11,6 +11,10 @@ import {
   GET_ALL_SCHOOLS,
   GET_SCHOOL_BY_ID,
   UPDATE_SCHOOL,
+  ADD_LOCATION,
+  GET_ALL_LOCATION,
+  GET_LOCATION_BY_ID,
+  UPDATE_LOCATION,
   // ADD_LEAD,
   // GET_LEAD_BY_ID,
   // UPDATE_LEAD,
@@ -21,7 +25,7 @@ import {
 //                   ADMIN
 //###########################################
 export const login = createThunk("admins/login", async (payload) => {
-  return await createRequest(LOGIN_ADMIN, payload)
+  return await createRequest(LOGIN_ADMIN, payload);
 });
 
 export const createAdmin = createThunk(
@@ -81,6 +85,35 @@ export const getSchoolById = createThunk("school/getById", async (payload) => {
 export const updateSchool = createThunk("school/update", async (payload) => {
   return await createRequest(UPDATE_SCHOOL, payload);
 });
+
+//###########################################
+//                   LOCATIONS
+//###########################################
+
+export const addLocation = createThunk("location/add", async (payload) => {
+  return await createRequest(ADD_LOCATION, payload);
+});
+
+export const getAllLocation = createThunk(
+  "location/getAll",
+  async (payload) => {
+    return await createRequest(GET_ALL_LOCATION, payload);
+  }
+);
+
+export const getLocationById = createThunk(
+  "location/getById",
+  async (payload) => {
+    return await createRequest(GET_LOCATION_BY_ID, payload);
+  }
+);
+
+export const updateLocation = createThunk(
+  "location/update",
+  async (payload) => {
+    return await createRequest(UPDATE_LOCATION, payload);
+  }
+);
 
 //###########################################
 //                   LEADS

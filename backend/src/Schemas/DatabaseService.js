@@ -19,6 +19,8 @@ export class DatabaseService {
   getAllDocuments = async (query, options = {}) => {
     const { limit, sort, skip, populate, isDelete } = options;
     let updatedQuery;
+
+   
     if (options.hasOwnProperty("isDelete")) {
       updatedQuery = { isDelete: isDelete ? isDelete : false, ...query };
     }

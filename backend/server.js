@@ -2,6 +2,7 @@ import { config } from "dotenv";
 import mongoose from "mongoose";
 config()
 import { app } from './app.js'
+import { Locations } from "./src/Schemas/Location.js";
 
 
 // Shut down server if Uncaught Exception occurs
@@ -21,12 +22,14 @@ const activeDbString = {
 
 const URI = activeDbString[activeEnviroment];
 
+
 URI && mongoose
   .connect(URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => {
+  .then(async () => {
+
     console.log("Mongo Db Connected", URI);
   })
   .catch((err) => console.log(err));

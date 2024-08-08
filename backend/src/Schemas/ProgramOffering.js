@@ -8,6 +8,10 @@ const programOfferingSchema = new Schema(
       type: String,
       required: true,
     },
+    programInfo :{
+      type: String,
+      required:true
+    },
     programLevel: {
       type: String,
       required: true,

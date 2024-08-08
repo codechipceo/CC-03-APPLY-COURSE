@@ -1,3 +1,4 @@
+import { successResponse } from "../../utils/apiResponse.js";
 import { asyncHandler } from "../../utils/asyncHandler.js";
 import { programOfferingService as serviceLayer } from "./programOfferingService.js";
 
@@ -16,7 +17,8 @@ export const programOfferingCtrl = {
     const savedRes = await serviceLayer.getAll(docData);
     return successResponse({
       res,
-      data: savedRes,
+      data: savedRes.docs,
+      count: savedRes.count,
       msg: "",
     });
   }),

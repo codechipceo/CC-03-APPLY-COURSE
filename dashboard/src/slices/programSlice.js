@@ -13,6 +13,7 @@ const programOfferingSlice = createSlice({
     programOfferings: [],
     currentProgramOffering: null,
     loading: false,
+    count :0,
     error: null,
   },
   reducers: {
@@ -26,7 +27,8 @@ const programOfferingSlice = createSlice({
       })
       .addCase(addProgramOffering.fulfilled, (state, action) => {
         state.loading = false;
-        state.programOfferings.push(action.payload);
+        state.programOfferings.push(action.payload.data);
+
       })
       .addCase(addProgramOffering.rejected, (state, action) => {
         state.loading = false;
@@ -38,7 +40,8 @@ const programOfferingSlice = createSlice({
       })
       .addCase(getAllProgramOfferings.fulfilled, (state, action) => {
         state.loading = false;
-        state.programOfferings = action.payload;
+        state.programOfferings = action.payload.data;
+         state.count = action.payload.count;
       })
       .addCase(getAllProgramOfferings.rejected, (state, action) => {
         state.loading = false;
@@ -75,4 +78,5 @@ const programOfferingSlice = createSlice({
   },
 });
 
+export const  selectProgram  = state  => state.programs
 export const { reducer: programOfferingReducer } = programOfferingSlice;

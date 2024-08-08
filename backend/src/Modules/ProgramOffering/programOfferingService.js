@@ -21,6 +21,15 @@ export const programOfferingService = {
 
   getAll: serviceHandler(async (data) => {
     const query = {};
-    return await model.getAllDocuments(query, data);
+    data.populate = [{
+      path: 'schoolId',
+      populate: {
+        path:'location'
+      }
+    }]
+
+    const [docs,count] =await Promise.all([model.getAllDocuments(query, data), model.totalCounts(query)])
+
+    return { docs, count };
   }),
 };

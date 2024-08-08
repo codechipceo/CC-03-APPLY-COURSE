@@ -5,11 +5,13 @@ import {
   getSchoolById,
   updateSchool,
 } from "../thunk/indexThunk.js"; // Adjust the import path as needed
+import { toast } from "react-toastify";
 
 const schoolSlice = createSlice({
   name: "schools",
   initialState: {
     schools: [],
+    count:0,
     currentSchool: null,
     loading: false,
     error: null,
@@ -26,6 +28,7 @@ const schoolSlice = createSlice({
       .addCase(addSchool.fulfilled, (state, action) => {
         state.loading = false;
         state.schools.push(action.payload);
+        toast.success("New School Added Successfully")
       })
       .addCase(addSchool.rejected, (state, action) => {
         state.loading = false;
@@ -37,7 +40,8 @@ const schoolSlice = createSlice({
       })
       .addCase(getAllSchools.fulfilled, (state, action) => {
         state.loading = false;
-        state.schools = action.payload;
+        state.schools = action.payload.data;
+        state.count = action.payload.count
       })
       .addCase(getAllSchools.rejected, (state, action) => {
         state.loading = false;
@@ -62,7 +66,7 @@ const schoolSlice = createSlice({
       .addCase(updateSchool.fulfilled, (state, action) => {
         state.loading = false;
         state.schools = state.schools.map((school) =>
-          school._id === action.payload._id ? action.payload : school
+          school._id === action.payload.data._id ? action.payload.data : school
         );
       })
       .addCase(updateSchool.rejected, (state, action) => {
@@ -71,5 +75,7 @@ const schoolSlice = createSlice({
       });
   },
 });
+
+export const selectSchool = state=> state.school
 
 export const { reducer: schoolReducer } = schoolSlice;
