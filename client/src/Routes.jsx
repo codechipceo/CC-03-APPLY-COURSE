@@ -3,14 +3,10 @@ import { createBrowserRouter } from "react-router-dom";
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <h1>mansab</h1>,
+    element: <h1>Hello world</h1>,
   },
-
 ]);
 
+const GuardComponent = () => {};
 
-const GuardComponent = () => {
-  
-}
-
-export  default routes
+export default routes;
