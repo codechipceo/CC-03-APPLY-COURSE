@@ -1,39 +1,35 @@
 import { createTheme } from "@mui/material/styles";
 
+const shd1 = "#4B28D8";
+const shd2 = "#760DC9";
+
 const config = {
   palette: {
-    shade1: {
-      main: "#4B28D8",
-    },
-    shade2: {
-      main: "#760DC9",
-    },
-    linkShade1: {
-      main: "#0064E1",
-    },
+    shade1: shd1,
+    shade2: shd2,
+    linkShade1: "#0064E1",
   },
-
   gradients: {
-    primaryGradient: `linear-gradient(90deg, #4B28D8, #760DC9)`,
-    secondoryGradient: "linear-gradient(180deg,#760DC9,#4B28D8",
+    primaryGradient: `linear-gradient(90deg,${shd1}, ${shd2})`,
+    secondaryGradient: `linear-gradient(180deg,${shd2},${shd1}`,
   },
   typography: {
-    fontFamily: "Open Sans",
-    h1: {
-      fontSize: "36px",
-      fontWeight: "500",
-    },
-    h2: {
-      fontSize: "80px",
-      fontWeight: 800,
-    },
-    h3: {
-      fontSize: "48px",
+    fontFamily: "Open sans",
+    heading1: {
+      fontSize: "100px",
       fontWeight: "700",
     },
+    h2: {
+      fontWeight: 800,
+      fontSize: "48px",
+    },
+    h3: {
+      fontWeight: "700",
+      fontSize: "36px",
+    },
     h4: {
-      fontSize: "32px",
-      fontWeight: "600",
+      fontSize: "25px",
+      fontWeight: "400",
     },
     p: {
       fontSize: "18px",
@@ -42,7 +38,6 @@ const config = {
     },
     button: {
       fontWeight: "500",
-      fontFamily: "Zoho Puvi",
       textTransform: "none",
     },
   },
