@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import "./index.css";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme.js";
+import "swiper/css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>

@@ -1,14 +1,27 @@
 import React from "react";
-import MainBanner from "./MainBanner";
+import MainBanner from "./MainBanner/MainBanner";
+import { Box } from "@mui/material";
+import SupportMain from "./Support/SupportMain";
+import ServicesCard from "./Services/ServicesCard";
+import Help from "./HowWeHelp/Help";
+import Hero from "./HeroSection/Hero";
+import ChooseUsContainer from "./ChooseUs/ChooseUsContainer";
+import Main from "./StaticsSection/Main";
 
 const Home = () => {
   return (
-    <div>
+    <Box>
       <MainBanner
         mainHeading=" Study
         Abroad Made Easy"
       />
-    </div>
+      <SupportMain />
+      <ServicesCard />
+      <Help />
+      <Hero />
+      <ChooseUsContainer />
+      <Main />
+    </Box>
   );
 };
 

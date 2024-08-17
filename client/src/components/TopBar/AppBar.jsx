@@ -9,12 +9,18 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import { useTheme } from "@mui/material";
 
-import { screens } from "./screens";
+import { screens } from "@/constants/TopBarMenu";
 import LogoImg from "./LogoImg";
 import GradientButton from "../Buttons/GradientButton";
+import MyImg from "../MyImg";
+// swipper
+// counter up
 
 function ResponsiveAppBar({ logoImg }) {
+  const theme = useTheme();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -27,7 +33,12 @@ function ResponsiveAppBar({ logoImg }) {
   return (
     <AppBar
       position="static"
-      sx={{ background: "white", borderRadius: { xs: "0", md: "20px" } }}
+      sx={{
+        background: theme.palette.bg3,
+        borderRadius: { xs: "0", md: "20px" },
+        boxShadow: 0,
+        border: "#ccc solid 1px",
+      }}
     >
       <Container maxWidth="xl">
         <Toolbar
@@ -51,7 +62,7 @@ function ResponsiveAppBar({ logoImg }) {
               textDecoration: "none",
             }}
           >
-            <LogoImg logoImg={logoImg} />
+            <MyImg img={logoImg} />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton

@@ -8,7 +8,11 @@ import { Container } from "@mui/material";
 function App() {
   return (
     <>
-      <Container maxWidth="xl" disableGutters>
+      <Container
+        maxWidth="xl"
+        disableGutters
+        sx={{ p: 1, textAlign: "justify" }}
+      >
         <MyAppBar logoImg={logoImg} />
         <RouterProvider router={routes} />
       </Container>
