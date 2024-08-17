@@ -1,6 +1,9 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 import { login, createAdmin } from "../thunk/indexThunk"; // Adjust the import path as needed
+import { createAsyncThunk } from "@reduxjs/toolkit";
+
+
 
 const adminSlice = createSlice({
   name: "admin",
@@ -19,7 +22,6 @@ const adminSlice = createSlice({
         state.error = null;
       })
       .addCase(login.fulfilled, (state, action) => {
-        console.log(action.payload)
         state.loading = false;
         state.admin = action.payload.data;
       })

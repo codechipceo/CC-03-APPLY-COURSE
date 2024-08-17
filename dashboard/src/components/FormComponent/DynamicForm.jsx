@@ -8,6 +8,9 @@ import TextField from "@mui/material/TextField";
 
 export const DynamicForm = ({ formDefinition, formData, handleChange }) => {
   // Render form fields
+
+
+
   const renderFormFields = () => {
     return formDefinition.map((field) => {
       switch (field.type) {

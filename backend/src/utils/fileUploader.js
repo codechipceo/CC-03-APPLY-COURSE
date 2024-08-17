@@ -1,7 +1,10 @@
 import cloudinary from "cloudinary";
 import AWS from "aws-sdk";
 import { Readable } from "stream";
-
+import { config } from "dotenv";
+import ShortUniqueId from "short-unique-id";
+const uid = new ShortUniqueId({ length: 10 });
+config();
 // Configure Cloudinary
 cloudinary.v2.config({
   cloud_name: "dydmzp82t",
@@ -9,12 +12,21 @@ cloudinary.v2.config({
   api_secret: "AuMUWPG0hOiTCSsNGe88_vyomhY",
 });
 
+const accessKeyId = process.env.AWS_ACCESS_KEY;
+const secretAccessKey = process.env.AWS_SECRET_KEY;
+const region = process.env.AWS_REGION;
+
+const configuration = {
+  accessKeyId: accessKeyId,
+  secretAccessKey: secretAccessKey,
+  region: region,
+};
+
+AWS.config.update(configuration);
+
+const s3 = new AWS.S3();
+
 // Configure AWS S3
-const s3 = new AWS.S3({
-  accessKeyId: "your-access-key-id",
-  secretAccessKey: "your-secret-access-key",
-  region: "your-region",
-});
 
 export class FileUploader {
   constructor() {
@@ -38,11 +50,13 @@ export class FileUploader {
   }
 
   // Method to upload files to S3
-  async uploadToS3(fileBuffer, fileName, bucketName) {
+  async uploadToS3(fileObj, folderName, bucketName) {
+    const { name, data } = fileObj;
+    const filePath = `${folderName}/${uid.rnd() + name}`;
     const uploadParams = {
-      Bucket: bucketName,
-      Key: fileName,
-      Body: fileBuffer,
+      Bucket: bucketName ?? process.env.BUCKET_NAME,
+      Key: filePath,
+      Body: data,
       ACL: "public-read",
     };
 

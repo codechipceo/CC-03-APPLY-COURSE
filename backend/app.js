@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 import { indexRouter } from "./src/Modules/indexRouter.js";
 import { GlobalErrorHandler } from "./src/Error/GlobalError.js";
 import fileUploadMiddleware from "express-fileupload";
+import { config } from 'dotenv'
+config()
 const app = express();
 
 // initialise required modules

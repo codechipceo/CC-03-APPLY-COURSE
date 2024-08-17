@@ -40,6 +40,7 @@ const schoolSlice = createSlice({
       })
       .addCase(getAllSchools.fulfilled, (state, action) => {
         state.loading = false;
+      
         state.schools = action.payload.data;
         state.count = action.payload.count
       })

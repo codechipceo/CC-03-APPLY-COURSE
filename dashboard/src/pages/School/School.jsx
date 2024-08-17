@@ -82,7 +82,6 @@ export const School = () => {
     if (status === "CREATE") {
       dispatch(addSchool(formData));
     } else if (status === "EDIT") {
-      console.log(school);
       formData.append("schoolId", school._id);
       dispatch(updateSchool(formData));
     }
@@ -115,9 +114,12 @@ export const School = () => {
     };
     dispatch(getAllSchools(payload));
   }, [paginationMode]);
-
+const  [firstName, setFirstName] = useState("")
   return (
     <>
+
+      <input type="text" name="firstName" value={firstName } onChange={(e) =>setFirstName(e.target.value)} />
+
       <Box bgcolor={"white"} py={2} boxShadow={2}>
         <Container>
           <Typography variant='h3' fontWeight={"bold"}>
