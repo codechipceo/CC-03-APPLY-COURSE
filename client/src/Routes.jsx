@@ -1,16 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
+import Home from "./pages/Home/Home";
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <h1>mansab</h1>,
+    element: <Home />,
   },
-
 ]);
 
+const GuardComponent = () => {};
 
-const GuardComponent = () => {
-  
-}
-
-export  default routes
+export default routes;

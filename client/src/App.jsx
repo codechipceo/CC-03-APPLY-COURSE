@@ -1,14 +1,23 @@
+import routes from "@/Routes";
+import { RouterProvider } from "react-router-dom";
+// import TopBar from "./components/TopBar/TopBar";
+import MyAppBar from "./components/TopBar/AppBar";
+import logoImg from "./assets/img/logo.png";
+import { Container } from "@mui/material";
 
-import routes from '@/Routes'
-import { RouterProvider } from 'react-router-dom'
 function App() {
-
-
   return (
     <>
-      <RouterProvider router={routes} />
+      <Container
+        maxWidth="xl"
+        disableGutters
+        sx={{ p: 1, textAlign: "justify" }}
+      >
+        <MyAppBar logoImg={logoImg} />
+        <RouterProvider router={routes} />
+      </Container>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
