@@ -7,6 +7,7 @@ import Help from "./HowWeHelp/Help";
 import Hero from "./HeroSection/Hero";
 import ChooseUsContainer from "./ChooseUs/ChooseUsContainer";
 import Main from "./StaticsSection/Main";
+import Universities from "./Universities/Universities";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <ServicesCard />
       <Help />
       <Hero />
+      <Universities />
       <ChooseUsContainer />
       <Main />
     </Box>

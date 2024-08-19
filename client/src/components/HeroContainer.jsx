@@ -10,7 +10,7 @@ const HeroContainer = ({ heading, paragraph, children }) => {
         sx={{
           textAlign: "center",
           display: "flex",
-
+          mt: 5,
           justifyContent: "center",
         }}
       >
