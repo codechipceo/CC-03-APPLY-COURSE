@@ -38,7 +38,7 @@ const config = {
     fontFamily: "sans-serif",
 
     heading1: {
-      fontSize: "100px",
+      fontSize: "90px",
       fontWeight: "700",
     },
     heading2: {

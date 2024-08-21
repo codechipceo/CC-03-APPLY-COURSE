@@ -15,6 +15,7 @@ const MainBanner = () => {
     <Grid
       container
       rowSpacing={1}
+      mx={4}
       columnSpacing={{ xs: 1, sm: 1, md: 2 }}
       p={2}
     >
@@ -27,17 +28,35 @@ const MainBanner = () => {
             },
             lineHeight: 1.2,
           }}
-          textAlign="start"
+          textAlign='start'
+          display={"flex"}
         >
-          Study <img src={bulbImg} alt="" />
-          <br />
-          Abroad Made Easy
+          <Box>
+            <Typography
+              sx={{
+                typography: {
+                  md: theme.typography.heading1,
+                  xs: theme.typography.heading2,
+                },
+                lineHeight: 1.2,
+              }}
+              textAlign='start'
+              display={"flex"}
+            >
+              Simplifying
+              <Box sx={{display:{xs:'none', md:'block'}}}>
+
+              <img src={bulbImg} alt='' />
+              </Box>
+            </Typography>
+            Career Changes
+          </Box>
         </Typography>
         <Typography sx={{ typography: { md: theme.typography.heading4 } }}>
           Find and apply to your dream university with our expert guidance
         </Typography>
         <Typography sx={{ mt: 2 }}>
-          <GradientButton buttonText="Get Started" />
+          <GradientButton buttonText='Get Started' />
         </Typography>
         <Box sx={{ mt: 5, flexGrow: 1 }}>
           <Typography sx={{ typography: theme.typography.p }}>

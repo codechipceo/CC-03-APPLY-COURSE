@@ -3,12 +3,12 @@ import { schoolReducer } from "./schoolSlice";
 
 import { programOfferingReducer } from "./programSlice";
 import { adminReducer } from "./adminSlice";
+import { qrReducer } from "./qrSlice";
 const rootReducer = combineReducers({
-
   school: schoolReducer,
   admin: adminReducer,
-
-  programs: programOfferingReducer
+  qr: qrReducer,
+  programs: programOfferingReducer,
 });
 
 export const store = configureStore({

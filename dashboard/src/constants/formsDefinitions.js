@@ -117,9 +117,23 @@ const schoolForm = [
   },
 ];
 
+
+const qrForm = [
+  {
+    name: "qrName",
+    label: "Qr Code Name",
+    type: "text",
+  },
+  {
+    name: "destinationUrl",
+    label: "URL To Redirect",
+    type: "text",
+  },
+];
 export const formDefinitions = {
   adminForm,
   schoolForm,
   programOfferingForm,
   leadsForm,
+  qrForm,
 };

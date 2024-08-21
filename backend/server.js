@@ -43,6 +43,7 @@ const server = app.listen(PORT, () => {
 
 // Shut down server if unhandled rejection occurs
 process.on("unhandledRejection", (err) => {
+  console.log(err)
   console.log(err.name, err.message);
   console.log("Unhandled Rejection, Shutting Down");
   server.close(() => {

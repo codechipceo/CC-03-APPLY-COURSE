@@ -10,18 +10,15 @@ import Main from "./StaticsSection/Main";
 
 const Home = () => {
   return (
-    <Box>
-      <MainBanner
-        mainHeading=" Study
-        Abroad Made Easy"
-      />
+    <>
+      <MainBanner mainHeading='Simplifying Career Changes' />
       <SupportMain />
       <ServicesCard />
       <Help />
       <Hero />
       <ChooseUsContainer />
       <Main />
-    </Box>
+    </>
   );
 };
 

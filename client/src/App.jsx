@@ -9,9 +9,11 @@ function App() {
   return (
     <>
       <Container
-        maxWidth="xl"
+
+
         disableGutters
-        sx={{ p: 1, textAlign: "justify" }}
+        sx={{overflow:'hidden', mt: 1,textAlign: "justify" }}
+
       >
         <MyAppBar logoImg={logoImg} />
         <RouterProvider router={routes} />

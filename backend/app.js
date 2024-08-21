@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
 // routes
 app.use("/api", indexRouter);
 
+
 // Global error handler
 app.use(GlobalErrorHandler);
 
