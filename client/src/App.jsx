@@ -8,13 +8,7 @@ import { Container } from "@mui/material";
 function App() {
   return (
     <>
-      <Container
-
-
-        disableGutters
-        sx={{overflow:'hidden', mt: 1,textAlign: "justify" }}
-
-      >
+      <Container disableGutters sx={{ overflow: "hidden", mt: 1 }}>
         <MyAppBar logoImg={logoImg} />
         <RouterProvider router={routes} />
       </Container>
