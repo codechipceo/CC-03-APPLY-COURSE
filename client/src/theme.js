@@ -36,7 +36,11 @@ const config = {
   },
   typography: {
     fontFamily: "sans-serif",
-
+    StudentsPageHeading: {
+      fontSize: "80px",
+      color: "#fff",
+      fontWeight: "800",
+    },
     heading1: {
       fontSize: "90px",
       fontWeight: "700",

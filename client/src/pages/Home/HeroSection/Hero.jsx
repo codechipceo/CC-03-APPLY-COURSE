@@ -26,8 +26,6 @@ const Hero = () => {
           textAlign: "center",
           justifyContent: "center",
           alignContent: "center",
-
-          // height: { md: "210px" },
         }}
       >
         <Box sx={{ display: { md: "none", xs: "block" } }}>
@@ -51,7 +49,7 @@ const Hero = () => {
           >
             Our experts are here to support you every step of the way
           </Typography>
-          <GradientButton buttonText="Get Started" />
+          <GradientButton buttonText="Get Started" radius="20px" />
         </Box>
         <Box sx={{ display: { md: "none", xs: "block" } }}>
           <MyImg img={plane} />

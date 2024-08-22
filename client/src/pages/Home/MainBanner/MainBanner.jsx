@@ -28,7 +28,7 @@ const MainBanner = () => {
             },
             lineHeight: 1.2,
           }}
-          textAlign='start'
+          textAlign="start"
           display={"flex"}
         >
           <Box>
@@ -40,13 +40,12 @@ const MainBanner = () => {
                 },
                 lineHeight: 1.2,
               }}
-              textAlign='start'
+              textAlign="start"
               display={"flex"}
             >
               Simplifying
-              <Box sx={{display:{xs:'none', md:'block'}}}>
-
-              <img src={bulbImg} alt='' />
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
+                <img src={bulbImg} alt="" />
               </Box>
             </Typography>
             Career Changes
@@ -56,7 +55,7 @@ const MainBanner = () => {
           Find and apply to your dream university with our expert guidance
         </Typography>
         <Typography sx={{ mt: 2 }}>
-          <GradientButton buttonText='Get Started' />
+          <GradientButton buttonText="Get Started" radius="20px" />
         </Typography>
         <Box sx={{ mt: 5, flexGrow: 1 }}>
           <Typography sx={{ typography: theme.typography.p }}>
