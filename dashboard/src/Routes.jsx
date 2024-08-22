@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import {Home } from './pages/Home'
 import { School } from "./pages/School/School";
 import { Program } from "./pages/Program/Program";
+import { QRcodes } from "./pages/QRcodes/QRcodes";
 const routes = [
   {
     path: "/",
@@ -14,6 +15,10 @@ const routes = [
   {
     path: "/program",
     element: <Program />,
+  },
+  {
+    path: "/qrcodes",
+    element: <QRcodes />,
   },
 ];
 

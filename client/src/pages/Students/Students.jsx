@@ -1,6 +1,9 @@
+import MainPoster from "./MainPoster/MainPoster/";
 
 export const Students = () => {
   return (
-    <div>Students</div>
-  )
-}
+    <>
+      <MainPoster />
+    </>
+  );
+};

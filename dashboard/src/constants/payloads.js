@@ -12,6 +12,11 @@ const leadsPayload = {
   message: "",
 };
 
+const qrPayload = {
+  qrName: "",
+  destinationUrl: "",
+};
+
 const programOfferingPayload = {
   name: "",
   programLevel: "",
@@ -34,4 +39,5 @@ export const apiPayloads = {
   programOfferingPayload,
   adminPayload,
   leadsPayload,
+  qrPayload,
 };

@@ -29,10 +29,15 @@ export const routes = [
     icon: AssignmentSharpIcon,
   },
   {
-    name: "Leads",
-    path: "/leads",
-    icon: AssignmentSharpIcon,
+    name: "QR codes",
+    path: "/qrcodes",
+    icon: Dashboard,
   },
+  // {
+  //   name: "Leads",
+  //   path: "/leads",
+  //   icon: AssignmentSharpIcon,
+  // },
   {
     name: "Admin User",
     path: "",
