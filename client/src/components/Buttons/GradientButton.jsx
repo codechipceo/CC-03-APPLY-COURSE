@@ -6,6 +6,7 @@ const GradientButton = ({
   buttonText,
   Icon,
   gradient,
+  styles,
   radius,
   border,
   ...props
@@ -19,8 +20,17 @@ const GradientButton = ({
         borderRadius: radius,
         color: "white",
         border: border ? border : "none",
+        boxShadow: 3,
         typography: "button",
+        "&:hover": {
+          boxShadow: 8,
+        },
+        "&:active": {
+          boxShadow: 0,
+        },
+        ...styles,
       }}
+      {...props}
     >
       {Icon}
     </IconButton>
@@ -33,8 +43,15 @@ const GradientButton = ({
         color: "white",
         py: 1,
         px: 3,
-        boxShadow: "inset 0 4px 4px #fff3, 0 3px 4px #0003",
+        boxShadow: 3,
+        "&:hover": {
+          boxShadow: 8, // Shadow on hover
+        },
+        "&:active": {
+          boxShadow: 0,
+        },
         typography: "button",
+        ...styles,
       }}
     >
       {buttonText}
