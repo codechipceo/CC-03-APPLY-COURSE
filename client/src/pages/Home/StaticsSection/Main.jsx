@@ -4,6 +4,8 @@ import city from "@/assets/City.png";
 import { useTheme } from "@mui/material";
 import MyImg from "@/components/MyImg";
 import map from "@/assets/map.png";
+import { metaData, statics } from "@/constants/homePage/statics";
+import StaticsCard from "./StaticsCard";
 
 const Main = () => {
   const theme = useTheme();
@@ -15,13 +17,12 @@ const Main = () => {
         backgroundPosition: "center",
 
         py: 5,
-        my: 10,
       }}
     >
       <Box
         sx={{
           m: { md: 7, xs: 1 },
-          display: { md: "grid", xs: "block" },
+          display: { md: "grid" },
           gridTemplateColumns: { md: "repeat(2,1fr)" },
           gap: { md: 10, xs: 1 },
         }}
@@ -38,13 +39,31 @@ const Main = () => {
               mx: { md: 6 },
             }}
           >
-            We Connect School, Students, and Recruitments partners from Every
-            part of the Canada
+            {metaData.heading}
           </Typography>
         </Box>
         <Box>
           <MyImg img={map} />
         </Box>
+      </Box>
+      <Box
+        sx={{
+          display: { md: "flex", xs: "grid" },
+          gridTemplateColumns: "repeat(2,1fr)",
+          gap: 2,
+          flexDirection: { xs: "column", md: "row" },
+          justifyContent: "space-evenly",
+        }}
+      >
+        {statics.length > 0
+          ? statics.map((item) => (
+              <StaticsCard
+                key={item.text}
+                count={item.count}
+                text={item.text}
+              />
+            ))
+          : null}
       </Box>
     </Box>
   );
