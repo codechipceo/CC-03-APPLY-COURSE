@@ -1,15 +1,12 @@
 import HeroContainer from "@/components/HeroContainer";
 import { Box } from "@mui/material";
 
-import { chooseUs } from "@/constants/chooseUs";
+import { chooseUs, metaData } from "@/constants/homePage/chooseUs";
 import ChooseUsCard from "./ChooseUsCard";
 
 const ChooseUsContainer = () => {
   return (
-    <HeroContainer
-      heading="Why You Choose Us"
-      paragraph="We partner with top universities worldwide to offer you the best options"
-    >
+    <HeroContainer heading={metaData.heading} paragraph={metaData.paragraph}>
       <Box
         sx={{
           display: "grid",

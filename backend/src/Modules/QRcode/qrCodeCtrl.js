@@ -38,7 +38,8 @@ export const updateQrCode = asyncHandler(async (req, res, next) => {
 
 export const deleteQrCode = asyncHandler(async (req, res, next) => {
   const { qrcodeId } = req.body;
-  const deleted = await model.deleteDocument();
+  const deleted = await model.deleteDocument({ _id: qrcodeId });
+  return successResponse({ res, data: deleted });
 });
 
 export const getAllQrcodes = asyncHandler(async (req, res, next) => {

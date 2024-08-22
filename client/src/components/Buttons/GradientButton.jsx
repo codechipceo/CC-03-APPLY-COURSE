@@ -8,10 +8,10 @@ const GradientButton = ({ buttonText, Icon, onClick }) => {
   return Icon ? (
     <IconButton
       sx={{
-        background: theme.gradients.primaryGradient,
-        borderRadius: "20px",
+        background: gradient ? gradient : theme.gradients.primaryGradient,
+        borderRadius: radius,
         color: "white",
-
+        border: border ? border : "none",
         typography: "button",
       }}>
       {Icon}
@@ -21,7 +21,7 @@ const GradientButton = ({ buttonText, Icon, onClick }) => {
       onClick={onClick}
       sx={{
         background: theme.gradients.primaryGradient,
-        borderRadius: "20px",
+        borderRadius: radius,
         color: "white",
         py: 1,
         px: 3,
