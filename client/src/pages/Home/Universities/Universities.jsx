@@ -1,13 +1,15 @@
 import HeroContainer from "@/components/HeroContainer";
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 import { useRef } from "react";
-import { Navigation, Grid } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import GradientButton from "@/components/Buttons/GradientButton";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
 import { metaData, universitiesData } from "@/constants/homePage/topUniverSec";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import MySwiper from "@/components/MySwiper";
+import { SwiperSlide } from "swiper/react";
 
 const Universities = () => {
   const swiperRef = useRef();
@@ -15,17 +17,12 @@ const Universities = () => {
 
   return (
     <HeroContainer heading={metaData.heading} paragraph={metaData.paragraph}>
-      <Box sx={{ position: "relative", mt: 5 }}>
-        <Swiper
+      <Box sx={{ position: "relative", mt: 5, mx: 3 }}>
+        <MySwiper
           modules={[Navigation]}
-          spaceBetween={50}
+          space={30}
           slidesPerView={4}
-          onBeforeInit={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          // grid={{
-          //   rows: 2,
-          // }}
+          ref={swiperRef}
         >
           <ImageList>
             {universitiesData.length > 0
@@ -48,7 +45,7 @@ const Universities = () => {
                 ))
               : null}
           </ImageList>
-        </Swiper>
+        </MySwiper>
 
         <GradientButton
           styles={{
