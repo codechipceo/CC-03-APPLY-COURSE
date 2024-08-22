@@ -1,7 +1,6 @@
 import HeroContainer from "@/components/HeroContainer";
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 import { useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Grid } from "swiper/modules";
 import GradientButton from "@/components/Buttons/GradientButton";
 import EastIcon from "@mui/icons-material/East";
