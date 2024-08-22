@@ -1,9 +1,10 @@
 import { Box, Typography } from "@mui/material";
-import CountUp from "react-countup";
 import { useTheme } from "@mui/material";
+import CountUp from "react-countup";
 
 const StaticsCard = ({ count, text }) => {
   const theme = useTheme();
+
   return (
     <Box>
       <Typography
@@ -12,8 +13,9 @@ const StaticsCard = ({ count, text }) => {
           color: "#4B28D8",
         }}
       >
-        <CountUp end={count} duration={5} />+
+        <CountUp end={count} enableScrollSpy duration={2} />+
       </Typography>
+
       <Typography
         sx={{ typography: theme.typography.heading4, fontWeight: "bold" }}
       >

@@ -17,13 +17,12 @@ const Main = () => {
         backgroundPosition: "center",
 
         py: 5,
-        my: 10,
       }}
     >
       <Box
         sx={{
           m: { md: 7, xs: 1 },
-          display: { md: "grid", xs: "block" },
+          display: { md: "grid" },
           gridTemplateColumns: { md: "repeat(2,1fr)" },
           gap: { md: 10, xs: 1 },
         }}
@@ -46,24 +45,25 @@ const Main = () => {
         <Box>
           <MyImg img={map} />
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            mx: 5,
-            alignContent: "center",
-          }}
-        >
-          {statics.length > 0
-            ? statics.map((item) => (
-                <StaticsCard
-                  key={item.text}
-                  count={item.count}
-                  text={item.text}
-                />
-              ))
-            : null}
-        </Box>
+      </Box>
+      <Box
+        sx={{
+          display: { md: "flex", xs: "grid" },
+          gridTemplateColumns: "repeat(2,1fr)",
+          gap: 2,
+          flexDirection: { xs: "column", md: "row" },
+          justifyContent: "space-evenly",
+        }}
+      >
+        {statics.length > 0
+          ? statics.map((item) => (
+              <StaticsCard
+                key={item.text}
+                count={item.count}
+                text={item.text}
+              />
+            ))
+          : null}
       </Box>
     </Box>
   );
