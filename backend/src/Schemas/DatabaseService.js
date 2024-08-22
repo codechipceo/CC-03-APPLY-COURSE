@@ -20,7 +20,7 @@ export class DatabaseService {
     const { limit, sort, skip, populate, isDelete } = options;
     let updatedQuery;
 
-   
+
     if (options.hasOwnProperty("isDelete")) {
       updatedQuery = { isDelete: isDelete ? isDelete : false, ...query };
     }
@@ -80,7 +80,7 @@ export class DatabaseService {
   };
 
   deleteDocument = async (data) => {
-    const deletedDocument = await this.model.delete(data);
+    const deletedDocument = await this.model.findOneAndRemove(data);
     return deletedDocument;
   };
 

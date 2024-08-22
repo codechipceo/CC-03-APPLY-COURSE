@@ -1,4 +1,4 @@
-import { addQR, getAllQr, updateQr } from "@/thunk/indexThunk";
+import { addQR, deleteQr, getAllQr, updateQr } from "@/thunk/indexThunk";
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
@@ -36,6 +36,8 @@ const qrSlice = createSlice({
           if (item._id === payload.data._id) return payload.data;
           return item;
         });
+      }).addCase(deleteQr.fulfilled, (state, { payload }) => {
+        state.qr = [...state.qr].filter((item) => item._id  !== payload.data._id)
       });
   },
 });
