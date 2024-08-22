@@ -1,6 +1,6 @@
 export const screens = [
-  "Students",
-  "Recruitment Partners",
-  "Institution",
-  "Discover",
+  { text: "Students", link: "/students" },
+  { text: "Recruitment Partners", link: "/" },
+  { text: "Institution", link: "/" },
+  { text: "Discover", link: "/" },
 ];

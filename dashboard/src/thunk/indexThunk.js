@@ -1,25 +1,21 @@
+import {
+  ADD_LOCATION,
+  ADD_PROGRAM_OFFERING,
+  ADD_SCHOOL,
+  CREATE_ADMIN,
+  GET_ALL_LOCATION,
+  GET_ALL_PROGRAM_OFFERINGS,
+  GET_ALL_SCHOOLS,
+  GET_LOCATION_BY_ID,
+  GET_PROGRAM_OFFERING_BY_ID,
+  GET_SCHOOL_BY_ID,
+  LOGIN_ADMIN,
+  UPDATE_LOCATION,
+  UPDATE_PROGRAM_OFFERING,
+  UPDATE_SCHOOL,
+} from "@/config/apiEndpoints";
 import { createRequest } from "@/config/apiRequest";
 import { createThunk } from "./createThunk";
-import {
-  CREATE_ADMIN,
-  LOGIN_ADMIN,
-  ADD_PROGRAM_OFFERING,
-  GET_ALL_PROGRAM_OFFERINGS,
-  GET_PROGRAM_OFFERING_BY_ID,
-  UPDATE_PROGRAM_OFFERING,
-  ADD_SCHOOL,
-  GET_ALL_SCHOOLS,
-  GET_SCHOOL_BY_ID,
-  UPDATE_SCHOOL,
-  ADD_LOCATION,
-  GET_ALL_LOCATION,
-  GET_LOCATION_BY_ID,
-  UPDATE_LOCATION,
-  // ADD_LEAD,
-  // GET_LEAD_BY_ID,
-  // UPDATE_LEAD,
-  // GET_ALL_LEADS,
-} from "@/config/apiEndpoints";
 
 //###########################################
 //                   ADMIN
@@ -114,6 +110,22 @@ export const updateLocation = createThunk(
     return await createRequest(UPDATE_LOCATION, payload);
   }
 );
+
+//###########################################
+//                   QR CODES
+//###########################################
+
+export const addQR = createThunk("/qr/create", async (payload) => {
+  return await createRequest("api/qr/create", payload);
+});
+
+export const getAllQr = createThunk("qr/getAll", async (payload) => {
+  return await createRequest("api/qr/getall", payload);
+});
+
+export const updateQr = createThunk("qr/update", async (payload) => {
+  return await createRequest("api/qr/update", payload);
+});
 
 //###########################################
 //                   LEADS

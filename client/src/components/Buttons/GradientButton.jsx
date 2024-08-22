@@ -4,9 +4,14 @@ import IconButton from "@mui/material/IconButton";
 
 const GradientButton = ({
   buttonText,
-  styles,
+
   gradientsSec,
+
   Icon,
+  radius,
+  gradient,
+  border,
+
   ...props
 }) => {
   const theme = useTheme();
@@ -17,9 +22,12 @@ const GradientButton = ({
         background: gradientsSec
           ? theme.gradients.secondaryGradient
           : theme.gradients.primaryGradient,
-        borderRadius: "20px",
-        color: "white",
 
+        background: gradient ? gradient : theme.gradients.primaryGradient,
+        borderRadius: radius,
+
+        color: "white",
+        border: border ? border : "none",
         typography: "button",
         ...styles,
       }}
@@ -31,11 +39,11 @@ const GradientButton = ({
     <Button
       sx={{
         background: theme.gradients.primaryGradient,
-        borderRadius: "20px",
+        borderRadius: radius,
         color: "white",
         py: 1,
-        px: 3,
-
+        px: 4,
+        boxShadow: 3,
         typography: "button",
       }}
       {...props}
