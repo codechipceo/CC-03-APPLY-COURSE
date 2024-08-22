@@ -9,7 +9,7 @@ import { metaData, universitiesData } from "@/constants/homePage/topUniverSec";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import MySwiper from "@/components/MySwiper";
-import { SwiperSlide } from "swiper/react";
+import { SwiperSlide, Swiper } from "swiper/react";
 
 const Universities = () => {
   const swiperRef = useRef();
@@ -18,11 +18,13 @@ const Universities = () => {
   return (
     <HeroContainer heading={metaData.heading} paragraph={metaData.paragraph}>
       <Box sx={{ position: "relative", mt: 5, mx: 3 }}>
-        <MySwiper
+        <Swiper
           modules={[Navigation]}
-          space={30}
+          spaceBetween={3}
           slidesPerView={4}
-          ref={swiperRef}
+          onBeforeInit={(swiper) => {
+            swiperRef.current = swiper;
+          }}
         >
           <ImageList>
             {universitiesData.length > 0
@@ -45,7 +47,7 @@ const Universities = () => {
                 ))
               : null}
           </ImageList>
-        </MySwiper>
+        </Swiper>
 
         <GradientButton
           styles={{
