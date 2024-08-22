@@ -1,15 +1,12 @@
-import React from "react";
-import { formDefinitions, apiPayloads } from "../../constants/index";
-import { DynamicForm } from "@/components/FormComponent/DynamicForm";
-import { useState } from "react";
 import { FormComponent } from "@/components/FormComponent/FormWrapper";
-import { Button, Grid } from "@mui/material";
-import { useTools } from "@/hooks/useTools";
-import { addQR, getAllQr, updateQr } from "@/thunk/indexThunk";
-import { useEffect } from "react";
-import { serlectQr } from "@/slices/qrSlice";
 import { QrCard } from "@/components/QrCard/QrCard";
 import { Wrapper } from "@/components/Wrapper";
+import { useTools } from "@/hooks/useTools";
+import { serlectQr } from "@/slices/qrSlice";
+import { addQR, deleteQr, getAllQr, updateQr } from "@/thunk/indexThunk";
+import { Box, Button, Grid } from "@mui/material";
+import { useEffect, useState } from "react";
+import { apiPayloads, formDefinitions } from "../../constants/index";
 const { qrForm } = formDefinitions;
 const { qrPayload } = apiPayloads;
 
@@ -18,6 +15,7 @@ export const QRcodes = () => {
   const [pageData, setPageData] = useState({ ...qrPayload });
   const [isForm, setForm] = useState(false);
   const [status, setStatus] = useState("CREATE");
+  const [deleteId, setDeleteId] = useState(null);
 
   const existingQrcodes = useSelector(serlectQr);
 
@@ -58,6 +56,10 @@ export const QRcodes = () => {
     setStatus("EDIT");
   };
 
+  const handleDelete = (id) => {
+    dispatch(deleteQr({ qrcodeId: id }));
+  };
+
   useEffect(() => {
     dispatch(getAllQr());
   }, []);
@@ -66,13 +68,14 @@ export const QRcodes = () => {
     existingQrcodes.length > 0
       ? existingQrcodes.map((eachQr) => {
           return (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={eachQr._id}>
+            <Box width={"100%"} key={eachQr._id}>
               <QrCard
                 data={eachQr}
                 key={eachQr._id}
                 handleEdit={() => handleEdit(eachQr)}
+                handleDelete={(id) => handleDelete(id)}
               />
-            </Grid>
+            </Box>
           );
         })
       : null;
@@ -101,9 +104,9 @@ export const QRcodes = () => {
             >
               Add New
             </Button>
-            <Grid container columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Box display={"flex"} flexWrap={"wrap"}>
               {renderQr}
-            </Grid>
+            </Box>
           </Wrapper>
         </>
       )}

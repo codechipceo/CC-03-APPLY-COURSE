@@ -127,6 +127,10 @@ export const updateQr = createThunk("qr/update", async (payload) => {
   return await createRequest("api/qr/update", payload);
 });
 
+export const deleteQr = createThunk('qr/delete', async (payload) => {
+  return await createRequest("api/qr/delete" , payload)
+})
+
 //###########################################
 //                   LEADS
 //###########################################
