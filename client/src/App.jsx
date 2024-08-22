@@ -11,7 +11,7 @@ function App() {
       <Container
         maxWidth="xl"
         disableGutters
-        sx={{ p: 1, textAlign: "justify" }}
+        sx={{ p: 1, textAlign: "justify", m: 0 }}
       >
         <MyAppBar logoImg={logoImg} />
         <RouterProvider router={routes} />

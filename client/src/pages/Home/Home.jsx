@@ -7,6 +7,8 @@ import Help from "./HowWeHelp/Help";
 import Hero from "./HeroSection/Hero";
 import ChooseUsContainer from "./ChooseUs/ChooseUsContainer";
 import Main from "./StaticsSection/Main";
+
+import StoriesContainer from "./Stories/StoriesContainer";
 import Universities from "./Universities/Universities";
 
 const Home = () => {
@@ -23,6 +25,7 @@ const Home = () => {
       <Universities />
       <ChooseUsContainer />
       <Main />
+      <StoriesContainer />
     </Box>
   );
 };
