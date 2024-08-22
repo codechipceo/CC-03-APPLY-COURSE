@@ -4,6 +4,8 @@ import city from "@/assets/City.png";
 import { useTheme } from "@mui/material";
 import MyImg from "@/components/MyImg";
 import map from "@/assets/map.png";
+import { metaData, statics } from "@/constants/homePage/statics";
+import StaticsCard from "./StaticsCard";
 
 const Main = () => {
   const theme = useTheme();
@@ -38,12 +40,29 @@ const Main = () => {
               mx: { md: 6 },
             }}
           >
-            We Connect School, Students, and Recruitments partners from Every
-            part of the Canada
+            {metaData.heading}
           </Typography>
         </Box>
         <Box>
           <MyImg img={map} />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            mx: 5,
+            alignContent: "center",
+          }}
+        >
+          {statics.length > 0
+            ? statics.map((item) => (
+                <StaticsCard
+                  key={item.text}
+                  count={item.count}
+                  text={item.text}
+                />
+              ))
+            : null}
         </Box>
       </Box>
     </Box>
