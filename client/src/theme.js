@@ -32,7 +32,7 @@ const config = {
   },
   gradients: {
     primaryGradient: `linear-gradient(90deg,${shd1}, ${shd2})`,
-    secondaryGradient: `linear-gradient(180deg,${shd2},${shd1}`,
+    secondaryGradient: `linear-gradient(180deg,${shd1},${shd2})`,
   },
   typography: {
     fontFamily: "sans-serif",
