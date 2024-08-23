@@ -45,7 +45,7 @@ const MainBanner = () => {
             >
               Simplifying
               <Box sx={{ display: { xs: "none", md: "block" } }}>
-                <img src={bulbImg} alt="" />
+                <img src={bulbImg} />
               </Box>
             </Typography>
             Career Changes

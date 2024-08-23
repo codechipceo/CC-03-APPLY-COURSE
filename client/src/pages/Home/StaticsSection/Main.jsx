@@ -31,8 +31,8 @@ const Main = () => {
           <Typography
             sx={{
               typography: {
-                md: theme.typography.heading2,
-                xs: theme.typography.heading3,
+                md: theme.typography.heading3,
+                xs: theme.typography.heading4,
               },
               textAlign: "start",
               my: { md: 10 },

@@ -6,14 +6,15 @@ import Help from "./HowWeHelp/Help";
 import Hero from "./HeroSection/Hero";
 import ChooseUsContainer from "./ChooseUs/ChooseUsContainer";
 import Main from "./StaticsSection/Main";
+
+import Universities from "./Universities/Universities";
+import StoriesContainer from "./Stories/StoriesContainer";
+
 import JoinUs from "@/components/JoinUs";
 import Footer from "@/components/Footer";
 import logoImg from "@/assets/img/logo.png";
 import MyAppBar from "@/components/TopBar/AppBar";
 import { Container } from "@mui/material";
-
-import StoriesContainer from "./Stories/StoriesContainer";
-import Universities from "./Universities/Universities";
 
 const Home = () => {
   return (
@@ -30,7 +31,9 @@ const Home = () => {
       <Universities />
       <ChooseUsContainer />
       <Main />
+
       <StoriesContainer />
+
       <JoinUs />
       <Footer />
     </Container>
