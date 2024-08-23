@@ -94,11 +94,11 @@ function ResponsiveAppBar({ logoImg }) {
               }}
             >
               {screens.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page.text} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page.text}</Typography>
                 </MenuItem>
               ))}
-              <GradientButton buttonText="Get Started" radius="20px" />
+              <GradientButton buttonText="Get Started" />
             </Menu>
           </Box>
 
@@ -127,7 +127,7 @@ function ResponsiveAppBar({ logoImg }) {
           >
             {screens.map((page) => (
               <Button
-                key={page}
+                key={page.text}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "black", display: "block" }}
               >
@@ -137,7 +137,7 @@ function ResponsiveAppBar({ logoImg }) {
           </Box>
 
           <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <GradientButton buttonText="Get Started" radius="20px" />
+            <GradientButton buttonText="Get Started" />
           </Box>
         </Toolbar>
       </Container>

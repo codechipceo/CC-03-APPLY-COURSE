@@ -11,6 +11,7 @@ const HeroContainer = ({ heading, paragraph, children }) => {
           textAlign: "center",
           display: "flex",
           mt: 5,
+          px: 2,
           justifyContent: "center",
         }}
       >

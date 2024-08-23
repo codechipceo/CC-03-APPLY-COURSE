@@ -6,7 +6,7 @@ const StaticsCard = ({ count, text }) => {
   const theme = useTheme();
 
   return (
-    <Box>
+    <Box mx={2}>
       <Typography
         sx={{
           typography: theme.typography.heading2,

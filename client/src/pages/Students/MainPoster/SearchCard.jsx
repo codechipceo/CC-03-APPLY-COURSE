@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 
 import React from "react";
 import MyImg from "@/components/MyImg";
+import { borderRadius } from "@mui/system";
 
 const SearchCard = () => {
   const theme = useTheme();
@@ -52,7 +53,10 @@ const SearchCard = () => {
           }}
           fullWidth
         />
-        <GradientButton buttonText="Search" radius="40px" />
+        <GradientButton
+          buttonText="Search"
+          styles={{ borderRadius: "40px", px: 5 }}
+        />
       </Box>
     </Box>
   );

@@ -17,7 +17,14 @@ const Universities = () => {
 
   return (
     <HeroContainer heading={metaData.heading} paragraph={metaData.paragraph}>
-      <Box sx={{ position: "relative", mt: 5, mx: 3 }}>
+      <Box
+        sx={{
+          position: "relative",
+          mt: 5,
+          mx: 3,
+          display: { md: "block", xs: "none" },
+        }}
+      >
         <MySwiper
           modules={[Navigation]}
           space={30}
@@ -53,10 +60,10 @@ const Universities = () => {
             top: "45%",
             zIndex: 20,
             left: -20,
+            background: theme.gradients.secondaryGradient,
           }}
           onClick={() => swiperRef.current?.slidePrev()}
           Icon={<WestIcon />}
-          gradientsSec={true}
         />
         <GradientButton
           styles={{
@@ -64,8 +71,69 @@ const Universities = () => {
             top: "45%",
             zIndex: 20,
             right: -20,
+            background: theme.gradients.secondaryGradient,
           }}
-          gradientsSec={true}
+          onClick={() => swiperRef.current?.slideNext()}
+          Icon={<EastIcon />}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          position: "relative",
+          mt: 5,
+          mx: 3,
+          display: { md: "none", xs: "block" },
+        }}
+      >
+        <MySwiper
+          modules={[Navigation]}
+          space={30}
+          slidesPerView={1}
+          ref={swiperRef}
+        >
+          <ImageList>
+            {universitiesData.length > 0
+              ? universitiesData.map((university, i) => (
+                  <SwiperSlide key={university.universityName + i}>
+                    <ImageListItem>
+                      <img src={university.img} loading="lazy" />
+                      <ImageListItemBar
+                        title={university.universityName}
+                        sx={{
+                          borderRadius: "0px 0px 36px 36px",
+                          background: `linear-gradient(rgba(0, 0, 0, 0), ${theme.palette.shade1})`,
+                          pt: 10,
+                          pb: 3,
+                          px: 1,
+                        }}
+                      />
+                    </ImageListItem>
+                  </SwiperSlide>
+                ))
+              : null}
+          </ImageList>
+        </MySwiper>
+
+        <GradientButton
+          styles={{
+            position: "absolute",
+            top: "45%",
+            zIndex: 20,
+            left: -20,
+            background: theme.gradients.secondaryGradient,
+          }}
+          onClick={() => swiperRef.current?.slidePrev()}
+          Icon={<WestIcon />}
+        />
+        <GradientButton
+          styles={{
+            position: "absolute",
+            top: "45%",
+            zIndex: 20,
+            right: -20,
+            background: theme.gradients.secondaryGradient,
+          }}
           onClick={() => swiperRef.current?.slideNext()}
           Icon={<EastIcon />}
         />

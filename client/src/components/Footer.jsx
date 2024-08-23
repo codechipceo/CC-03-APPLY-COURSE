@@ -37,8 +37,8 @@ const Footer = () => {
         gridTemplateColumns: "repeat(4,1fr)",
 
         py: 5,
-        px: 15,
-        gap: 9,
+        px: { md: 15, xs: 2 },
+        gap: { md: 9, xs: 2 },
         textAlign: "start",
       }}
     >
@@ -127,23 +127,31 @@ const Footer = () => {
       <Box display="flex" justifyContent="space-between">
         <GradientButton
           Icon={<TwitterIcon />}
-          gradient={"linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%);"}
-          border="1px solid #fff"
+          styles={{
+            border: "1px solid #fff",
+            background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)",
+          }}
         />
         <GradientButton
           Icon={<TwitterIcon />}
-          gradient={"linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%);"}
-          border="1px solid #fff"
+          styles={{
+            border: "1px solid #fff",
+            background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)",
+          }}
         />
         <GradientButton
           Icon={<TwitterIcon />}
-          gradient={"linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%);"}
-          border="1px solid #fff"
+          styles={{
+            border: "1px solid #fff",
+            background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)",
+          }}
         />
         <GradientButton
           Icon={<TwitterIcon />}
-          gradient={"linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%);"}
-          border="1px solid #fff"
+          styles={{
+            border: "1px solid #fff",
+            background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)",
+          }}
         />
       </Box>
     </Box>

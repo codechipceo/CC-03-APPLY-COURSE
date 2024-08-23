@@ -55,7 +55,7 @@ const MainBanner = () => {
           Find and apply to your dream university with our expert guidance
         </Typography>
         <Typography sx={{ mt: 2 }}>
-          <GradientButton buttonText="Get Started" radius="20px" />
+          <GradientButton buttonText="Get Started" />
         </Typography>
         <Box sx={{ mt: 5, flexGrow: 1 }}>
           <Typography sx={{ typography: theme.typography.p }}>

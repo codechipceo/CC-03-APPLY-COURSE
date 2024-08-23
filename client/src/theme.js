@@ -53,14 +53,13 @@ const config = {
       fontWeight: "700",
       fontSize: "36px",
     },
-    Heading4: {
+    heading4: {
       fontSize: "25px",
       fontWeight: "400",
     },
     p: {
       fontSize: "18px",
       fontWeight: "400",
-      color: "#333",
     },
     font3: {
       fontSize: "16px",
