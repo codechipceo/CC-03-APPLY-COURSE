@@ -49,7 +49,7 @@ const StoriesContainer = () => {
           gap: 2,
           position: "absolute",
           right: 20,
-          top: 70,
+          top: 40,
         }}
       >
         <GradientButton

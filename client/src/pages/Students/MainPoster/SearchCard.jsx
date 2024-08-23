@@ -36,7 +36,10 @@ const SearchCard = () => {
         }}
       >
         Use our AI-powered platform to find your perfect program in seconds
-        <Typography sx={{ position: "absolute", top: -120, left: -130 }}>
+        <Typography
+          variant="span"
+          sx={{ position: "absolute", top: -120, left: -130 }}
+        >
           <MyImg img={roboImg} />
         </Typography>
       </Typography>
