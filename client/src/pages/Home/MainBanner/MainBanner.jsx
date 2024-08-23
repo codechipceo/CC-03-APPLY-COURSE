@@ -30,8 +30,9 @@ const MainBanner = () => {
           }}
           textAlign="start"
           display={"flex"}
+          variant="div"
         >
-          <Box>
+          <Box variant="div">
             <Typography
               sx={{
                 typography: {
@@ -42,9 +43,10 @@ const MainBanner = () => {
               }}
               textAlign="start"
               display={"flex"}
+              variant="div"
             >
               Simplifying
-              <Box sx={{ display: { xs: "none", md: "block" } }}>
+              <Box variant="div" sx={{ display: { xs: "none", md: "block" } }}>
                 <img src={bulbImg} />
               </Box>
             </Typography>
