@@ -1,24 +1,18 @@
 import { Box, Typography } from "@mui/material";
 import { useTheme } from "@mui/material";
 import CountUp from "react-countup";
+import { GradientText } from "@/components/GradientText/GradientText";
 
 const StaticsCard = ({ count, text }) => {
   const theme = useTheme();
 
   return (
-    <Box>
-      <Typography
-        sx={{
-          typography: theme.typography.heading2,
-          color: "#4B28D8",
-        }}
-      >
+    <Box mx={2}>
+      <GradientText variant="p" gutterBottom fontSize={48}>
         <CountUp end={count} enableScrollSpy duration={2} />+
-      </Typography>
+      </GradientText>
 
-      <Typography
-        sx={{ typography: theme.typography.heading4, fontWeight: "bold" }}
-      >
+      <Typography sx={{ typography: theme.typography.heading4 }}>
         {text}
       </Typography>
     </Box>

@@ -28,7 +28,7 @@ const MyCard = () => {
         <Box>
           <Typography
             sx={{
-              typography: theme.typography.Heading4,
+              typography: theme.typography.heading4,
             }}
           >
             University Matching
