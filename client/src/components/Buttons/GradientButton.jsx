@@ -2,24 +2,15 @@ import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 
-const GradientButton = ({
-  buttonText,
-  Icon,
-  gradient,
-  styles,
-  radius,
-  border,
-  ...props
-}) => {
+const GradientButton = ({ buttonText, Icon, styles, radius, ...props }) => {
   const theme = useTheme();
 
   return Icon ? (
     <IconButton
       sx={{
-        background: gradient ? gradient : theme.gradients.primaryGradient,
-        borderRadius: radius,
+        background: theme.gradients.primaryGradient,
+        borderRadius: "20px",
         color: "white",
-        border: border ? border : "none",
         boxShadow: 3,
         typography: "button",
         "&:hover": {
@@ -39,7 +30,7 @@ const GradientButton = ({
       {...props}
       sx={{
         background: theme.gradients.primaryGradient,
-        borderRadius: radius,
+        borderRadius: "20px",
         color: "white",
         py: 1,
         px: 3,

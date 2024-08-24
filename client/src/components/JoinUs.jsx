@@ -54,7 +54,10 @@ const JoinUs = () => {
           Start learning by registering for free
         </Typography>
         <Box sx={{ mt: 4 }}>
-          <GradientButton buttonText="Contact Us" />
+          <GradientButton
+            buttonText="Contact Us"
+            styles={{ borderRadius: "5px" }}
+          />
         </Box>
       </Box>
     </Box>

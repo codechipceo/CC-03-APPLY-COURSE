@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 
 import React from "react";
 import MyImg from "@/components/MyImg";
+import { borderRadius } from "@mui/system";
 
 const SearchCard = () => {
   const theme = useTheme();
@@ -35,7 +36,10 @@ const SearchCard = () => {
         }}
       >
         Use our AI-powered platform to find your perfect program in seconds
-        <Typography sx={{ position: "absolute", top: -120, left: -130 }}>
+        <Typography
+          variant="span"
+          sx={{ position: "absolute", top: -120, left: -130 }}
+        >
           <MyImg img={roboImg} />
         </Typography>
       </Typography>
@@ -52,7 +56,10 @@ const SearchCard = () => {
           }}
           fullWidth
         />
-        <GradientButton buttonText="Search" radius="40px" />
+        <GradientButton
+          buttonText="Search"
+          styles={{ borderRadius: "40px", px: 5 }}
+        />
       </Box>
     </Box>
   );

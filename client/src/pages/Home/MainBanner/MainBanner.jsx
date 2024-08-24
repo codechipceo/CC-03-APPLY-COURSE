@@ -30,8 +30,9 @@ const MainBanner = () => {
           }}
           textAlign="start"
           display={"flex"}
+          variant="div"
         >
-          <Box>
+          <Box variant="div">
             <Typography
               sx={{
                 typography: {
@@ -42,9 +43,10 @@ const MainBanner = () => {
               }}
               textAlign="start"
               display={"flex"}
+              variant="div"
             >
               Simplifying
-              <Box sx={{ display: { xs: "none", md: "block" } }}>
+              <Box variant="div" sx={{ display: { xs: "none", md: "block" } }}>
                 <img src={bulbImg} />
               </Box>
             </Typography>
@@ -55,7 +57,7 @@ const MainBanner = () => {
           Find and apply to your dream university with our expert guidance
         </Typography>
         <Typography sx={{ mt: 2 }}>
-          <GradientButton buttonText="Get Started" radius="20px" />
+          <GradientButton buttonText="Get Started" />
         </Typography>
         <Box sx={{ mt: 5, flexGrow: 1 }}>
           <Typography sx={{ typography: theme.typography.p }}>
