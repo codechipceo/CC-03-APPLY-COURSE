@@ -35,7 +35,7 @@ function ResponsiveAppBar({ logoImg }) {
       position="static"
       sx={{
         background: theme.palette.bg3,
-        borderRadius: { xs: "0", md: "20px" },
+        borderRadius: { xs: "20px", md: "20px" },
         boxShadow: 0,
         border: "#ccc solid 1px",
       }}

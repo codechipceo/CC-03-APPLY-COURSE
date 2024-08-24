@@ -7,7 +7,6 @@ import Hero from "./HeroSection/Hero";
 import ChooseUsContainer from "./ChooseUs/ChooseUsContainer";
 import Main from "./StaticsSection/Main";
 import JoinUs from "@/components/JoinUs";
-import Footer from "@/components/Footer";
 import logoImg from "@/assets/img/logo.png";
 import MyAppBar from "@/components/TopBar/AppBar";
 import { Container } from "@mui/material";
@@ -32,7 +31,6 @@ const Home = () => {
       <Main />
       <StoriesContainer />
       <JoinUs />
-      <Footer />
     </Container>
   );
 };

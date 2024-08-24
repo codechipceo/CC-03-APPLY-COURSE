@@ -70,6 +70,7 @@ const StoriesContainer = () => {
           onClick={() => swiperRef.current?.slideNext()}
           Icon={<EastIcon />}
           styles={{
+            background: "none",
             border: "1px solid #fff",
             "&:hover": {
               boxShadow: 8,
