@@ -2,6 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import { Students } from "./pages/Students/Students";
 import { CollageDetail } from "./pages/CollageDetail/CollageDetail";
+import { RecruitmentPartners } from "./pages/RecruitmentPartners/RecruitmentPartners";
+import { Contact } from "./pages/Contact/Contact";
+import { Institutions } from "./pages/Institutions/Institutions";
 
 const routes = createBrowserRouter([
   {
@@ -15,6 +18,18 @@ const routes = createBrowserRouter([
   {
     path: "/collage-detail",
     element: <CollageDetail />,
+  },
+  {
+    path: "/recruitment-partners",
+    element: <RecruitmentPartners />,
+  },
+  {
+    path: "/institutions",
+    element: <Institutions />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
   },
 ]);
 
