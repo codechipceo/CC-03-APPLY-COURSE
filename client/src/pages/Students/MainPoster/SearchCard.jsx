@@ -28,19 +28,19 @@ const SearchCard = () => {
       <Typography
         sx={{
           typography: theme.typography.heading4,
-          mx: 3,
+
           mb: 4,
           ml: 10,
           position: "relative",
         }}
       >
-        Use our AI-powered platform to find your perfect program in seconds
         <Typography
           variant="span"
           sx={{ position: "absolute", top: -120, left: -130 }}
         >
           <MyImg img={roboImg} />
         </Typography>
+        Use our AI-powered platform to find your perfect program in seconds
       </Typography>
 
       <Box sx={{ display: { md: "flex" }, gap: 2 }}>
@@ -50,8 +50,13 @@ const SearchCard = () => {
           variant="outlined"
           sx={{
             "& .MuiOutlinedInput-root": {
-              borderRadius: "35px", // Adjust the radius to make it more or less rounded
+              borderRadius: "35px",
+              border: "none",
+              boxShadow:
+                "0px 4px 4px 0px rgba(74, 73, 73, 0.25) inset, 0px -4px 4px 0px rgba(74, 73, 73, 0.25) inset",
             },
+
+            py: 0,
           }}
           fullWidth
         />
@@ -60,7 +65,9 @@ const SearchCard = () => {
           styles={{
             borderRadius: "40px",
             px: 5,
+            py: 0,
             mt: { sm: 2, xs: 2, md: 0 },
+
             width: {
               xs: "100%",
               sm: "100%",

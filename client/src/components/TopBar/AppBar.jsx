@@ -10,8 +10,9 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { useTheme } from "@mui/material";
+import { Link } from "react-router-dom";
 
-import { screens } from "@/constants/TopBarMenu";
+import { screens } from "@/constants/TopbarMenu";
 import LogoImg from "./LogoImg";
 import GradientButton from "../Buttons/GradientButton";
 import MyImg from "../MyImg";
@@ -62,7 +63,9 @@ function ResponsiveAppBar({ logoImg }) {
               textDecoration: "none",
             }}
           >
-            <MyImg img={logoImg} />
+            <Link to="/">
+              <MyImg img={logoImg} />
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -94,9 +97,11 @@ function ResponsiveAppBar({ logoImg }) {
               }}
             >
               {screens.map((page) => (
-                <MenuItem key={page.text} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.text}</Typography>
-                </MenuItem>
+                <Link to={page.link}>
+                  <MenuItem key={page.text} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page.text}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
               <GradientButton buttonText="Get Started" />
             </Menu>
@@ -126,13 +131,19 @@ function ResponsiveAppBar({ logoImg }) {
             }}
           >
             {screens.map((page) => (
-              <Button
-                key={page.text}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
-              >
-                {page.text}
-              </Button>
+              <Link to={page.link}>
+                <Button
+                  key={page.text}
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "black",
+                    display: "block",
+                  }}
+                >
+                  {page.text}
+                </Button>
+              </Link>
             ))}
           </Box>
 
