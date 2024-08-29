@@ -10,13 +10,19 @@ const programsSlice = createSlice({
     loading: false,
     count: 0,
     error: null,
+    showThankYou: false,
   },
-  reducers: {},
+  reducers: {
+    toggleThankYou: (state) => {
+      state.showThankYou = !state.showThankYou;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getSearchedProgram.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.programs = [];
       })
       .addCase(getSearchedProgram.fulfilled, (state, action) => {
         state.loading = false;
@@ -33,5 +39,6 @@ const programsSlice = createSlice({
   },
 });
 
+export const { toggleThankYou } = programsSlice.actions;
 export const selectProgram = (state) => state.programs;
 export default programsSlice.reducer;
