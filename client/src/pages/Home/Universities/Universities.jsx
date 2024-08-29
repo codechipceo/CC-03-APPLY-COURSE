@@ -50,7 +50,7 @@ const Universities = () => {
                       <ImageListItemBar
                         title={university.universityName}
                         sx={{
-                          borderRadius: "0px 0px 36px 36px",
+                          borderRadius: "0px 0px 28px 28px",
                           background: `linear-gradient(rgba(0, 0, 0, 0), ${theme.palette.shade1})`,
                           pt: 10,
                           pb: 3,

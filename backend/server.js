@@ -2,7 +2,7 @@ import { config } from "dotenv";
 import mongoose from "mongoose";
 config();
 import { app } from "./app.js";
-
+import { Locations } from "./src/Schemas/Location.js";
 // Shut down server if Uncaught Exception occurs
 
 process.on("uncaughtException", (err) => {
@@ -30,8 +30,6 @@ URI &&
       console.log("Mongo Db Connected", URI);
     })
     .catch((err) => console.log(err));
-
-const db = mongoose.connection;
 
 const PORT = process.env.PORT || 5000;
 

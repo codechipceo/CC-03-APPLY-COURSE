@@ -7,5 +7,8 @@ programOfferingRouter.use("/add", programOfferingCtrl.create);
 programOfferingRouter.use("/getall", programOfferingCtrl.getAll);
 programOfferingRouter.use("/getbyid", programOfferingCtrl.getById);
 programOfferingRouter.use("/update", programOfferingCtrl.update);
+programOfferingRouter.use("/update", programOfferingCtrl.update);
+
+programOfferingRouter.use("/search", programOfferingCtrl.search);
 
 export { programOfferingRouter };

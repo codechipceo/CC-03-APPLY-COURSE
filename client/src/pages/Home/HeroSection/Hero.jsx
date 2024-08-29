@@ -52,7 +52,10 @@ const Hero = () => {
             >
               Our experts are here to support you every step of the way
             </Typography>
-            <GradientButton buttonText="Get Started" style={{ boxShadow: 0 }} />
+            <GradientButton
+              buttonText="Get Started"
+              style={{ boxShadow: "none" }}
+            />
           </Box>
           <Box sx={{ display: { md: "none", xs: "block" } }}>
             <MyImg img={plane} />

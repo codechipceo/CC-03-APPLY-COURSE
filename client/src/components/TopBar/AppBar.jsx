@@ -96,9 +96,9 @@ function ResponsiveAppBar({ logoImg }) {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {screens.map((page) => (
-                <Link to={page.link}>
-                  <MenuItem key={page.text} onClick={handleCloseNavMenu}>
+              {screens.map((page, i) => (
+                <Link to={page.link} key={page.text + i}>
+                  <MenuItem onClick={handleCloseNavMenu} variant="span">
                     <Typography textAlign="center">{page.text}</Typography>
                   </MenuItem>
                 </Link>
@@ -130,10 +130,10 @@ function ResponsiveAppBar({ logoImg }) {
               display: { xs: "none", md: "flex" },
             }}
           >
-            {screens.map((page) => (
-              <Link to={page.link}>
+            {screens.map((page, i) => (
+              <Link to={page.link} key={page.text + i}>
                 <Button
-                  key={page.text}
+                  variant="span"
                   onClick={handleCloseNavMenu}
                   sx={{
                     my: 2,
