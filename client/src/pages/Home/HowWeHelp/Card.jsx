@@ -1,5 +1,4 @@
 import React from "react";
-import HomeImg from "@/assets/home/Help/img_1.png";
 import { Box, Typography } from "@mui/material";
 import MyImg from "@/components/MyImg";
 import { useTheme } from "@mui/material";
@@ -7,7 +6,7 @@ import Card from "@mui/material/Card";
 import GradientButton from "@/components/Buttons/GradientButton";
 import EastIcon from "@mui/icons-material/East";
 
-const MyCard = () => {
+const MyCard = ({ heading, p, img }) => {
   const theme = useTheme();
   return (
     <Card
@@ -23,7 +22,7 @@ const MyCard = () => {
         position: "relative",
       }}
     >
-      <MyImg img={HomeImg} />
+      <MyImg img={img} />
       <Box display="grid" gridTemplateColumns="1fr .2fr">
         <Box>
           <Typography
@@ -31,11 +30,10 @@ const MyCard = () => {
               typography: theme.typography.heading4,
             }}
           >
-            University Matching
+            {heading}
           </Typography>
           <Typography sx={{ typography: theme.typography.font3, mt: 1 }}>
-            Get personalized recommendations Get personalized recommendations
-            Get personalized recommendations Get
+            {p}
           </Typography>
         </Box>
       </Box>

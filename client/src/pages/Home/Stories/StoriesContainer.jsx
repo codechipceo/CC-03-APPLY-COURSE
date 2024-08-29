@@ -105,6 +105,7 @@ const StoriesContainer = () => {
                     gridTemplateColumns: "repeat(2,1fr)",
                     gap: 5,
                     mt: 5,
+                    height: { md: "400px" },
                   }}
                 >
                   <Box sx={{ mt: 4 }}>
@@ -128,7 +129,14 @@ const StoriesContainer = () => {
                   </Box>
 
                   <Box sx={{ mt: { xs: 4, md: 0 } }}>
-                    <MyImg img={cardData.customerImg} />
+                    <MyImg
+                      img={cardData.customerImg}
+                      styles={{
+                        borderRadius: "40px",
+                        height: "395px",
+                        width: "100%",
+                      }}
+                    />
                   </Box>
                 </Box>
               </SwiperSlide>

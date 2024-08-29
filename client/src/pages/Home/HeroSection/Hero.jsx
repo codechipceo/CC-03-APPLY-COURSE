@@ -10,13 +10,13 @@ const Hero = () => {
   const theme = useTheme();
   return (
     <Box>
-      <Box sx={{ py: { md: 10 }, position: "relative", my: 8 }}>
+      <Box sx={{ py: { md: 6 }, position: "relative", my: 6 }}>
         <Box
           sx={{ display: { md: "block", xs: "none" } }}
           height="300px"
           position="absolute"
           left={10}
-          top={60}
+          top={22}
         >
           <MyImg img={earth} />
         </Box>
@@ -28,6 +28,7 @@ const Hero = () => {
             justifyContent: "center",
             alignContent: "center",
             borderRadius: { md: "20px" },
+            pb: 4,
           }}
         >
           <Box sx={{ display: { md: "none", xs: "block" } }}>
@@ -39,20 +40,22 @@ const Hero = () => {
             sx={{
               justifyItems: "center",
               width: { md: "600px" },
-              mb: 5,
             }}
           >
             <Typography
               sx={{
                 typography: theme.typography.heading3,
                 color: "#fff",
-                mt: 4,
+
                 p: 2,
               }}
             >
               Our experts are here to support you every step of the way
             </Typography>
-            <GradientButton buttonText="Get Started" />
+            <GradientButton
+              buttonText="Get Started"
+              style={{ boxShadow: "none" }}
+            />
           </Box>
           <Box sx={{ display: { md: "none", xs: "block" } }}>
             <MyImg img={plane} />
@@ -62,8 +65,8 @@ const Hero = () => {
           sx={{ display: { md: "block", xs: "none" } }}
           height="350px"
           position="absolute"
-          right={10}
-          top={10}
+          right={2}
+          top={-30}
         >
           <MyImg img={plane} />
         </Box>

@@ -10,8 +10,9 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { useTheme } from "@mui/material";
+import { Link } from "react-router-dom";
 
-import { screens } from "@/constants/TopBarMenu";
+import { screens } from "@/constants/TopbarMenu";
 import LogoImg from "./LogoImg";
 import GradientButton from "../Buttons/GradientButton";
 import MyImg from "../MyImg";
@@ -62,7 +63,9 @@ function ResponsiveAppBar({ logoImg }) {
               textDecoration: "none",
             }}
           >
-            <MyImg img={logoImg} />
+            <Link to="/">
+              <MyImg img={logoImg} />
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -93,10 +96,12 @@ function ResponsiveAppBar({ logoImg }) {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {screens.map((page) => (
-                <MenuItem key={page.text} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.text}</Typography>
-                </MenuItem>
+              {screens.map((page, i) => (
+                <Link to={page.link} key={page.text + i}>
+                  <MenuItem onClick={handleCloseNavMenu} variant="span">
+                    <Typography textAlign="center">{page.text}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
               <GradientButton buttonText="Get Started" />
             </Menu>
@@ -125,14 +130,20 @@ function ResponsiveAppBar({ logoImg }) {
               display: { xs: "none", md: "flex" },
             }}
           >
-            {screens.map((page) => (
-              <Button
-                key={page.text}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
-              >
-                {page.text}
-              </Button>
+            {screens.map((page, i) => (
+              <Link to={page.link} key={page.text + i}>
+                <Button
+                  variant="span"
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "black",
+                    display: "block",
+                  }}
+                >
+                  {page.text}
+                </Button>
+              </Link>
             ))}
           </Box>
 

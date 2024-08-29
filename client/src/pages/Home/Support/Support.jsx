@@ -33,7 +33,9 @@ const Support = ({ heading, paragraph, img }) => {
         </Typography>
         <Typography>
           <Button
-            sx={{ color: theme.palette.linkShade1 }}
+            sx={{
+              color: theme.palette.linkShade1,
+            }}
             endIcon={<EastIcon />}
           >
             Learn More

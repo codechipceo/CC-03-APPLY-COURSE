@@ -13,7 +13,7 @@ import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
 
 import CollageImg from "../../../assets/collageDetail/university-img.png";
-import UniversityImg from "../../../assets/collageDetail/queen-university.png";
+import UniversityImg from "../../../assets/collageDetail/queen-university-logo.png";
 import GradientButton from "@/components/Buttons/GradientButton";
 import { useState } from "react";
 import { CustomModal } from "@/components/CustomModal/CustomModal";
@@ -48,13 +48,13 @@ export const CollageCardDetail = ({ data }) => {
               />
               <Box flex={1}>
                 <GradientText variant="h2" gutterBottom fontSize={40}>
-                  Queen's University
+                  {data.school.schoolName}
                 </GradientText>
 
                 <Box display="flex" gap={1}>
                   <LocationOnOutlinedIcon />
                   <Typography variant="body1" color="initial">
-                    Kingston, Ontario, CA
+                    {data.school.locationDetails.location}
                   </Typography>
                 </Box>
               </Box>
@@ -73,7 +73,8 @@ export const CollageCardDetail = ({ data }) => {
           marginBlock={4}
           bgcolor="#573DFB0D"
           borderRadius="20px"
-          padding={5}>
+          padding={5}
+        >
           <Grid container spacing={3}>
             {data.details.map((detail, i) => (
               <Grid item xs={12} sm={6} key={i}>
@@ -88,7 +89,8 @@ export const CollageCardDetail = ({ data }) => {
                       variant="subtitle1"
                       fontWeight="bold"
                       mb={1}
-                      lineHeight={1.2}>
+                      lineHeight={1.2}
+                    >
                       {detail.mainTitle}
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
@@ -103,26 +105,26 @@ export const CollageCardDetail = ({ data }) => {
 
         <Box>
           <GradientText variant="h3" sx={{ fontSize: 30 }} mb={2}>
-            Graduate Certificate - Information Technology
+            Graduate Certificate - {data.name}
           </GradientText>
 
           <Typography
             variant="h5"
             sx={{ fontSize: 20, fontWeight: 500 }}
-            mb={1}>
+            mb={1}
+          >
             Program Summary
           </Typography>
           <Typography color="#696565">
-            It’s nearly impossible to think of any aspect of modern business
-            that does not rely on Information and Communication Technology
-            (ICT). ICT capability is an essential element of business success
-            {!show && <span>and jobs with these high-demand skills are</span>}
+            {data.programInfo}
+            {/* {!show && <span>and jobs with these high-demand skills are</span>} */}
           </Typography>
           <Box my={1} textAlign="center">
             <Button
               onClick={handleShowClick}
               variant="text"
-              sx={{ color: "#000" }}>
+              sx={{ color: "#000" }}
+            >
               Show{" "}
               {show ? (
                 <>
@@ -140,7 +142,8 @@ export const CollageCardDetail = ({ data }) => {
             variant="h5"
             sx={{ fontSize: 20, fontWeight: 500 }}
             mb={1}
-            mt={3}>
+            mt={3}
+          >
             Admission Requirement
           </Typography>
           <Typography mb={3} color="#696565">
@@ -150,7 +153,8 @@ export const CollageCardDetail = ({ data }) => {
           <Box textAlign="center">
             <Button
               variant="contained"
-              sx={{ color: "#BF5AF2", backgroundColor: "#BF5AF230" }}>
+              sx={{ color: "#BF5AF2", backgroundColor: "#BF5AF230" }}
+            >
               Log in to View Requirements
             </Button>
           </Box>
