@@ -16,8 +16,13 @@ const Help = () => {
         gap={2}
       >
         {help.length > 0
-          ? help.map((item) => (
-              <Card heading={item.heading} p={item.p} img={item.img} />
+          ? help.map((item, i) => (
+              <Card
+                key={item.heading + i}
+                heading={item.heading}
+                p={item.p}
+                img={item.img}
+              />
             ))
           : null}
       </Box>{" "}

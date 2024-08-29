@@ -1,5 +1,5 @@
 import GradientButton from "@/components/Buttons/GradientButton";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, FormControl, Typography, useTheme } from "@mui/material";
 import roboImg from "@/assets/students/roboSearch.png";
 import TextField from "@mui/material/TextField";
 import React from "react";
@@ -7,6 +7,7 @@ import MyImg from "@/components/MyImg";
 import { useState } from "react";
 import { useTools } from "@/hooks/useTools";
 import { getSearchedProgram } from "@/thunk/indexThunk";
+import { toast } from "react-toastify";
 
 const SearchCard = () => {
   const [query, setQuery] = useState("");
@@ -20,6 +21,9 @@ const SearchCard = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     let searchQuery = "";
+    if (!query && query.trim() === "") {
+      return toast.error("Search cannot be empty");
+    }
     if (searchQuery.indexOf("=") === -1) {
       searchQuery = "searchQuery=";
     }
@@ -67,37 +71,33 @@ const SearchCard = () => {
 
       <form onSubmit={onSubmit}>
         <Box sx={{ display: { md: "flex" }, gap: 2 }}>
-          <TextField
-            label="Search For the Program"
-            variant="outlined"
-            value={query}
-            onChange={onChange}
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                borderRadius: "35px",
-                border: "none",
-              },
-
-              py: 0,
-            }}
-            fullWidth
-          />
-          <GradientButton
-            buttonText="Search"
-            styles={{
-              borderRadius: "40px",
-              px: 5,
-              py: 0,
-              mt: { sm: 2, xs: 2, md: 0 },
-
-              width: {
-                xs: "100%",
-                sm: "100%",
-                md: "auto",
-              },
-            }}
-            type="submit"
-          />
+          <Box sx={{ flexGrow: 1 }}>
+            <TextField
+              label="Search For the Program"
+              variant="outlined"
+              value={query}
+              onChange={onChange}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "35px",
+                  border: "none",
+                },
+              }}
+              size="small"
+              fullWidth
+            />
+          </Box>
+          <Box>
+            <GradientButton
+              buttonText="Search"
+              styles={{
+                borderRadius: "40px",
+                mt: { sm: 2, xs: 2, md: 0 },
+              }}
+              size="small"
+              type="submit"
+            />
+          </Box>
         </Box>
       </form>
     </Box>

@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 config();
 import { app } from "./app.js";
 import { Locations } from "./src/Schemas/Location.js";
+import { notFound, errorHandler } from "./src/middleware/errorMiddleware.js";
 // Shut down server if Uncaught Exception occurs
 
 process.on("uncaughtException", (err) => {
@@ -32,6 +33,9 @@ URI &&
     .catch((err) => console.log(err));
 
 const PORT = process.env.PORT || 5000;
+
+app.use(notFound);
+app.use(errorHandler);
 
 // start server
 const server = app.listen(PORT, () => {

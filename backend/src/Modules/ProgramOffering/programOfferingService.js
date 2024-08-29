@@ -40,22 +40,28 @@ export const programOfferingService = {
 
   search: serviceHandler(async (data) => {
     let { searchQuery } = data;
-    if (searchQuery.indexOf(" ") !== -1) {
-      let terms = searchQuery.split(" ");
-      searchQuery = terms.map((term) => new RegExp(term, "i"));
-      searchQuery = {
-        $or: [
-          { name: { $in: searchQuery } },
-          { programInfo: { $in: searchQuery } },
-        ],
-      };
+    if (searchQuery && searchQuery.trim() !== "") {
+      if (searchQuery.indexOf(" ") !== -1) {
+        let terms = searchQuery.split(" ");
+        searchQuery = terms.map((term) => new RegExp(term, "i"));
+        searchQuery = {
+          $or: [
+            { name: { $in: searchQuery } },
+            { programInfo: { $in: searchQuery } },
+          ],
+        };
+      } else {
+        searchQuery = {
+          $or: [
+            { name: { $regex: searchQuery } },
+            { programInfo: { $regex: searchQuery } },
+          ],
+        };
+      }
     } else {
-      searchQuery = {
-        $or: [
-          { name: { $regex: searchQuery } },
-          { programInfo: { $regex: searchQuery } },
-        ],
-      };
+      // Handle the case when searchQuery is empty
+
+      searchQuery = { _id: null }; // Option 2: Return no documents
     }
 
     const aggregationQuery = [
