@@ -3,24 +3,23 @@ import React from "react";
 import { useTheme } from "@mui/material";
 import Card from "./Card";
 import HeroContainer from "@/components/HeroContainer";
+import { metaData, help } from "@/constants/homePage/howWeHelp";
+
 const Help = () => {
   const theme = useTheme();
   return (
-    <HeroContainer
-      heading="How We Help"
-      paragraph=" Figma ipsum component variant main layer. Auto pencil align
-            reesizing group underline undo. Bullet thumbnail pixel flatten slice
-            align align bold opacity distribute."
-    >
+    <HeroContainer heading={metaData.heading} paragraph={metaData.paragraph}>
       {" "}
       <Box
         sx={{ display: { md: "grid", xs: "block" } }}
         gridTemplateColumns="repeat(3,1fr)"
         gap={2}
       >
-        <Card />
-        <Card />
-        <Card />
+        {help.length > 0
+          ? help.map((item) => (
+              <Card heading={item.heading} p={item.p} img={item.img} />
+            ))
+          : null}
       </Box>{" "}
     </HeroContainer>
   );

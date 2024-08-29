@@ -11,7 +11,6 @@ import Universities from "./Universities/Universities";
 import StoriesContainer from "./Stories/StoriesContainer";
 
 import JoinUs from "@/components/JoinUs";
-import Footer from "@/components/Footer";
 import logoImg from "@/assets/img/logo.png";
 import MyAppBar from "@/components/TopBar/AppBar";
 import { Container } from "@mui/material";
@@ -35,7 +34,6 @@ const Home = () => {
       <StoriesContainer />
 
       <JoinUs />
-      <Footer />
     </Container>
   );
 };

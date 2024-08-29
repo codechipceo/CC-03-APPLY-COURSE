@@ -40,4 +40,14 @@ export const programOfferingCtrl = {
       msg: "",
     });
   }),
+
+  search: asyncHandler(async (req, res, next) => {
+    const docData = req.query;
+    const savedRes = await serviceLayer.search(docData);
+    return successResponse({
+      res,
+      data: savedRes,
+      msg: "",
+    });
+  }),
 };

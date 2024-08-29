@@ -17,9 +17,8 @@ export class DatabaseService {
     return document;
   };
   getAllDocuments = async (query, options = {}) => {
-    const { limit, sort, skip, populate, isDelete } = options;
+    const { limit, sort, skip, populate, isDelete, select, project } = options;
     let updatedQuery;
-
 
     if (options.hasOwnProperty("isDelete")) {
       updatedQuery = { isDelete: isDelete ? isDelete : false, ...query };
@@ -28,8 +27,15 @@ export class DatabaseService {
 
     let customQuery = this.model.find(updatedQuery);
 
+    if (project) {
+      customQuery = customQuery.project(project);
+    }
     if (skip !== "" && limit !== "") {
       customQuery = customQuery.limit(limit).skip(skip);
+    }
+
+    if (select !== "") {
+      customQuery = customQuery.select(select);
     }
 
     if (sort) {
@@ -88,4 +94,4 @@ export class DatabaseService {
     const count = await this.model.countDocuments(query);
     return count;
   };
-};
+}

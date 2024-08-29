@@ -16,7 +16,7 @@ const MainPoster = () => {
             "linear-gradient(284.12deg, #BF5AF2 10.41%, #615CE7 107.36%)",
           width: "100%",
           pt: 5,
-          pb: { md: 20 },
+          pb: { md: 20, xs: 10 },
           position: "relative",
         }}
       >
@@ -32,6 +32,7 @@ const MainPoster = () => {
               mx: "auto",
               px: 4,
               py: 10,
+              textShadow: "0px 3px 2px #fff",
             }}
           >
             Find Your Perfect Program
@@ -40,9 +41,8 @@ const MainPoster = () => {
       </Box>
       <Container
         sx={{
-          position: "absolute",
-          bottom: { md: "-40%", xs: "330px" },
-          right: { md: 150 },
+          position: "relative",
+          bottom: { md: 200, xs: 130 },
         }}
       >
         <MyImg img={posterImg} />
