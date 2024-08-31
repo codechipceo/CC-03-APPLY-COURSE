@@ -1,26 +1,22 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import { useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import { screens } from "@/constants/TopbarMenu";
 import LogoImg from "./LogoImg";
-import GradientButton from "../Buttons/GradientButton";
-import MyImg from "../MyImg";
+import useStyle from "@/hooks/useStyle";
 // swipper
 // counter up
 
 function ResponsiveAppBar({ logoImg }) {
-  const theme = useTheme();
+  const { theme, Box, Typography, MyImg, GradientButton } = useStyle();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const handleOpenNavMenu = (event) => {

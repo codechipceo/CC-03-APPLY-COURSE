@@ -1,13 +1,9 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
-import MyImg from "@/components/MyImg";
-import { useTheme } from "@mui/material";
 import Card from "@mui/material/Card";
-import GradientButton from "@/components/Buttons/GradientButton";
 import EastIcon from "@mui/icons-material/East";
+import useStyle from "@/hooks/useStyle";
 
 const MyCard = ({ heading, p, img }) => {
-  const theme = useTheme();
+  const { theme, Box, Typography, MyImg, GradientButton } = useStyle();
   return (
     <Card
       sx={{

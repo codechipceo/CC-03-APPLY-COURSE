@@ -1,12 +1,12 @@
-import { Box, Container, Typography, useTheme } from "@mui/material";
+import { Container } from "@mui/material";
 import MyAppBar from "@/components/TopBar/AppBar";
 import logoImg from "@/assets/img/logo.png";
-import MyImg from "@/components/MyImg";
 import posterImg from "@/assets/students/posterImg.png";
 import SearchCar from "./SearchCard";
+import useStyle from "@/hooks/useStyle";
 
 const MainPoster = () => {
-  const theme = useTheme();
+  const { theme, Box, Typography, MyImg } = useStyle();
 
   return (
     <Box>
@@ -48,6 +48,7 @@ const MainPoster = () => {
         <MyImg img={posterImg} />
         <SearchCar />
       </Container>
+      <Box sx={{ height: { xs: 320, md: 0 } }} />
     </Box>
   );
 };

@@ -1,14 +1,12 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
 import city from "@/assets/City.png";
-import { useTheme } from "@mui/material";
-import MyImg from "@/components/MyImg";
 import map from "@/assets/map.png";
 import { metaData, statics } from "@/constants/homePage/statics";
 import StaticsCard from "./StaticsCard";
+import useStyle from "@/hooks/useStyle";
 
 const Main = () => {
-  const theme = useTheme();
+  const { theme, Box, Typography, MyImg } = useStyle();
+
   return (
     <Box
       sx={{

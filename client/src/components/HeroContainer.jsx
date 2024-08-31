@@ -1,9 +1,7 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
-import { useTheme } from "@mui/material";
+import useStyle from "@/hooks/useStyle";
 
 const HeroContainer = ({ heading, paragraph, children }) => {
-  const theme = useTheme();
+  const { theme, Box, Typography } = useStyle();
   return (
     <Box>
       <Box

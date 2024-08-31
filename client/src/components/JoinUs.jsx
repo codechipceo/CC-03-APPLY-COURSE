@@ -1,13 +1,10 @@
-import { Box, Typography, useTheme } from "@mui/material";
-import React from "react";
-import MyImg from "./MyImg";
 import joinUsImg from "@/assets/joinUsImg.png";
-import GradientButton from "./Buttons/GradientButton";
 import star from "@/assets/star.png";
 import GradientDot from "./GradientDot";
+import useStyle from "@/hooks/useStyle";
 
 const JoinUs = () => {
-  const theme = useTheme();
+  const { theme, Box, Typography, MyImg, GradientButton } = useStyle();
   return (
     <Box
       sx={{

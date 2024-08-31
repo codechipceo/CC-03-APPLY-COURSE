@@ -1,13 +1,11 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
-import { useTheme } from "@mui/material";
+import useStyle from "@/hooks/useStyle";
 
 import { supportersList } from "@/constants/supportersList";
 
 import Support from "./Support";
 
 const SupportMain = () => {
-  const theme = useTheme();
+  const { Box, Typography, theme } = useStyle();
   return (
     <Box sx={{ mt: 10, mx: 2 }}>
       <Typography

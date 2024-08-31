@@ -29,6 +29,7 @@ const EligibilityForm = ({ onSubmit, handleChange, formData }) => {
             formPayload={formData}
             handleChange={handleChange}
             grid={true}
+            gridTemplateColumns="repeat(2,1fr)"
           />
           <FormContainer
             formDefinition={eligibilityForm}

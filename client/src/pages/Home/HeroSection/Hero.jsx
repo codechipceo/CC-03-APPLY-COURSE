@@ -1,13 +1,11 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
 import { useTheme } from "@mui/material";
-import MyImg from "@/components/MyImg";
 import earth from "@/assets/earth.png";
 import plane from "@/assets/plane.png";
-import GradientButton from "@/components/Buttons/GradientButton";
+import useStyle from "@/hooks/useStyle";
 
 const Hero = () => {
   const theme = useTheme();
+  const { Box, Typography, MyImg, GradientButton } = useStyle();
   return (
     <Box>
       <Box sx={{ py: { md: 6 }, position: "relative", my: 6 }}>

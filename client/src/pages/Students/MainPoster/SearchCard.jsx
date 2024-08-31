@@ -1,21 +1,49 @@
-import GradientButton from "@/components/Buttons/GradientButton";
-import { Box, FormControl, Typography, useTheme } from "@mui/material";
+import { FormControl } from "@mui/material";
 import roboImg from "@/assets/students/roboSearch.png";
-import TextField from "@mui/material/TextField";
-import React from "react";
-import MyImg from "@/components/MyImg";
 import { useState } from "react";
 import { useTools } from "@/hooks/useTools";
 import { getSearchedProgram } from "@/thunk/indexThunk";
 import { toast } from "react-toastify";
+import { FormContainer } from "@/components/FormComponents/FormContainer";
+import {
+  filterForm,
+  filterFormSearch,
+} from "@/constants/filtersFormDefinitions";
+import useStyle from "@/hooks/useStyle";
 
 const SearchCard = () => {
-  const [query, setQuery] = useState("");
-  const theme = useTheme();
+  const [formData, setFormData] = useState({
+    query: "",
+    programLevel: "",
+    applicationFee: "",
+    costOFLiving: "",
+    tuitionFee: "",
+    programLength: "",
+  });
   const { dispatch } = useTools();
 
-  const onChange = (e) => {
-    setQuery(e.target.value);
+  const { theme, Box, MyImg, Typography, GradientButton } = useStyle();
+
+  const {
+    query,
+    programLength,
+    programLevel,
+    applicationFee,
+    costOFLiving,
+    tuitionFee,
+  } = formData;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    const data = { ...formData };
+    if (e.target.files) {
+      data[name] = e.target.files[0];
+    } else {
+      data[name] = value;
+    }
+
+    setFormData(data);
   };
 
   const onSubmit = (e) => {
@@ -46,7 +74,7 @@ const SearchCard = () => {
         py: 5,
         borderRadius: "20px",
         position: "absolute",
-        bottom: { md: -200, xs: -180 },
+        bottom: { md: -200, xs: -480 },
         right: { md: "9%" },
         width: { md: "70%" },
       }}
@@ -72,32 +100,41 @@ const SearchCard = () => {
       <form onSubmit={onSubmit}>
         <Box sx={{ display: { md: "flex" }, gap: 2 }}>
           <Box sx={{ flexGrow: 1 }}>
-            <TextField
-              label="Search For the Program"
-              variant="outlined"
-              value={query}
-              onChange={onChange}
-              sx={{
+            <FormContainer
+              formDefinition={filterFormSearch}
+              formPayload={formData}
+              handleChange={handleChange}
+              grid={false}
+              styleProps={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "35px",
                   border: "none",
                 },
               }}
-              size="small"
-              fullWidth
             />
           </Box>
           <Box>
-            <GradientButton
-              buttonText="Search"
-              styles={{
-                borderRadius: "40px",
-                mt: { sm: 2, xs: 2, md: 0 },
-              }}
-              size="small"
-              type="submit"
-            />
+            <FormControl margin="dense" fullWidth>
+              <GradientButton
+                buttonText="Search"
+                styles={{
+                  borderRadius: "40px",
+                  mt: { sm: 2, xs: 2, md: 0 },
+                }}
+                size="small"
+                type="submit"
+              />
+            </FormControl>
           </Box>
+        </Box>
+        <Box sx={{ mt: 2 }}>
+          <FormContainer
+            formDefinition={filterForm}
+            formPayload={formData}
+            handleChange={handleChange}
+            grid={true}
+            gridTemplateColumns={{ md: "repeat(5,1fr)", xs: "repeat(2,1fr)" }}
+          />
         </Box>
       </form>
     </Box>

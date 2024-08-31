@@ -1,5 +1,4 @@
-import { Typography } from "@mui/material";
-import Box from "@mui/material/Box";
+import { Typography, Box } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -11,6 +10,8 @@ export const DynamicForm = ({
   formData,
   handleChange,
   grid,
+  styleProps,
+  gridTemplateColumns,
 }) => {
   // Render form fields
   const renderFormFields = (formDefinition) => {
@@ -31,6 +32,7 @@ export const DynamicForm = ({
                   size="small"
                   color="secondary"
                   fullWidth
+                  label={field.label}
                 >
                   {field.options.map((option) => {
                     return (
@@ -71,6 +73,7 @@ export const DynamicForm = ({
                 size="small"
                 value={formData[field.name]}
                 onChange={handleChange}
+                sx={{ ...styleProps }}
               />
             </FormControl>
           );
@@ -82,7 +85,11 @@ export const DynamicForm = ({
     return (
       <Box
         fullWidth
-        sx={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 4 }}
+        sx={{
+          display: "grid",
+          gridTemplateColumns: gridTemplateColumns,
+          gap: 2,
+        }}
       >
         {renderFormFields(formDefinition)}
       </Box>
