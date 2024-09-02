@@ -1,16 +1,15 @@
 import FormControl from "@mui/material/FormControl";
-import { Box } from "@mui/material";
-import MyImg from "@/components/MyImg";
 import studentsImg from "@/assets/student.png";
-import GradientButton from "@/components/Buttons/GradientButton";
 import { GradientText } from "@/components/GradientText/GradientText";
-import { FormContainer } from "@/components/FormComponents/FormContainer";
+import FormContainer from "@/components/FormComponents/FormContainer";
 import {
   eligibilityForm,
   eligibilityFormFirstCol,
 } from "@/constants/formDefinitions";
+import useStyle from "@/hooks/useStyle";
 
 const EligibilityForm = ({ onSubmit, handleChange, formData }) => {
+  const { GradientButton, Box, MyImg } = useStyle();
   return (
     <Box
       sx={{

@@ -50,4 +50,13 @@ export const programOfferingCtrl = {
       msg: "",
     });
   }),
+  menuItems: asyncHandler(async (req, res, next) => {
+    const docData = req.query;
+    const savedRes = await serviceLayer.filterMenus(docData);
+    return successResponse({
+      res,
+      data: savedRes,
+      msg: "",
+    });
+  }),
 };

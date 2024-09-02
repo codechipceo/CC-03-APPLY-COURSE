@@ -1,3 +1,4 @@
+import { makeValuesRegExp } from "../../helpers/makeValueRegEx.js";
 import { programOfferingModel as model } from "../../Schemas/index.js";
 import { serviceHandler } from "../../utils/serviceHandler.js";
 
@@ -39,33 +40,31 @@ export const programOfferingService = {
   }),
 
   search: serviceHandler(async (data) => {
-    let { searchQuery } = data;
+    let { searchQuery, ...filters } = data;
+
+    let query = {};
     if (searchQuery && searchQuery.trim() !== "") {
       if (searchQuery.indexOf(" ") !== -1) {
         let terms = searchQuery.split(" ");
         searchQuery = terms.map((term) => new RegExp(term, "i"));
-        searchQuery = {
-          $or: [
-            { name: { $in: searchQuery } },
-            { programInfo: { $in: searchQuery } },
-          ],
-        };
+        query.$or = [
+          { name: { $in: searchQuery } },
+          { programInfo: { $in: searchQuery } },
+        ];
       } else {
-        searchQuery = {
-          $or: [
-            { name: { $regex: searchQuery } },
-            { programInfo: { $regex: searchQuery } },
-          ],
-        };
+        query.$or = [
+          { name: { $regex: searchQuery } },
+          { programInfo: { $regex: searchQuery } },
+        ];
       }
-    } else {
-      // Handle the case when searchQuery is empty
-
-      searchQuery = { _id: null }; // Option 2: Return no documents
     }
 
+    filters = makeValuesRegExp(filters);
+    query = { ...query, ...filters };
+
     const aggregationQuery = [
-      { $match: searchQuery },
+      { $match: query },
+
       {
         $lookup: {
           from: "schools",
@@ -107,5 +106,55 @@ export const programOfferingService = {
     let subsequentItems = await model.aggregatePipeline(aggregationQuery);
 
     return [firstItem[0], ...subsequentItems];
+  }),
+
+  filterMenus: serviceHandler(async (data) => {
+    let { query } = data;
+    if (query && query.trim() !== "") {
+      if (query.indexOf(" ") !== -1) {
+        query = query.split(" ");
+      }
+    }
+
+    const resData = {};
+    let pipelineQuery = [];
+
+    if (typeof query === "string") {
+      pipelineQuery = [
+        {
+          $group: {
+            _id: `$${query}`,
+          },
+        },
+        {
+          $project: {
+            [query]: `$_id`,
+            value: `$_id`,
+          },
+        },
+      ];
+
+      return await model.aggregatePipeline(pipelineQuery);
+    } else {
+      for (const item of query) {
+        pipelineQuery = [
+          {
+            $group: {
+              _id: `$${item}`,
+            },
+          },
+          {
+            $project: {
+              [item]: `$_id`,
+              value: `$_id`,
+            },
+          },
+        ];
+
+        const res = await model.aggregatePipeline(pipelineQuery);
+        resData[item] = res;
+      }
+    }
+    return resData;
   }),
 };

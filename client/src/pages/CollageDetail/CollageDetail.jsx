@@ -1,7 +1,5 @@
-import { Box, Container, Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { CollageCard } from "./CollageCard/collageCard";
-import CollageImage from "../../assets/collageDetail/queen-university-logo.png";
-import ProgramImage from "../../assets/collageDetail/program-level.png";
 import { CollageCardDetail } from "./CollageCardDetail/CollageCardDetail";
 import { useTools } from "@/hooks/useTools";
 import { selectProgram } from "@/slices/programSlice";
@@ -94,7 +92,7 @@ export const CollageDetail = () => {
             md={5}
             xl={4}
             paddingInline={1}
-            height={1020}
+            maxHeight={1020}
             sx={{ overflowY: "auto" }}
           >
             {programs.length > 0

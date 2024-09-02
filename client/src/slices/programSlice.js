@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getSearchedProgram } from "@/thunk/indexThunk";
+import { getFilters, getSearchedProgram } from "@/thunk/indexThunk";
 import { transformProgramData } from "@/helpers/helper";
 
 const programsSlice = createSlice({
@@ -11,6 +11,7 @@ const programsSlice = createSlice({
     count: 0,
     error: null,
     showThankYou: false,
+    filters: {},
   },
   reducers: {
     toggleThankYou: (state) => {
@@ -33,6 +34,19 @@ const programsSlice = createSlice({
         state.currentProgramOffering = state.programs[0];
       })
       .addCase(getSearchedProgram.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(getFilters.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.filters = {};
+      })
+      .addCase(getFilters.fulfilled, (state, action) => {
+        state.loading = false;
+        state.filters = action.payload.data;
+      })
+      .addCase(getFilters.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

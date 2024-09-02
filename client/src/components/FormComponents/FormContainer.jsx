@@ -1,6 +1,7 @@
-import { DynamicForm } from "./DynamicForm";
+import DynamicForm from "./DynamicForm";
+import { memo } from "react";
 
-export const FormContainer = ({
+const FormContainer = ({
   formPayload,
   formDefinition,
   onCancel,
@@ -20,3 +21,5 @@ export const FormContainer = ({
     </div>
   );
 };
+
+export default FormContainer;

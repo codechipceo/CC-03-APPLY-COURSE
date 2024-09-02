@@ -47,7 +47,6 @@ function ResponsiveAppBar({ logoImg }) {
           <Typography
             variant="h6"
             noWrap
-            component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
@@ -93,20 +92,23 @@ function ResponsiveAppBar({ logoImg }) {
               }}
             >
               {screens.map((page, i) => (
-                <Link to={page.link} key={page.text + i}>
-                  <MenuItem onClick={handleCloseNavMenu} variant="span">
-                    <Typography textAlign="center">{page.text}</Typography>
-                  </MenuItem>
-                </Link>
+                <MenuItem
+                  component={Link}
+                  onClick={handleCloseNavMenu}
+                  variant="span"
+                  to={page.link}
+                  key={page.text + i}
+                >
+                  <Typography textAlign="center">{page.text}</Typography>
+                </MenuItem>
               ))}
-              <GradientButton buttonText="Get Started" />
+              <GradientButton buttonText="Get Started" styles={{ mx: 2 }} />
             </Menu>
           </Box>
 
           <Typography
             variant="h5"
             noWrap
-            component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
@@ -119,7 +121,9 @@ function ResponsiveAppBar({ logoImg }) {
               textDecoration: "none",
             }}
           >
-            <LogoImg logoImg={logoImg} />
+            <Link to="/">
+              <LogoImg logoImg={logoImg} />
+            </Link>
           </Typography>
           <Box
             sx={{
@@ -127,19 +131,20 @@ function ResponsiveAppBar({ logoImg }) {
             }}
           >
             {screens.map((page, i) => (
-              <Link to={page.link} key={page.text + i}>
-                <Button
-                  variant="span"
-                  onClick={handleCloseNavMenu}
-                  sx={{
-                    my: 2,
-                    color: "black",
-                    display: "block",
-                  }}
-                >
-                  {page.text}
-                </Button>
-              </Link>
+              <Button
+                component={Link}
+                to={page.link}
+                key={page.text + i}
+                variant="span"
+                onClick={handleCloseNavMenu}
+                sx={{
+                  my: 2,
+                  color: "black",
+                  display: "block",
+                }}
+              >
+                {page.text}
+              </Button>
             ))}
           </Box>
 

@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 
-export const DynamicForm = ({
+const DynamicForm = ({
   formDefinition,
   formData,
   handleChange,
@@ -15,12 +15,12 @@ export const DynamicForm = ({
 }) => {
   // Render form fields
   const renderFormFields = (formDefinition) => {
-    return formDefinition.map((field) => {
+    return formDefinition.map((field, i) => {
       switch (field.type) {
         case "select":
           return (
-            <Box>
-              <FormControl key={field.name} fullWidth margin="dense">
+            <Box key={field.name}>
+              <FormControl margin="dense" fullWidth>
                 <InputLabel color="secondary" id={field.label} size="small">
                   {field.label}
                 </InputLabel>
@@ -31,7 +31,6 @@ export const DynamicForm = ({
                   onChange={handleChange}
                   size="small"
                   color="secondary"
-                  fullWidth
                   label={field.label}
                 >
                   {field.options.map((option) => {
@@ -63,11 +62,10 @@ export const DynamicForm = ({
           );
         default:
           return (
-            <FormControl fullWidth key={field.name}>
+            <FormControl key={field.name} fullWidth>
               <TextField
                 label={field.label}
                 color="secondary"
-                fullWidth
                 margin="dense"
                 name={field.name}
                 size="small"
@@ -84,7 +82,6 @@ export const DynamicForm = ({
   if (grid) {
     return (
       <Box
-        fullWidth
         sx={{
           display: "grid",
           gridTemplateColumns: gridTemplateColumns,
@@ -98,3 +95,5 @@ export const DynamicForm = ({
 
   return renderFormFields(formDefinition);
 };
+
+export default DynamicForm;

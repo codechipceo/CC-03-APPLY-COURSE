@@ -1,4 +1,3 @@
-
 import { locationModel as model } from "../../Schemas/index.js";
 import { serviceHandler } from "../../utils/serviceHandler.js";
 
@@ -12,8 +11,15 @@ export const locationService = {
     const savedDataById = await model.getDocumentById(query);
     return savedDataById;
   }),
-    getAll: serviceHandler(async (data) => {
-        const query = {}
+  getAll: serviceHandler(async (data) => {
+    // let {project} = data
+    // const query = {};
+    // if(project){
+    //   data.$project =  {
+    //     [query]: `$_id`,
+    //     value: `$_id`,
+    //   }
+    // }
     return await model.getAllDocuments(query, data);
   }),
   update: serviceHandler(async (updateData) => {

@@ -2,14 +2,21 @@ import { FormControl } from "@mui/material";
 import roboImg from "@/assets/students/roboSearch.png";
 import { useState } from "react";
 import { useTools } from "@/hooks/useTools";
-import { getSearchedProgram } from "@/thunk/indexThunk";
+import {
+  getFilters,
+  getLocations,
+  getSearchedProgram,
+} from "@/thunk/indexThunk";
 import { toast } from "react-toastify";
-import { FormContainer } from "@/components/FormComponents/FormContainer";
+import FormContainer from "@/components/FormComponents/FormContainer";
 import {
   filterForm,
   filterFormSearch,
 } from "@/constants/filtersFormDefinitions";
 import useStyle from "@/hooks/useStyle";
+import { useEffect } from "react";
+import { selectProgram } from "@/slices/programSlice";
+import MyInput from "@/components/FormComponents/MyInput";
 
 const SearchCard = () => {
   const [formData, setFormData] = useState({
@@ -20,10 +27,28 @@ const SearchCard = () => {
     tuitionFee: "",
     programLength: "",
   });
-  const { dispatch } = useTools();
+  const { dispatch, useSelector } = useTools();
 
   const { theme, Box, MyImg, Typography, GradientButton } = useStyle();
 
+  const { filters } = useSelector(selectProgram);
+  filterForm[0].options = filters[filterForm[0].name]
+    ? filters[filterForm[0].name]
+    : [];
+  filterForm[1].options = filters[filterForm[1].name]
+    ? filters[filterForm[1].name]
+    : [];
+
+  filterForm[2].options = filters[filterForm[2].name]
+    ? filters[filterForm[2].name]
+    : [];
+
+  filterForm[3].options = filters[filterForm[3].name]
+    ? filters[filterForm[3].name]
+    : [];
+  filterForm[4].options = filters[filterForm[4].name]
+    ? filters[filterForm[4].name]
+    : [];
   const {
     query,
     programLength,
@@ -32,6 +57,15 @@ const SearchCard = () => {
     costOFLiving,
     tuitionFee,
   } = formData;
+
+  useEffect(() => {
+    dispatch(
+      getFilters(
+        "query=programLevel+applicationFee+costOfLiving+tuitionFee+programLength"
+      )
+    );
+    dispatch(getLocations());
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,6 +86,7 @@ const SearchCard = () => {
     if (!query && query.trim() === "") {
       return toast.error("Search cannot be empty");
     }
+
     if (searchQuery.indexOf("=") === -1) {
       searchQuery = "searchQuery=";
     }
@@ -61,6 +96,7 @@ const SearchCard = () => {
     } else {
       searchQuery = searchQuery + query;
     }
+
     dispatch(getSearchedProgram(searchQuery));
   };
 
@@ -100,11 +136,10 @@ const SearchCard = () => {
       <form onSubmit={onSubmit}>
         <Box sx={{ display: { md: "flex" }, gap: 2 }}>
           <Box sx={{ flexGrow: 1 }}>
-            <FormContainer
-              formDefinition={filterFormSearch}
-              formPayload={formData}
+            <MyInput
+              label="Search"
+              name="query"
               handleChange={handleChange}
-              grid={false}
               styleProps={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "35px",

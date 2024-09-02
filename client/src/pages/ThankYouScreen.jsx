@@ -1,6 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
-import FileDownloadDoneIcon from "@mui/icons-material/FileDownloadDone"; // import { fontSize } from "@mui/system";
+import FileDownloadDoneIcon from "@mui/icons-material/FileDownloadDone";
+
 const ThankYouScreen = () => {
   return (
     <Container>

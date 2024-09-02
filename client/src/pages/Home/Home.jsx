@@ -15,12 +15,11 @@ import logoImg from "@/assets/img/logo.png";
 import MyAppBar from "@/components/TopBar/AppBar";
 import { Container } from "@mui/material";
 
+const containerStyle = { overflow: "hidden", mt: 1, textAlign: "justify" };
+
 const Home = () => {
   return (
-    <Container
-      disableGutters
-      sx={{ overflow: "hidden", mt: 1, textAlign: "justify" }}
-    >
+    <Container disableGutters sx={containerStyle}>
       <MyAppBar logoImg={logoImg} />
       <MainBanner mainHeading="Simplifying Career Changes" />
       <SupportMain />
