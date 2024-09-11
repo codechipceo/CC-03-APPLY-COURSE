@@ -20,8 +20,8 @@ export const DynamicForm = ({
         case "select":
           return (
             <Box>
-              <FormControl key={field.name} fullWidth margin="dense">
-                <InputLabel color="secondary" id={field.label} size="small">
+              <FormControl key={field.name} fullWidth margin='dense'>
+                <InputLabel color='secondary' id={field.label} size='small'>
                   {field.label}
                 </InputLabel>
                 <Select
@@ -29,15 +29,20 @@ export const DynamicForm = ({
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange}
-                  size="small"
-                  color="secondary"
+                  size='small'
+                  color='secondary'
                   fullWidth
                   label={field.label}
                 >
                   {field.options.map((option) => {
                     return (
-                      <MenuItem key={option.value} value={option._id}>
-                        {option[field.displayKey]}
+                      <MenuItem
+                        key={option.value}
+                        value={option?._id ? option._id : option}
+                      >
+                        {option[field.displayKey]
+                          ? option[field.displayKey]
+                          : option}
                       </MenuItem>
                     );
                   })}
@@ -52,8 +57,8 @@ export const DynamicForm = ({
 
               <FormControl>
                 <input
-                  type="file"
-                  id="file-upload"
+                  type='file'
+                  id='file-upload'
                   name={field.name}
                   onChange={handleChange}
                   accept={field.mimeType}
@@ -66,11 +71,11 @@ export const DynamicForm = ({
             <FormControl fullWidth key={field.name}>
               <TextField
                 label={field.label}
-                color="secondary"
+                color='secondary'
                 fullWidth
-                margin="dense"
+                margin='dense'
                 name={field.name}
-                size="small"
+                size='small'
                 value={formData[field.name]}
                 onChange={handleChange}
                 sx={{ ...styleProps }}

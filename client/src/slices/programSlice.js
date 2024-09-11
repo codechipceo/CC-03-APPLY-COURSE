@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getSearchedProgram } from "@/thunk/indexThunk";
+import { getAllPrograms, getSearchedProgram } from "@/thunk/indexThunk";
 import { transformProgramData } from "@/helpers/helper";
 
 const programsSlice = createSlice({
@@ -15,6 +15,9 @@ const programsSlice = createSlice({
   reducers: {
     toggleThankYou: (state) => {
       state.showThankYou = !state.showThankYou;
+    },
+    setCurrentProgramReducer: (state, { payload }) => {
+      state.currentProgramOffering = payload;
     },
   },
   extraReducers: (builder) => {
@@ -39,6 +42,7 @@ const programsSlice = createSlice({
   },
 });
 
-export const { toggleThankYou } = programsSlice.actions;
+export const { toggleThankYou, setCurrentProgramReducer } =
+  programsSlice.actions;
 export const selectProgram = (state) => state.programs;
 export default programsSlice.reducer;

@@ -13,6 +13,10 @@ const routes = createBrowserRouter([
     element: <Students />,
   },
   {
+    path: "/recruitment",
+    element: <Students />,
+  },
+  {
     path: "/collage-detail",
     element: <CollageDetail />,
   },

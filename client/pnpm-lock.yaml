@@ -29,6 +29,9 @@ importers:
       axios:
         specifier: ^1.7.2
         version: 1.7.4
+      client:
+        specifier: 'file:'
+        version: file:(@types/react@18.3.3)(redux@5.0.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -762,6 +765,9 @@ packages:
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
+
+  'client@file:':
+    resolution: {directory: '', type: directory}
 
   clsx@2.1.1:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
@@ -2453,6 +2459,29 @@ snapshots:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+
+  client@file:(@types/react@18.3.3)(redux@5.0.1):
+    dependencies:
+      '@emotion/react': 11.13.0(@types/react@18.3.3)(react@18.3.1)
+      '@emotion/styled': 11.13.0(@emotion/react@11.13.0(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1)
+      '@mui/icons-material': 5.16.7(@mui/material@5.16.7(@emotion/react@11.13.0(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.13.0(@emotion/react@11.13.0(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.3)(react@18.3.1)
+      '@mui/material': 5.16.7(@emotion/react@11.13.0(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.13.0(@emotion/react@11.13.0(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@mui/system': 5.16.7(@emotion/react@11.13.0(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.13.0(@emotion/react@11.13.0(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1)
+      '@reduxjs/toolkit': 2.2.7(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1)
+      axios: 1.7.4
+      react: 18.3.1
+      react-countup: 6.5.3(react@18.3.1)
+      react-dom: 18.3.1(react@18.3.1)
+      react-material-ui-carousel: 3.4.2(pisujwwpc7k4tzbbyvrohetvz4)
+      react-redux: 9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1)
+      react-router-dom: 6.26.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-toastify: 10.0.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      swiper: 11.1.9
+    transitivePeerDependencies:
+      - '@types/react'
+      - debug
+      - redux
+      - supports-color
 
   clsx@2.1.1: {}
 

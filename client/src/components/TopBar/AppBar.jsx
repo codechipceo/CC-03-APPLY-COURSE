@@ -29,7 +29,7 @@ function ResponsiveAppBar({ logoImg }) {
 
   return (
     <AppBar
-      position="static"
+      position='static'
       sx={{
         background: theme.palette.bg3,
         borderRadius: { xs: "20px", md: "20px" },
@@ -37,7 +37,7 @@ function ResponsiveAppBar({ logoImg }) {
         border: "#ccc solid 1px",
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth='xl'>
         <Toolbar
           disableGutters
           sx={{
@@ -45,10 +45,10 @@ function ResponsiveAppBar({ logoImg }) {
           }}
         >
           <Typography
-            variant="h6"
+            variant='h6'
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component='a'
+            href='/'
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -59,23 +59,23 @@ function ResponsiveAppBar({ logoImg }) {
               textDecoration: "none",
             }}
           >
-            <Link to="/">
-              <MyImg img={logoImg} />
+            <Link to={"/"}>
+              <LogoImg logoImg={logoImg} />
             </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
+              size='large'
+              aria-label='account of current user'
+              aria-controls='menu-appbar'
+              aria-haspopup='true'
               onClick={handleOpenNavMenu}
-              color="black"
+              color='black'
             >
               <MenuIcon />
             </IconButton>
             <Menu
-              id="menu-appbar"
+              id='menu-appbar'
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: "bottom",
@@ -94,20 +94,19 @@ function ResponsiveAppBar({ logoImg }) {
             >
               {screens.map((page, i) => (
                 <Link to={page.link} key={page.text + i}>
-                  <MenuItem onClick={handleCloseNavMenu} variant="span">
-                    <Typography textAlign="center">{page.text}</Typography>
+                  <MenuItem onClick={handleCloseNavMenu} variant='span'>
+                    <Typography textAlign='center'>{page.text}</Typography>
                   </MenuItem>
                 </Link>
               ))}
-              <GradientButton buttonText="Get Started" />
+              <GradientButton buttonText='Get Started' />
             </Menu>
           </Box>
 
           <Typography
-            variant="h5"
+            variant='h5'
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component='a'
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -119,7 +118,9 @@ function ResponsiveAppBar({ logoImg }) {
               textDecoration: "none",
             }}
           >
-            <LogoImg logoImg={logoImg} />
+            <Link to={"/"}>
+              <LogoImg logoImg={logoImg} />
+            </Link>
           </Typography>
           <Box
             sx={{
@@ -129,7 +130,7 @@ function ResponsiveAppBar({ logoImg }) {
             {screens.map((page, i) => (
               <Link to={page.link} key={page.text + i}>
                 <Button
-                  variant="span"
+                  variant='span'
                   onClick={handleCloseNavMenu}
                   sx={{
                     my: 2,
@@ -144,7 +145,7 @@ function ResponsiveAppBar({ logoImg }) {
           </Box>
 
           <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <GradientButton buttonText="Get Started" />
+            <GradientButton buttonText='Get Started' />
           </Box>
         </Toolbar>
       </Container>

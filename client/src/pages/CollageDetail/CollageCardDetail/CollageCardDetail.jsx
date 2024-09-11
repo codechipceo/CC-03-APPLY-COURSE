@@ -73,31 +73,33 @@ export const CollageCardDetail = ({ data }) => {
 
     setFormData(data);
   };
+
+  console.log(data)
   return (
     <Card sx={{ boxShadow: 0, border: "1px solid #ddd", borderRadius: "20px" }}>
       <CardMedia
         sx={{ height: 240 }}
-        image={CollageImg}
+        image={data?.school?.schoolBanner}
         title="Queen's University"
       />
       <CardContent>
-        <Box display="flex" flexWrap="wrap" gap={1} alignItems="center">
+        <Box display='flex' flexWrap='wrap' gap={1} alignItems='center'>
           <Box flex={1}>
-            <Box display="flex" gap={2} alignItems="center">
+            <Box display='flex' gap={2} alignItems='center'>
               <Avatar
-                src={UniversityImg}
+                src={data?.school?.schoolLogo}
                 alt="Queen's University"
                 sx={{ width: 80, height: 80, objectFit: "contain" }}
               />
               <Box flex={1}>
-                <GradientText variant="h2" gutterBottom fontSize={40}>
+                <GradientText variant='h2' gutterBottom fontSize={40}>
                   {data.school.schoolName}
                 </GradientText>
 
-                <Box display="flex" gap={1}>
+                <Box display='flex' gap={1}>
                   <LocationOnOutlinedIcon />
-                  <Typography variant="body1" color="initial">
-                    {data.school.locationDetails.location}
+                  <Typography variant='body1' color='initial'>
+                    {data?.school?.locationDetails?.location}
                   </Typography>
                 </Box>
               </Box>
@@ -106,7 +108,7 @@ export const CollageCardDetail = ({ data }) => {
           <Box>
             <GradientButton
               onClick={handleOpen}
-              buttonText="Check Eligibility Now"
+              buttonText='Check Eligibility Now'
             />
           </Box>
           <CustomModal
@@ -124,29 +126,29 @@ export const CollageCardDetail = ({ data }) => {
 
         <Box
           marginBlock={4}
-          bgcolor="#573DFB0D"
-          borderRadius="20px"
+          bgcolor='#573DFB0D'
+          borderRadius='20px'
           padding={5}
         >
           <Grid container spacing={3}>
             {data.details.map((detail, i) => (
-              <Grid item xs={12} sm={6} key={i}>
-                <Box display="flex" gap={2}>
+              <Grid item xs={6} sm={6} key={i}>
+                <Box display='flex' gap={2}>
                   <Avatar
                     src={detail.img}
-                    alt="Certificate Icon"
+                    alt='Certificate Icon'
                     sx={{ width: "50px", height: "50px", objectFit: "contain" }}
                   />
                   <Box>
                     <Typography
-                      variant="subtitle1"
-                      fontWeight="bold"
+                      variant='subtitle1'
+                      fontWeight='bold'
                       mb={1}
                       lineHeight={1.2}
                     >
                       {detail.mainTitle}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary">
+                    <Typography variant='body2' color='textSecondary'>
                       {detail.subTitle}
                     </Typography>
                   </Box>
@@ -157,61 +159,18 @@ export const CollageCardDetail = ({ data }) => {
         </Box>
 
         <Box>
-          <GradientText variant="h3" sx={{ fontSize: 30 }} mb={2}>
-            Graduate Certificate - {data.name}
+          <GradientText variant='h3' sx={{ fontSize: 30 }} mb={2}>
+            {data.name}
           </GradientText>
 
           <Typography
-            variant="h5"
+            variant='h5'
             sx={{ fontSize: 20, fontWeight: 500 }}
             mb={1}
-          >
-            Program Summary
+          ></Typography>
+          <Typography color='#696565'>
+            <div dangerouslySetInnerHTML={{ __html: data?.programInfo }}></div>
           </Typography>
-          <Typography color="#696565">
-            {!show
-              ? data.programInfo
-              : data.programInfo.substring(0, 50) + "..."}
-          </Typography>
-          <Box my={1} textAlign="center">
-            <Button
-              onClick={handleShowClick}
-              variant="text"
-              sx={{ color: "#000" }}
-            >
-              Show{" "}
-              {show ? (
-                <>
-                  more <ExpandMoreOutlinedIcon />
-                </>
-              ) : (
-                <>
-                  less <ExpandLessOutlinedIcon />
-                </>
-              )}
-            </Button>
-          </Box>
-
-          <Typography
-            variant="h5"
-            sx={{ fontSize: 20, fontWeight: 500 }}
-            mb={1}
-            mt={3}
-          >
-            Admission Requirement
-          </Typography>
-          <Typography mb={3} color="#696565">
-            Academy Background
-          </Typography>
-
-          <Box textAlign="center">
-            <Button
-              variant="contained"
-              sx={{ color: "#BF5AF2", backgroundColor: "#BF5AF230" }}
-            >
-              Log in to View Requirements
-            </Button>
-          </Box>
         </Box>
       </CardContent>
     </Card>

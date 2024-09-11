@@ -12,6 +12,7 @@ import StoriesContainer from "./Stories/StoriesContainer";
 
 import JoinUs from "@/components/JoinUs";
 import logoImg from "@/assets/img/logo.png";
+import  newlogo  from '@/assets/img/newlogo.png'
 import MyAppBar from "@/components/TopBar/AppBar";
 import { Container } from "@mui/material";
 
@@ -21,8 +22,8 @@ const Home = () => {
       disableGutters
       sx={{ overflow: "hidden", mt: 1, textAlign: "justify" }}
     >
-      <MyAppBar logoImg={logoImg} />
-      <MainBanner mainHeading="Simplifying Career Changes" />
+      <MyAppBar logoImg={newlogo} />
+      <MainBanner mainHeading='Simplifying Career Changes' />
       <SupportMain />
       <ServicesCard />
       <Help />
