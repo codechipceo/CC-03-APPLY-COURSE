@@ -21,6 +21,7 @@ const activeDbString = {
 
 const URI = activeDbString[activeEnviroment];
 
+console.log(URI)
 URI &&
   mongoose
     .connect(URI, {

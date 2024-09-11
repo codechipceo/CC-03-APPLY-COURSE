@@ -1,5 +1,13 @@
+import mongoose from "mongoose";
 import { programOfferingModel as model } from "../../Schemas/index.js";
 import { serviceHandler } from "../../utils/serviceHandler.js";
+const fields = [
+  "programLevel",
+  "applicationFee",
+  "costOfLiving",
+  "tuitionFee",
+  "programLength",
+];
 
 export const programOfferingService = {
   create: serviceHandler(async (data) => {
@@ -39,73 +47,101 @@ export const programOfferingService = {
   }),
 
   search: serviceHandler(async (data) => {
-    let { searchQuery } = data;
-    if (searchQuery && searchQuery.trim() !== "") {
-      if (searchQuery.indexOf(" ") !== -1) {
-        let terms = searchQuery.split(" ");
-        searchQuery = terms.map((term) => new RegExp(term, "i"));
-        searchQuery = {
-          $or: [
-            { name: { $in: searchQuery } },
-            { programInfo: { $in: searchQuery } },
-          ],
-        };
-      } else {
-        searchQuery = {
-          $or: [
-            { name: { $regex: searchQuery } },
-            { programInfo: { $regex: searchQuery } },
-          ],
-        };
-      }
-    } else {
-      // Handle the case when searchQuery is empty
+    let {
+      searchQuery,
 
-      searchQuery = { _id: null }; // Option 2: Return no documents
+      programLevel,
+      applicationFee,
+
+      locationName,
+      tuitionFee,
+      programLength,
+    } = data;
+    console.log(data);
+
+    // Initialize dynamic query object
+    const query = {};
+
+    // Handle search query (searches both `name` and `programInfo` fields)
+    if (searchQuery && searchQuery.trim()) {
+      const regexQuery = new RegExp(searchQuery, "i");
+      query.$or = [{ name: regexQuery }, { programInfo: regexQuery }];
     }
 
-    const aggregationQuery = [
-      { $match: searchQuery },
+    // Add filters if provided
+    if (programLevel) query.programLevel = programLevel;
+    if (applicationFee) query.applicationFee = { $lte: applicationFee };
+    if (tuitionFee) query.tuitionFee = { $lte: tuitionFee };
+    if (programLength) query.programLength = programLength;
+
+    let aggregationQuery = [
+      { $match: query },
       {
         $lookup: {
-          from: "schools",
-
+          from: "schools", // Lookup from the schools collection
           localField: "schoolId",
           foreignField: "_id",
+          as: "school",
           pipeline: [
             {
               $lookup: {
-                from: "locations",
-
-                localField: "location",
-                foreignField: "_id",
+                from: "locations", // Lookup from the locations collection
+                localField: "location", // Assuming school has a location field
+                foreignField: "_id", // Matching locationId in the locations collection
+                as: "locationDetails",
                 pipeline: [
+                  // Only match locationId if `locationName` is passed
+                  ...(locationName && locationName.trim()
+                    ? [
+                        {
+                          $match: {
+                            _id: new mongoose.Types.ObjectId(locationName),
+                          }, // Match the passed locationId
+                        },
+                      ]
+                    : []),
                   {
                     $project: {
                       _id: 0,
-                      location: { $concat: ["$name", ", ", "$code"] },
+                      location: { $concat: ["$name", ", ", "$code"] }, // Format the location name and code
                     },
                   },
                 ],
-                as: "locationDetails",
               },
             },
-            { $unwind: "$locationDetails" },
-
-            { $project: { _id: 0 } },
+            { $unwind: "$locationDetails" }, // Unwind the location details
+            { $project: { _id: 0 } }, // Project the required fields
           ],
-          as: "school",
         },
       },
-      { $unwind: "$school" },
+      { $unwind: "$school" }, // Unwind the school details
     ];
 
     const firstItem = await model.aggregatePipeline(aggregationQuery);
-    aggregationQuery.push({ $skip: 1 });
-    aggregationQuery.push({ $limit: 10 });
 
-    let subsequentItems = await model.aggregatePipeline(aggregationQuery);
+    return firstItem;
+    console.log(firstItem);
+    // return [firstItem[0], ...subsequentItems];
+  }),
 
-    return [firstItem[0], ...subsequentItems];
+  getAllFilters: serviceHandler(async (fields) => {
+    let programLevel, applicationFee, costOfLiving, tuitionFee, programLength;
+
+    [programLevel, applicationFee, costOfLiving, tuitionFee, programLength] =
+      await Promise.all(
+        fields.map(async (field) => {
+          return model.distinct(field);
+        })
+      );
+
+    const filters = {
+      programLevel,
+      applicationFee,
+      costOfLiving,
+      tuitionFee,
+      programLength,
+    };
+
+    return filters;
   }),
 };

@@ -90,6 +90,11 @@ export class DatabaseService {
     return deletedDocument;
   };
 
+  distinct = async (fieldName) => {
+    const result = await this.model.distinct(fieldName);
+    return result;
+  };
+
   totalCounts = async (query) => {
     const count = await this.model.countDocuments(query);
     return count;

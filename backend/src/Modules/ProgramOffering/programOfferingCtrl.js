@@ -43,11 +43,23 @@ export const programOfferingCtrl = {
 
   search: asyncHandler(async (req, res, next) => {
     const docData = req.query;
+    console.log(docData);
     const savedRes = await serviceLayer.search(docData);
     return successResponse({
       res,
       data: savedRes,
       msg: "",
     });
+  }),
+
+  getAllFilters: asyncHandler(async (req, res, next) => {
+    const filters = await serviceLayer.getAllFilters([
+      "programLevel",
+      "applicationFee",
+      "costOfLiving",
+      "tuitionFee",
+      "programLength",
+    ]);
+    return successResponse({ res, data: filters });
   }),
 };

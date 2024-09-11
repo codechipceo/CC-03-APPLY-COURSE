@@ -10,5 +10,6 @@ programOfferingRouter.use("/update", programOfferingCtrl.update);
 programOfferingRouter.use("/update", programOfferingCtrl.update);
 
 programOfferingRouter.use("/search", programOfferingCtrl.search);
+programOfferingRouter.use("/getfilters", programOfferingCtrl.getAllFilters)
 
 export { programOfferingRouter };
