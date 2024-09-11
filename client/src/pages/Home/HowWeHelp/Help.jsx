@@ -1,12 +1,10 @@
-import { Box, Typography } from "@mui/material";
 import React from "react";
-import { useTheme } from "@mui/material";
 import Card from "./Card";
-import HeroContainer from "@/components/HeroContainer";
 import { metaData, help } from "@/constants/homePage/howWeHelp";
+import useStyle from "@/hooks/useStyle";
 
 const Help = () => {
-  const theme = useTheme();
+  const { Box, HeroContainer } = useStyle();
   return (
     <HeroContainer heading={metaData.heading} paragraph={metaData.paragraph}>
       {" "}
@@ -16,8 +14,13 @@ const Help = () => {
         gap={2}
       >
         {help.length > 0
-          ? help.map((item) => (
-              <Card heading={item.heading} p={item.p} img={item.img} />
+          ? help.map((item, i) => (
+              <Card
+                key={item.heading + i}
+                heading={item.heading}
+                p={item.p}
+                img={item.img}
+              />
             ))
           : null}
       </Box>{" "}

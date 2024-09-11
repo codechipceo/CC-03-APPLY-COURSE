@@ -1,19 +1,17 @@
-import HeroContainer from "@/components/HeroContainer";
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 import { useRef } from "react";
 import { Navigation } from "swiper/modules";
-import GradientButton from "@/components/Buttons/GradientButton";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
 import { metaData, universitiesData } from "@/constants/homePage/topUniverSec";
-import { Box } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import MySwiper from "@/components/MySwiper";
 import { SwiperSlide } from "swiper/react";
+import useStyle from "@/hooks/useStyle";
 
 const Universities = () => {
+  const { Box, theme, HeroContainer, GradientButton } = useStyle();
+
   const swiperRef = useRef();
-  const theme = useTheme();
 
   return (
     <HeroContainer heading={metaData.heading} paragraph={metaData.paragraph}>

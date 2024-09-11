@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getSearchedProgram } from "@/thunk/indexThunk";
+import { getAllPrograms, getSearchedProgram } from "@/thunk/indexThunk";
 import { transformProgramData } from "@/helpers/helper";
 
 const programsSlice = createSlice({
@@ -10,13 +10,22 @@ const programsSlice = createSlice({
     loading: false,
     count: 0,
     error: null,
+    showThankYou: false,
   },
-  reducers: {},
+  reducers: {
+    toggleThankYou: (state) => {
+      state.showThankYou = !state.showThankYou;
+    },
+    setCurrentProgramReducer: (state, { payload }) => {
+      state.currentProgramOffering = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getSearchedProgram.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.programs = [];
       })
       .addCase(getSearchedProgram.fulfilled, (state, action) => {
         state.loading = false;
@@ -33,5 +42,7 @@ const programsSlice = createSlice({
   },
 });
 
+export const { toggleThankYou, setCurrentProgramReducer } =
+  programsSlice.actions;
 export const selectProgram = (state) => state.programs;
 export default programsSlice.reducer;

@@ -44,6 +44,8 @@ export const Program = () => {
   const { programOfferings, count } = useSelector(selectProgram);
   const { schools } = useSelector(selectSchool);
 
+  console.log(schools)
+
   programOfferingForm[7].options = schools ?? [];
 
   /*
@@ -99,7 +101,7 @@ export const Program = () => {
 
   useEffect(() => {
     dispatch(getAllSchools());
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     dispatch(getAllProgramOfferings());
   }, []);

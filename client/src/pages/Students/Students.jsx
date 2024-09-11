@@ -1,6 +1,6 @@
-import { Box, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import Hero from "../Home/HeroSection/Hero";
-import MainPoster from "./MainPoster/MainPoster/";
+import MainPoster from "./MainPoster/MainPoster.jsx";
 import JoinUs from "@/components/JoinUs";
 import { CollageDetail } from "../CollageDetail/CollageDetail";
 import { useTools } from "@/hooks/useTools";

@@ -1,16 +1,12 @@
-import { Box } from "@mui/material";
-import React from "react";
 import mainBannerImg from "@/assets/home/mainBanner.png";
 import bulbImg from "@/assets/home/Bulb.png";
 import { useTheme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import GradientButton from "@/components/Buttons/GradientButton";
 import ClientAvatar from "./AvatarGroup";
-import MyImg from "@/components/MyImg";
+import useStyle from "@/hooks/useStyle";
 
 const MainBanner = () => {
-  const theme = useTheme();
+  const { theme, Typography, Box, GradientButton, MyImg } = useStyle();
   return (
     <Grid
       container

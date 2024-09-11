@@ -1,22 +1,20 @@
-import { Box, Typography, useTheme } from "@mui/material";
-import React from "react";
 import backgroundImg from "@/assets/home/storiesBackground.png";
 import { Navigation } from "swiper/modules";
 import { useRef } from "react";
 import MySwiper from "@/components/MySwiper";
 import { SwiperSlide } from "swiper/react";
-import MyImg from "@/components/MyImg";
-import GradientButton from "@/components/Buttons/GradientButton";
 import Rating from "@mui/material/Rating";
 import { useState } from "react";
 import { storiesCardContent } from "@/constants/homePage/stories";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
+import useStyle from "@/hooks/useStyle";
 
 const StoriesContainer = () => {
   const swiperRef = useRef();
   const [rating, setRating] = useState(5);
-  const theme = useTheme();
+  const { theme, Box, Typography, MyImg, GradientButton } = useStyle();
+
   return (
     <Box
       sx={{

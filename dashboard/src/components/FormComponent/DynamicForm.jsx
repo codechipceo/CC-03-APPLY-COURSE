@@ -20,8 +20,8 @@ export const DynamicForm = ({ formDefinition, formData, handleChange }) => {
               <Typography>{field.label}</Typography>
 
               <TextField
-                margin='normal'
-                size='small'
+                margin="normal"
+                size="small"
                 name={field.name}
                 fullWidth
                 label={field.label}
@@ -29,7 +29,7 @@ export const DynamicForm = ({ formDefinition, formData, handleChange }) => {
                 value={formData[field.name]}
                 onChange={handleChange}
                 autoFocus
-                variant='filled'
+                variant="filled"
               />
             </Box>
           );
@@ -37,11 +37,11 @@ export const DynamicForm = ({ formDefinition, formData, handleChange }) => {
           return (
             <Box key={field.name} mb={2}>
               <Typography my={2}>{field.label}</Typography>
-              <FormControl fullWidth variant='outlined'>
+              <FormControl fullWidth variant="outlined">
                 <InputLabel>{field.label}</InputLabel>
 
                 <Select
-                  size='small'
+                  size="small"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange}
@@ -63,10 +63,10 @@ export const DynamicForm = ({ formDefinition, formData, handleChange }) => {
             <Box display={"flex"} my={5}>
               <Typography>{field.label}</Typography>
 
-              <FormControl >
+              <FormControl>
                 <input
-                  type='file'
-                  id='file-upload'
+                  type="file"
+                  id="file-upload"
                   name={field.name}
                   onChange={handleChange}
                   accept={field.mimeType}
