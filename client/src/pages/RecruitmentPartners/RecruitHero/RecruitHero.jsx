@@ -21,7 +21,7 @@ export const RecruitHero = ({ heroTitle, heroText, herotBtn }) => {
         position: "relative",
       }}>
       <Container>
-        <MyAppBar logoImg={logoImg} />
+        <MyAppBar />
       </Container>
       <Box
         sx={{

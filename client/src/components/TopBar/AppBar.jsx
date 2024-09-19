@@ -13,10 +13,11 @@ import { screens } from "@/constants/TopbarMenu";
 import LogoImg from "./LogoImg";
 import useStyle from "@/hooks/useStyle";
 import { useNavigate } from "react-router-dom";
+import newLogo from "@/assets/img/newlogo.png";
 // swipper
 // counter up
 
-function ResponsiveAppBar({ logoImg }) {
+function ResponsiveAppBar({ logoImg  }) {
   const { theme, Box, Typography, MyImg, GradientButton } = useStyle();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -27,7 +28,7 @@ function ResponsiveAppBar({ logoImg }) {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <AppBar
       position='static'
@@ -61,7 +62,7 @@ const navigate = useNavigate()
             }}
           >
             <Link to={"/"}>
-              <LogoImg logoImg={logoImg} />
+              <LogoImg logoImg={newLogo} />
             </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -146,7 +147,10 @@ const navigate = useNavigate()
           </Box>
 
           <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <GradientButton buttonText='Get Started' handleClick={() => navigate("/students")}/>
+            <GradientButton
+              buttonText='Get Started'
+              handleClick={() => navigate("/students")}
+            />
           </Box>
         </Toolbar>
       </Container>
