@@ -25,7 +25,7 @@ const SupportMain = () => {
       </Typography>
       <Box
         sx={{ display: { md: "grid", xs: "block" } }}
-        gridTemplateColumns="repeat(2, 1fr)"
+        gridTemplateColumns='repeat(2, 1fr)'
         gap={3}
       >
         {supportersList.length > 0
@@ -35,6 +35,7 @@ const SupportMain = () => {
                 heading={item.heading}
                 paragraph={item.paragraph}
                 img={item.img}
+                url={item.url}
               />
             ))
           : null}

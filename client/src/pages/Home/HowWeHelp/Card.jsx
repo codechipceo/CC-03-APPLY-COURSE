@@ -1,9 +1,11 @@
 import Card from "@mui/material/Card";
 import EastIcon from "@mui/icons-material/East";
 import useStyle from "@/hooks/useStyle";
+import { useNavigate } from "react-router-dom";
 
-const MyCard = ({ heading, p, img }) => {
+const MyCard = ({ heading, p, img, url = "/students" }) => {
   const { theme, Box, Typography, MyImg, GradientButton } = useStyle();
+  const navigate = useNavigate();
   return (
     <Card
       sx={{
@@ -19,7 +21,7 @@ const MyCard = ({ heading, p, img }) => {
       }}
     >
       <MyImg img={img} />
-      <Box display="grid" gridTemplateColumns="1fr .2fr">
+      <Box display='grid' gridTemplateColumns='1fr .2fr'>
         <Box>
           <Typography
             sx={{
@@ -33,8 +35,8 @@ const MyCard = ({ heading, p, img }) => {
           </Typography>
         </Box>
       </Box>
-      <Box position="absolute" right={20} bottom={20}>
-        <GradientButton Icon={<EastIcon />} />
+      <Box position='absolute' right={20} bottom={20}>
+        <GradientButton Icon={<EastIcon />} handleClick={() => navigate(url)} />
       </Box>
     </Card>
   );

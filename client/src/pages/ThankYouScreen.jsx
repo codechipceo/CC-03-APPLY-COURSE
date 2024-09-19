@@ -35,9 +35,9 @@ const ThankYouScreen = () => {
           <Typography variant="h4" sx={{ mt: 3 }}>
             Thank you for visiting{" "}
             <Typography variant="span" sx={{ color: "green" }}>
-              WEBSITE NAME
+              STUDYDIPLOMA.
             </Typography>{" "}
-            website. We will contact you shortly
+            We will contact you shortly
           </Typography>
         </Box>
       </Box>

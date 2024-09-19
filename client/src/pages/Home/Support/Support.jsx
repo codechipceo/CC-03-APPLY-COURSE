@@ -5,10 +5,11 @@ import { Typography } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import Button from "@mui/material/Button";
 import MyImg from "@/components/MyImg";
+import { useTools } from "@/hooks/useTools";
 
-const Support = ({ heading, paragraph, img }) => {
+const Support = ({ heading, paragraph, img  , url}) => {
   const theme = useTheme();
-
+const  {navigate} = useTools()
   return (
     <Grid
       container
@@ -36,6 +37,7 @@ const Support = ({ heading, paragraph, img }) => {
             sx={{
               color: theme.palette.linkShade1,
             }}
+            onClick={() => navigate(url)}
             endIcon={<EastIcon />}
           >
             Learn More

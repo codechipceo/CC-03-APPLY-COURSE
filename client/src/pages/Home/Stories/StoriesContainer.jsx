@@ -51,7 +51,7 @@ const StoriesContainer = () => {
         }}
       >
         <GradientButton
-          onClick={() => swiperRef.current?.slidePrev()}
+          handleClick={() => swiperRef.current?.slidePrev()}
           variant="outlined"
           Icon={<WestIcon />}
           styles={{
@@ -65,7 +65,7 @@ const StoriesContainer = () => {
           }}
         />
         <GradientButton
-          onClick={() => swiperRef.current?.slideNext()}
+          handleClick={() => swiperRef.current?.slideNext()}
           Icon={<EastIcon />}
           styles={{
             background: "none",

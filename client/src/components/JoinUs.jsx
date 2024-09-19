@@ -2,9 +2,11 @@ import joinUsImg from "@/assets/joinUsImg.png";
 import star from "@/assets/star.png";
 import GradientDot from "./GradientDot";
 import useStyle from "@/hooks/useStyle";
+import { useNavigate } from "react-router-dom";
 
 const JoinUs = () => {
   const { theme, Box, Typography, MyImg, GradientButton } = useStyle();
+  const navigate = useNavigate()
   return (
     <Box
       sx={{
@@ -18,7 +20,7 @@ const JoinUs = () => {
       <Box>
         <Box sx={{ zIndex: 2, position: "relative" }}>
           <MyImg img={joinUsImg} />
-          <GradientDot w="25px" h="25px" radius="20px" />
+          <GradientDot w='25px' h='25px' radius='20px' />
           {/* <Box sx={{ position: "absolute", right: -45, bottom: 50, zIndex: 1 }}>
             <GradientDot w="63px" h="63px" radius="40px" />
           </Box> */}
@@ -52,7 +54,8 @@ const JoinUs = () => {
         </Typography>
         <Box sx={{ mt: 4 }}>
           <GradientButton
-            buttonText="Contact Us"
+            handleClick={() => navigate("/contact-us")}
+            buttonText='Contact Us'
             styles={{ borderRadius: "5px" }}
           />
         </Box>

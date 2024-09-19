@@ -21,3 +21,8 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+svg{
+  height:75px;
+  width: 100px;
+}

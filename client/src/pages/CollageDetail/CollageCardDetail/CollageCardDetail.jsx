@@ -74,7 +74,7 @@ export const CollageCardDetail = ({ data }) => {
     setFormData(data);
   };
 
-  console.log(data)
+  console.log(data);
   return (
     <Card sx={{ boxShadow: 0, border: "1px solid #ddd", borderRadius: "20px" }}>
       <CardMedia
@@ -107,21 +107,17 @@ export const CollageCardDetail = ({ data }) => {
           </Box>
           <Box>
             <GradientButton
-              onClick={handleOpen}
+              handleClick={handleOpen}
               buttonText='Check Eligibility Now'
             />
           </Box>
-          <CustomModal
-            open={open}
-            handleClose={handleClose}
-            children={
-              <EligibilityForm
-                formData={formData}
-                onSubmit={onSubmit}
-                handleChange={handleChange}
-              />
-            }
-          />
+          <CustomModal open={open} handleClose={handleClose}>
+            <EligibilityForm
+              formData={formData}
+              onSubmit={onSubmit}
+              handleChange={handleChange}
+            />
+          </CustomModal>
         </Box>
 
         <Box

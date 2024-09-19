@@ -62,6 +62,9 @@ const Universities = () => {
           </ImageList>
         </MySwiper>
 
+        <Box>
+
+        </Box>
         <GradientButton
           styles={{
             position: "absolute",
@@ -70,7 +73,8 @@ const Universities = () => {
             left: -20,
             background: theme.gradients.secondaryGradient,
           }}
-          onClick={() => swiperRef.current?.slidePrev()}
+          handleClick={() => swiperRef.current?.slidePrev()}
+
           Icon={<WestIcon />}
         />
         <GradientButton
@@ -81,7 +85,7 @@ const Universities = () => {
             right: -20,
             background: theme.gradients.secondaryGradient,
           }}
-          onClick={() => swiperRef.current?.slideNext()}
+          handleClick={() => swiperRef.current?.slideNext()}
           Icon={<EastIcon />}
         />
       </Box>

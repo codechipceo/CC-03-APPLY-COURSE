@@ -1,9 +1,12 @@
 import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
+import { useNavigate } from "react-router-dom";
 
-const GradientButton = ({ buttonText, Icon, styles, radius, ...props }) => {
+const GradientButton = ({ buttonText, Icon,handleClick, styles,url, radius, ...props }) => {
   const theme = useTheme();
+
+
 
   return Icon ? (
     <IconButton
@@ -22,6 +25,7 @@ const GradientButton = ({ buttonText, Icon, styles, radius, ...props }) => {
         ...styles,
       }}
       {...props}
+      onClick={handleClick}
     >
       {Icon}
     </IconButton>
@@ -46,6 +50,7 @@ const GradientButton = ({ buttonText, Icon, styles, radius, ...props }) => {
         typography: "button",
         ...styles,
       }}
+      onClick={()=>handleClick()}
     >
       {buttonText}
     </Button>
