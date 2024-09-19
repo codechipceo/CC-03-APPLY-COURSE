@@ -1,22 +1,20 @@
-import { Box, Typography, useTheme } from "@mui/material";
-import React from "react";
 import backgroundImg from "@/assets/home/storiesBackground.png";
 import { Navigation } from "swiper/modules";
 import { useRef } from "react";
 import MySwiper from "@/components/MySwiper";
 import { SwiperSlide } from "swiper/react";
-import MyImg from "@/components/MyImg";
-import GradientButton from "@/components/Buttons/GradientButton";
 import Rating from "@mui/material/Rating";
 import { useState } from "react";
 import { storiesCardContent } from "@/constants/homePage/stories";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
+import useStyle from "@/hooks/useStyle";
 
 const StoriesContainer = () => {
   const swiperRef = useRef();
   const [rating, setRating] = useState(5);
-  const theme = useTheme();
+  const { theme, Box, Typography, MyImg, GradientButton } = useStyle();
+
   return (
     <Box
       sx={{
@@ -53,7 +51,7 @@ const StoriesContainer = () => {
         }}
       >
         <GradientButton
-          onClick={() => swiperRef.current?.slidePrev()}
+          handleClick={() => swiperRef.current?.slidePrev()}
           variant="outlined"
           Icon={<WestIcon />}
           styles={{
@@ -67,7 +65,7 @@ const StoriesContainer = () => {
           }}
         />
         <GradientButton
-          onClick={() => swiperRef.current?.slideNext()}
+          handleClick={() => swiperRef.current?.slideNext()}
           Icon={<EastIcon />}
           styles={{
             background: "none",
@@ -105,6 +103,7 @@ const StoriesContainer = () => {
                     gridTemplateColumns: "repeat(2,1fr)",
                     gap: 5,
                     mt: 5,
+                    height: { md: "400px" },
                   }}
                 >
                   <Box sx={{ mt: 4 }}>
@@ -128,7 +127,14 @@ const StoriesContainer = () => {
                   </Box>
 
                   <Box sx={{ mt: { xs: 4, md: 0 } }}>
-                    <MyImg img={cardData.customerImg} />
+                    <MyImg
+                      img={cardData.customerImg}
+                      styles={{
+                        borderRadius: "40px",
+                        height: "395px",
+                        width: "100%",
+                      }}
+                    />
                   </Box>
                 </Box>
               </SwiperSlide>

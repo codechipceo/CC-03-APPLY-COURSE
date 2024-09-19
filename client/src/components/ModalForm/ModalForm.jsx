@@ -55,7 +55,7 @@ export const ModalForm = ({ open, handleClose }) => {
         aria-describedby="modal-modal-description">
         <Box sx={style}>
           <Typography variant="h4" component="h1" mb={4}>
-            User Registration
+            Partnership Request
           </Typography>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>

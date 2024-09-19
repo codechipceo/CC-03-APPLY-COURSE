@@ -1,8 +1,10 @@
-import { Box, Typography, useTheme } from "@mui/material";
 import LogoImg from "./TopBar/LogoImg";
-import GradientButton from "./Buttons/GradientButton";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import FacebookIcon from "@mui/icons-material/Facebook";
 import { metaData, navigationList } from "@/constants/footer";
+import useStyle from "@/hooks/useStyle";
 
 // const FooterTree = ({ data }) => {
 //   return (
@@ -26,7 +28,7 @@ import { metaData, navigationList } from "@/constants/footer";
 // };
 
 const Footer = () => {
-  const theme = useTheme();
+  const { theme, Box, Typography, GradientButton } = useStyle();
   return (
     <Box
       sx={{
@@ -126,21 +128,21 @@ const Footer = () => {
       <Box />
       <Box display="flex" justifyContent="space-between">
         <GradientButton
-          Icon={<TwitterIcon />}
+          Icon={<InstagramIcon />}
           styles={{
             border: "1px solid #fff",
             background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)",
           }}
         />
         <GradientButton
-          Icon={<TwitterIcon />}
+          Icon={<LinkedInIcon />}
           styles={{
             border: "1px solid #fff",
             background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)",
           }}
         />
         <GradientButton
-          Icon={<TwitterIcon />}
+          Icon={<FacebookIcon />}
           styles={{
             border: "1px solid #fff",
             background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)",

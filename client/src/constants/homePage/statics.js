@@ -1,6 +1,6 @@
 export const metaData = {
   heading:
-    'We Connect School, Students, and recruitment"s partners from Every part of the Canada',
+    "We Connect School, Students, and recruitment's partners from Every part of the Canada",
 };
 
 export const statics = [

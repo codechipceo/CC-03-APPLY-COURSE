@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyImg = ({ img }) => {
+const MyImg = ({ img, styles }) => {
   return (
     <img
       style={{
@@ -8,6 +8,7 @@ const MyImg = ({ img }) => {
         maxHeight: "100%",
         objectFit: "contain",
         zIndex: 10,
+        ...styles,
       }}
       src={img}
       alt=""

@@ -1,16 +1,13 @@
-import { Box } from "@mui/material";
-import React from "react";
-import mainBannerImg from "@/assets/home/mainBanner.png";
 import bulbImg from "@/assets/home/Bulb.png";
-import { useTheme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
+import mainBannerImg from "@/assets/home/mainBanner.png";
+import useStyle from "@/hooks/useStyle";
+import { useTools } from "@/hooks/useTools";
 import Grid from "@mui/material/Grid";
-import GradientButton from "@/components/Buttons/GradientButton";
 import ClientAvatar from "./AvatarGroup";
-import MyImg from "@/components/MyImg";
 
 const MainBanner = () => {
-  const theme = useTheme();
+  const { theme, Typography, Box, GradientButton, MyImg } = useStyle();
+  const { navigate} = useTools()
   return (
     <Grid
       container
@@ -28,11 +25,10 @@ const MainBanner = () => {
             },
             lineHeight: 1.2,
           }}
-          textAlign="start"
+          textAlign='start'
           display={"flex"}
-          variant="div"
         >
-          <Box variant="div">
+          <Box>
             <Typography
               sx={{
                 typography: {
@@ -41,27 +37,41 @@ const MainBanner = () => {
                 },
                 lineHeight: 1.2,
               }}
-              textAlign="start"
+              textAlign='start'
               display={"flex"}
-              variant="div"
             >
               Simplifying
-              <Box variant="div" sx={{ display: { xs: "none", md: "block" } }}>
+              <Box variant='div' sx={{ display: { xs: "none", md: "block" } }}>
                 <img src={bulbImg} />
               </Box>
             </Typography>
-            Career Changes
+            <Typography
+              sx={{
+                typography: {
+                  md: theme.typography.heading1,
+                  xs: theme.typography.heading2,
+                },
+                lineHeight: 1.2,
+              }}
+              textAlign='start'
+            >
+              Career Changes
+            </Typography>
           </Box>
         </Typography>
         <Typography sx={{ typography: { md: theme.typography.heading4 } }}>
-          Find and apply to your dream university with our expert guidance
+          Unbiased Consulting to Help you to find Ideal Programs and Get Back to
+          Work.
         </Typography>
         <Typography sx={{ mt: 2 }}>
-          <GradientButton buttonText="Get Started" />
+          <GradientButton
+            buttonText='Get Started'
+            handleClick={() => navigate("/students")}
+          />
         </Typography>
         <Box sx={{ mt: 5, flexGrow: 1 }}>
           <Typography sx={{ typography: theme.typography.p }}>
-            Trusted by 30k+ Students & Recruitment Partners
+            Trusted by Thousands of Canadians 🍁
           </Typography>
           <ClientAvatar />
         </Box>

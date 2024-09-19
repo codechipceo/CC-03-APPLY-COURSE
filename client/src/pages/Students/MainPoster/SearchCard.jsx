@@ -1,15 +1,129 @@
-import GradientButton from "@/components/Buttons/GradientButton";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Button, FormControl } from "@mui/material";
 import roboImg from "@/assets/students/roboSearch.png";
+import { useState } from "react";
+import { useTools } from "@/hooks/useTools";
+import {
+  getAllFilters,
+  getAllLocations,
+  getAllPrograms,
+  getSearchedProgram,
+} from "@/thunk/indexThunk";
+import { toast } from "react-toastify";
+import { FormContainer } from "@/components/FormComponents/FormContainer";
+import {
+  filterForm,
+  filterFormSearch,
+} from "@/constants/filtersFormDefinitions";
+import useStyle from "@/hooks/useStyle";
+import { useEffect } from "react";
 
-import TextField from "@mui/material/TextField";
-
-import React from "react";
-import MyImg from "@/components/MyImg";
-import { borderRadius } from "@mui/system";
-
+const isEmpty = (query, formData) => {
+  const isFormDataEmpty = Object.values(formData).every((item) => !item);
+  if (query.trim() === "" && isFormDataEmpty) return true;
+  return false;
+};
 const SearchCard = () => {
-  const theme = useTheme();
+  const [formData, setFormData] = useState({
+    query: "",
+    programLevel: "",
+    applicationFee: "",
+    costOFLiving: "",
+    locationName: "",
+    tuitionFee: "",
+    programLength: "",
+  });
+  const { dispatch } = useTools();
+  const [locations, setLocation] = useState([]);
+  const [programLevelFilter, setProgramLevelFilter] = useState([]);
+  const [tuitionFeeFilter, setTuitionFee] = useState([]);
+  const [programLengthFilter, setProgramLength] = useState([]);
+  const [applicationFeeFilter, setApplicationFee] = useState([]);
+
+  const { theme, Box, MyImg, Typography, GradientButton } = useStyle();
+
+  const {
+    query,
+    programLength,
+    programLevel,
+    applicationFee,
+    costOFLiving,
+    tuitionFee,
+  } = formData;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const data = { ...formData };
+    if (e.target.files) {
+      data[name] = e.target.files[0];
+    } else {
+      data[name] = value;
+    }
+
+    setFormData(data);
+  };
+
+  const onSubmit = (e) => {
+    e?.preventDefault();
+    let searchQuery = "";
+
+    if (query.indexOf(" ") !== -1) {
+      let terms = query.split(" ");
+      searchQuery = searchQuery + terms.join("+");
+    } else {
+      searchQuery = searchQuery + query;
+    }
+    const params = new URLSearchParams({ searchQuery: query, ...formData });
+
+    console.log(params);
+
+    dispatch(getSearchedProgram(params));
+  };
+
+  useEffect(() => {
+    const result = isEmpty(query, formData);
+    if (result === false) {
+      onSubmit();
+    }
+  }, [formData, dispatch]);
+  useEffect(() => {
+    dispatch(getAllFilters()).then(({ payload }) => {
+      const { programLevel, applicationFee, tuitionFee, programLength } =
+        payload?.data ?? {};
+      setApplicationFee(applicationFee);
+      setTuitionFee(tuitionFee);
+      setProgramLength(programLength);
+      setProgramLevelFilter(programLevel);
+    });
+    dispatch(getAllLocations()).then((res) => {
+      let data = res.payload.data;
+      setLocation(data);
+    });
+  }, []);
+
+  filterForm[0].options = locations ?? [];
+  filterForm[1].options = programLevelFilter ?? [];
+  filterForm[2].options = tuitionFeeFilter ?? [];
+  filterForm[3].options = programLengthFilter ?? [];
+  filterForm[4].options = applicationFeeFilter ?? [];
+
+  const clearFilters = () => {
+      const isFormDataEmpty = Object.values(formData).every((item) => !item);
+
+    if (isFormDataEmpty === false) {
+      setFormData({
+        query: "",
+        programLevel: "",
+        applicationFee: "",
+        costOFLiving: "",
+        locationName: "",
+        tuitionFee: "",
+        programLength: "",
+      });
+
+      dispatch(getAllPrograms());
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -20,7 +134,7 @@ const SearchCard = () => {
         py: 5,
         borderRadius: "20px",
         position: "absolute",
-        bottom: { md: -200, xs: -180 },
+        bottom: { md: -200, xs: -480 },
         right: { md: "9%" },
         width: { md: "70%" },
       }}
@@ -28,47 +142,69 @@ const SearchCard = () => {
       <Typography
         sx={{
           typography: theme.typography.heading4,
-          mx: 3,
+
           mb: 4,
-          ml: 10,
+          textAlign: "justify",
+
           position: "relative",
         }}
       >
-        Use our AI-powered platform to find your perfect program in seconds
-        <Typography
-          variant="span"
+        {/* <Typography
+          variant='span'
           sx={{ position: "absolute", top: -120, left: -130 }}
         >
           <MyImg img={roboImg} />
-        </Typography>
+        </Typography> */}
+        Use our AI-powered platform to find your perfect program in seconds
       </Typography>
 
-      <Box sx={{ display: { md: "flex" }, gap: 2 }}>
-        <TextField
-          id="outlined-basic"
-          label="Search For the Program"
-          variant="outlined"
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              borderRadius: "35px", // Adjust the radius to make it more or less rounded
-            },
-          }}
-          fullWidth
-        />
-        <GradientButton
-          buttonText="Search"
-          styles={{
-            borderRadius: "40px",
-            px: 5,
-            mt: { sm: 2, xs: 2, md: 0 },
-            width: {
-              xs: "100%",
-              sm: "100%",
-              md: "auto",
-            },
-          }}
-        />
-      </Box>
+      <form onSubmit={onSubmit}>
+        <Box sx={{ display: { md: "flex" }, gap: 2 }}>
+          <Box sx={{ flexGrow: 1 }}>
+            <FormContainer
+              formDefinition={filterFormSearch}
+              formPayload={formData}
+              handleChange={handleChange}
+              grid={false}
+              styleProps={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "35px",
+                  border: "none",
+                },
+              }}
+            />
+          </Box>
+          <Box>
+            <FormControl margin='dense' fullWidth>
+              <GradientButton
+                buttonText='Search'
+                styles={{
+                  borderRadius: "40px",
+                  mt: { sm: 2, xs: 2, md: 0 },
+                }}
+                size='small'
+                type='submit'
+              />
+            </FormControl>
+            <Button
+              onClick={() => {
+                clearFilters();
+              }}
+            >
+              Clear Filters
+            </Button>
+          </Box>
+        </Box>
+        <Box sx={{ mt: 2 }}>
+          <FormContainer
+            formDefinition={filterForm}
+            formPayload={formData}
+            handleChange={handleChange}
+            grid={true}
+            gridTemplateColumns={{ md: "repeat(5,1fr)", xs: "repeat(2,1fr)" }}
+          />
+        </Box>
+      </form>
     </Box>
   );
 };

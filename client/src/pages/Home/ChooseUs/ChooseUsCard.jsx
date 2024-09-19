@@ -1,8 +1,7 @@
-import React from "react";
-import { Typography, Box } from "@mui/material";
-import MyImg from "@/components/MyImg";
+import useStyle from "@/hooks/useStyle";
 
 const ChooseUsCard = ({ img, text }) => {
+  const { Box, Typography, MyImg } = useStyle();
   return (
     <Box textAlign="center">
       <Typography>

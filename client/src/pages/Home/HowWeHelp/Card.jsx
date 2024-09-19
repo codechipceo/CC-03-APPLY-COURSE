@@ -1,14 +1,11 @@
-import React from "react";
-import HomeImg from "@/assets/home/Help/img_1.png";
-import { Box, Typography } from "@mui/material";
-import MyImg from "@/components/MyImg";
-import { useTheme } from "@mui/material";
 import Card from "@mui/material/Card";
-import GradientButton from "@/components/Buttons/GradientButton";
 import EastIcon from "@mui/icons-material/East";
+import useStyle from "@/hooks/useStyle";
+import { useNavigate } from "react-router-dom";
 
-const MyCard = () => {
-  const theme = useTheme();
+const MyCard = ({ heading, p, img, url = "/students" }) => {
+  const { theme, Box, Typography, MyImg, GradientButton } = useStyle();
+  const navigate = useNavigate();
   return (
     <Card
       sx={{
@@ -23,24 +20,23 @@ const MyCard = () => {
         position: "relative",
       }}
     >
-      <MyImg img={HomeImg} />
-      <Box display="grid" gridTemplateColumns="1fr .2fr">
+      <MyImg img={img} />
+      <Box display='grid' gridTemplateColumns='1fr .2fr'>
         <Box>
           <Typography
             sx={{
               typography: theme.typography.heading4,
             }}
           >
-            University Matching
+            {heading}
           </Typography>
           <Typography sx={{ typography: theme.typography.font3, mt: 1 }}>
-            Get personalized recommendations Get personalized recommendations
-            Get personalized recommendations Get
+            {p}
           </Typography>
         </Box>
       </Box>
-      <Box position="absolute" right={20} bottom={20}>
-        <GradientButton Icon={<EastIcon />} />
+      <Box position='absolute' right={20} bottom={20}>
+        <GradientButton Icon={<EastIcon />} handleClick={() => navigate(url)} />
       </Box>
     </Card>
   );

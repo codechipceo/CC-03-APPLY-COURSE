@@ -55,7 +55,7 @@ export const RecruitHero = ({ heroTitle, heroText, herotBtn }) => {
               <Typography component="p">{heroText}</Typography>
               <Box>
                 <GradientButton
-                  onClick={handleOpen}
+                  handleClick={handleOpen}
                   buttonText={herotBtn}
                   styles={{
                     boxShadow: "inset 0 4px 4px #fff3, 0 3px 4px #0003",

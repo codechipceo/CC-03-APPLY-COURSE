@@ -1,12 +1,12 @@
-import { Box, Container, Typography, useTheme } from "@mui/material";
+import { Container } from "@mui/material";
 import MyAppBar from "@/components/TopBar/AppBar";
-import logoImg from "@/assets/img/logo.png";
-import MyImg from "@/components/MyImg";
+import logoImg from "@/assets/img/newlogo.png";
 import posterImg from "@/assets/students/posterImg.png";
-import SearchCar from "./SearchCard";
+import SearchCard from "./SearchCard";
+import useStyle from "@/hooks/useStyle";
 
 const MainPoster = () => {
-  const theme = useTheme();
+  const { theme, Box, Typography, MyImg } = useStyle();
 
   return (
     <Box>
@@ -26,13 +26,13 @@ const MainPoster = () => {
             sx={{
               typography: {
                 md: theme.typography.StudentsPageHeading,
-                xs: theme.typography.heading2,
+                xs:"h4",
               },
               color: "#fff",
               mx: "auto",
               px: 4,
               py: 10,
-              textShadow: "0px 3px 2px #fff",
+
             }}
           >
             Find Your Perfect Program
@@ -46,8 +46,9 @@ const MainPoster = () => {
         }}
       >
         <MyImg img={posterImg} />
-        <SearchCar />
+        <SearchCard />
       </Container>
+      <Box sx={{ height: { xs: 320, md: 0 } }} />
     </Box>
   );
 };

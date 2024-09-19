@@ -1,9 +1,12 @@
 import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
+import { useNavigate } from "react-router-dom";
 
-const GradientButton = ({ buttonText, Icon, styles, radius, ...props }) => {
+const GradientButton = ({ buttonText, Icon,handleClick, styles,url, radius, ...props }) => {
   const theme = useTheme();
+
+
 
   return Icon ? (
     <IconButton
@@ -11,7 +14,7 @@ const GradientButton = ({ buttonText, Icon, styles, radius, ...props }) => {
         background: theme.gradients.primaryGradient,
         borderRadius: "20px",
         color: "white",
-        boxShadow: 3,
+
         typography: "button",
         "&:hover": {
           boxShadow: 8,
@@ -22,6 +25,7 @@ const GradientButton = ({ buttonText, Icon, styles, radius, ...props }) => {
         ...styles,
       }}
       {...props}
+      onClick={handleClick}
     >
       {Icon}
     </IconButton>
@@ -34,9 +38,11 @@ const GradientButton = ({ buttonText, Icon, styles, radius, ...props }) => {
         color: "white",
         py: 1,
         px: 3,
-        boxShadow: 3,
+        boxShadow:
+          "0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset,0px -3px 4px 0px rgba(0, 0, 0, 0.25) inset,0px 0px 6.7px 2px rgba(255, 255, 255, 0.57)",
         "&:hover": {
-          boxShadow: 8, // Shadow on hover
+          boxShadow:
+            "0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset,0px -3px 4px 0px rgba(0, 0, 0, 0.25) inset,0px 0px 6.7px 2px rgba(255, 255, 255, 0.57)",
         },
         "&:active": {
           boxShadow: 0,
@@ -44,6 +50,7 @@ const GradientButton = ({ buttonText, Icon, styles, radius, ...props }) => {
         typography: "button",
         ...styles,
       }}
+      onClick={()=>handleClick()}
     >
       {buttonText}
     </Button>

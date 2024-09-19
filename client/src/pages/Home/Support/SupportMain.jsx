@@ -1,13 +1,11 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
-import { useTheme } from "@mui/material";
+import useStyle from "@/hooks/useStyle";
 
 import { supportersList } from "@/constants/supportersList";
 
 import Support from "./Support";
 
 const SupportMain = () => {
-  const theme = useTheme();
+  const { Box, Typography, theme } = useStyle();
   return (
     <Box sx={{ mt: 10, mx: 2 }}>
       <Typography
@@ -27,7 +25,7 @@ const SupportMain = () => {
       </Typography>
       <Box
         sx={{ display: { md: "grid", xs: "block" } }}
-        gridTemplateColumns="repeat(2, 1fr)"
+        gridTemplateColumns='repeat(2, 1fr)'
         gap={3}
       >
         {supportersList.length > 0
@@ -37,6 +35,7 @@ const SupportMain = () => {
                 heading={item.heading}
                 paragraph={item.paragraph}
                 img={item.img}
+                url={item.url}
               />
             ))
           : null}

@@ -6,19 +6,32 @@ export const QrCard = ({ data, handleEdit, handleDelete }) => {
   const { url, qrName, qrBase64, destinationUrl, _id } = data;
 
   return (
-    <Box px={1} py={1} mx={2} display={"flex"} justifyContent={'space-between'} boxShadow={1} borderRadius={3} my={3}>
+    <Box
+      px={1}
+      py={1}
+      mx={2}
+      
+      display={"flex"}
+      justifyContent={"space-between"}
+      boxShadow={1}
+      borderRadius={3}
+      my={3}
+    >
       <Box>
         <Box p={2}>
           <img src={qrBase64} alt='' />
         </Box>
         <Typography variant='body1'>Name : {qrName} </Typography>
         <Typography variant='body1' mt={2}>
-          Qr code Url :
-          <a href={url}>{url}</a>
+          Qr code Url :<a href={url}>{url}</a>
         </Typography>
-        <Typography variant='body1' mt={2}>
-          Final Destination Url :
-          <a href={destinationUrl}>{destinationUrl}</a>
+        <Typography
+          variant='body1'
+          mt={2}
+          flexWrap={"wrap"}
+          sx={{ wordBreak: "break-word", whiteSpace: "normal" }}
+        >
+          Final Destination Url :<a href={destinationUrl}>{destinationUrl}</a>
         </Typography>
       </Box>
       <Box>

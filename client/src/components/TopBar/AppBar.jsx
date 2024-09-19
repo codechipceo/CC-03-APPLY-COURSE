@@ -1,25 +1,23 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import { useTheme } from "@mui/material";
+import { Link } from "react-router-dom";
 
-import { screens } from "@/constants/TopBarMenu";
+import { screens } from "@/constants/TopbarMenu";
 import LogoImg from "./LogoImg";
-import GradientButton from "../Buttons/GradientButton";
-import MyImg from "../MyImg";
+import useStyle from "@/hooks/useStyle";
+import { useNavigate } from "react-router-dom";
 // swipper
 // counter up
 
 function ResponsiveAppBar({ logoImg }) {
-  const theme = useTheme();
+  const { theme, Box, Typography, MyImg, GradientButton } = useStyle();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const handleOpenNavMenu = (event) => {
@@ -29,10 +27,10 @@ function ResponsiveAppBar({ logoImg }) {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
+const navigate = useNavigate()
   return (
     <AppBar
-      position="static"
+      position='static'
       sx={{
         background: theme.palette.bg3,
         borderRadius: { xs: "20px", md: "20px" },
@@ -40,7 +38,7 @@ function ResponsiveAppBar({ logoImg }) {
         border: "#ccc solid 1px",
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth='xl'>
         <Toolbar
           disableGutters
           sx={{
@@ -48,10 +46,10 @@ function ResponsiveAppBar({ logoImg }) {
           }}
         >
           <Typography
-            variant="h6"
+            variant='h6'
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component='a'
+            href='/'
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -62,21 +60,23 @@ function ResponsiveAppBar({ logoImg }) {
               textDecoration: "none",
             }}
           >
-            <MyImg img={logoImg} />
+            <Link to={"/"}>
+              <LogoImg logoImg={logoImg} />
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
+              size='large'
+              aria-label='account of current user'
+              aria-controls='menu-appbar'
+              aria-haspopup='true'
               onClick={handleOpenNavMenu}
-              color="black"
+              color='black'
             >
               <MenuIcon />
             </IconButton>
             <Menu
-              id="menu-appbar"
+              id='menu-appbar'
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: "bottom",
@@ -93,20 +93,21 @@ function ResponsiveAppBar({ logoImg }) {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {screens.map((page) => (
-                <MenuItem key={page.text} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.text}</Typography>
-                </MenuItem>
+              {screens.map((page, i) => (
+                <Link to={page.link} key={page.text + i}>
+                  <MenuItem onClick={handleCloseNavMenu} variant='span'>
+                    <Typography textAlign='center'>{page.text}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
-              <GradientButton buttonText="Get Started" />
+              <GradientButton buttonText='Get Started' />
             </Menu>
           </Box>
 
           <Typography
-            variant="h5"
+            variant='h5'
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component='a'
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -118,26 +119,34 @@ function ResponsiveAppBar({ logoImg }) {
               textDecoration: "none",
             }}
           >
-            <LogoImg logoImg={logoImg} />
+            <Link to={"/"}>
+              <LogoImg logoImg={logoImg} />
+            </Link>
           </Typography>
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
             }}
           >
-            {screens.map((page) => (
-              <Button
-                key={page.text}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
-              >
-                {page.text}
-              </Button>
+            {screens.map((page, i) => (
+              <Link to={page.link} key={page.text + i}>
+                <Button
+                  variant='span'
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "black",
+                    display: "block",
+                  }}
+                >
+                  {page.text}
+                </Button>
+              </Link>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <GradientButton buttonText="Get Started" />
+            <GradientButton buttonText='Get Started' handleClick={() => navigate("/students")}/>
           </Box>
         </Toolbar>
       </Container>
