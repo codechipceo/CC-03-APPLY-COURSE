@@ -57,16 +57,16 @@ const programOfferingForm = [
     label: "Program Level",
     type: "text",
   },
-  {
-    name: "applicationFee",
-    label: "Application Fee",
-    type: "text",
-  },
-  {
-    name: "costOfLiving",
-    label: "Cost of Living",
-    type: "text",
-  },
+  // {
+  //   name: "applicationFee",
+  //   label: "Application Fee",
+  //   type: "text",
+  // },
+  // {
+  //   name: "costOfLiving",
+  //   label: "Cost of Living",
+  //   type: "text",
+  // },
   {
     name: "tuitionFee",
     label: "Tuition Fee",

@@ -3,6 +3,7 @@ import {Home } from './pages/Home'
 import { School } from "./pages/School/School";
 import { Program } from "./pages/Program/Program";
 import { QRcodes } from "./pages/QRcodes/QRcodes";
+import { Login} from './pages/Admin/Login'
 const routes = [
   {
     path: "/",
@@ -19,6 +20,10 @@ const routes = [
   {
     path: "/qrcodes",
     element: <QRcodes />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ];
 

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 import { login, createAdmin } from "../thunk/indexThunk"; // Adjust the import path as needed
 
@@ -6,10 +5,15 @@ const adminSlice = createSlice({
   name: "admin",
   initialState: {
     admin: null,
+    token: localStorage.getItem("adminToken"),
     loading: false,
     error: null,
   },
   reducers: {
+    logout(state) {
+      state.token = "";
+      localStorage.removeItem("adminToken");
+    },
     // You can add additional reducers if needed
   },
   extraReducers: (builder) => {
@@ -19,9 +23,9 @@ const adminSlice = createSlice({
         state.error = null;
       })
       .addCase(login.fulfilled, (state, action) => {
-        console.log(action.payload)
         state.loading = false;
-        state.admin = action.payload.data;
+        state.token = action.payload.data;
+        localStorage.setItem("adminToken", action.payload.data);
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
@@ -42,4 +46,6 @@ const adminSlice = createSlice({
   },
 });
 
+export const adminState = (state) => state.admin;
+export const { logout } = adminSlice.actions;
 export const { reducer: adminReducer } = adminSlice;

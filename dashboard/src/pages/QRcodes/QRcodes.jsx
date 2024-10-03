@@ -2,11 +2,12 @@ import { FormComponent } from "@/components/FormComponent/FormWrapper";
 import { QrCard } from "@/components/QrCard/QrCard";
 import { Wrapper } from "@/components/Wrapper";
 import { useTools } from "@/hooks/useTools";
-import { serlectQr } from "@/slices/qrSlice";
+import { qrLoading, serlectQr } from "@/slices/qrSlice";
 import { addQR, deleteQr, getAllQr, updateQr } from "@/thunk/indexThunk";
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { apiPayloads, formDefinitions } from "../../constants/index";
+import { Loader } from "@/components/Loader/Loader";
 const { qrForm } = formDefinitions;
 const { qrPayload } = apiPayloads;
 
@@ -15,9 +16,9 @@ export const QRcodes = () => {
   const [pageData, setPageData] = useState({ ...qrPayload });
   const [isForm, setForm] = useState(false);
   const [status, setStatus] = useState("CREATE");
-  const [deleteId, setDeleteId] = useState(null);
 
   const existingQrcodes = useSelector(serlectQr);
+  const loading = useSelector(qrLoading);
 
   //##########################################
   // HANDLER FUNCTIONS
@@ -82,6 +83,8 @@ export const QRcodes = () => {
 
   return (
     <div>
+      {loading && <Loader />}
+
       {isForm ? (
         <Wrapper>
           <FormComponent
@@ -97,6 +100,7 @@ export const QRcodes = () => {
         <>
           <Wrapper>
             <Button
+              variant='contained'
               onClick={() => {
                 setPageData(qrPayload);
                 setForm(true);

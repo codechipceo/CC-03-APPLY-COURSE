@@ -3,6 +3,8 @@ import {
   ADD_PROGRAM_OFFERING,
   ADD_SCHOOL,
   CREATE_ADMIN,
+  DELETE_PROGRAM,
+  DELETE_SCHOOL,
   GET_ALL_LOCATION,
   GET_ALL_PROGRAM_OFFERINGS,
   GET_ALL_SCHOOLS,
@@ -62,6 +64,10 @@ export const updateProgramOffering = createThunk(
   }
 );
 
+export const deleteProgramOffering = createThunk("program/delete", async (payload) => {
+  return await createRequest(DELETE_PROGRAM, payload);
+})
+
 //###########################################
 //                   SCHOOL
 //###########################################
@@ -81,6 +87,10 @@ export const getSchoolById = createThunk("school/getById", async (payload) => {
 export const updateSchool = createThunk("school/update", async (payload) => {
   return await createRequest(UPDATE_SCHOOL, payload);
 });
+
+export const deleteSchool = createThunk("school/delete", async (payload) => {
+  return await createRequest(DELETE_SCHOOL , payload);
+})
 
 //###########################################
 //                   LOCATIONS
@@ -132,7 +142,7 @@ export const deleteQr = createThunk('qr/delete', async (payload) => {
 })
 
 //###########################################
-//                   LEADS
+//                   ADMIN
 //###########################################
 
 // export const addLead = createThunk("leads/add", async (payload) => {

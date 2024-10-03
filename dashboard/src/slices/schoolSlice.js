@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   addSchool,
+  deleteSchool,
   getAllSchools,
   getSchoolById,
   updateSchool,
@@ -27,12 +28,13 @@ const schoolSlice = createSlice({
       })
       .addCase(addSchool.fulfilled, (state, action) => {
         state.loading = false;
-        state.schools.push(action.payload);
-        toast.success("New School Added Successfully")
+        state.schools.push(action.payload.data);
+        toast.success("New School Added Successfully");
       })
       .addCase(addSchool.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+        toast.error(action.error.message);
       })
       .addCase(getAllSchools.pending, (state) => {
         state.loading = true;
@@ -41,7 +43,7 @@ const schoolSlice = createSlice({
       .addCase(getAllSchools.fulfilled, (state, action) => {
         state.loading = false;
         state.schools = action.payload.data;
-        state.count = action.payload.count
+        state.count = action.payload.count;
       })
       .addCase(getAllSchools.rejected, (state, action) => {
         state.loading = false;
@@ -68,11 +70,19 @@ const schoolSlice = createSlice({
         state.schools = state.schools.map((school) =>
           school._id === action.payload.data._id ? action.payload.data : school
         );
+        toast.success("School Updated");
       })
       .addCase(updateSchool.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      });
+      })
+      .addCase(deleteSchool.fulfilled, (state, { payload }) => {
+        state.schools = state.schools.filter((school) => school._id !== payload.data._id )
+        state.loading = false
+        toast.success("Document Deleted")
+      }).addCase(deleteSchool.pending, (state) => {
+        state.loading = true
+      }) ;
   },
 });
 

@@ -8,20 +8,20 @@ import AssignmentSharpIcon from "@mui/icons-material/AssignmentSharp";
 // import PersonSharpIcon from "@mui/icons-material/PersonSharp";
 // import SchoolSharpIcon from "@mui/icons-material/SchoolSharp";
 import ScienceSharpIcon from "@mui/icons-material/ScienceSharp";
-// import SubjectSharpIcon from "@mui/icons-material/SubjectSharp";
+import SubjectSharpIcon from "@mui/icons-material/SubjectSharp";
 // import SupportAgentSharpIcon from "@mui/icons-material/SupportAgentSharp";
 // import VideoLibrarySharpIcon from "@mui/icons-material/VideoLibrarySharp";
 
 export const routes = [
-  {
-    name: "Dashboard",
-    path: "/",
-    icon: Dashboard,
-  },
+  // {
+  //   name: "Dashboard",
+  //   path: "/",
+  //   icon: Dashboard,
+  // },
   {
     name: "Schools",
     path: "/school",
-    icon: AssignmentSharpIcon,
+    icon: SubjectSharpIcon,
   },
   {
     name: "Program",
@@ -38,9 +38,9 @@ export const routes = [
   //   path: "/leads",
   //   icon: AssignmentSharpIcon,
   // },
-  {
-    name: "Admin User",
-    path: "",
-    icon: ScienceSharpIcon,
-  },
+  // {
+  //   name: "Admin User",
+  //   path: "",
+  //   icon: ScienceSharpIcon,
+  // },
 ];

@@ -1,12 +1,16 @@
-import { useTools } from "@/hooks/useTools";
-import { login } from "@/thunk/indexThunk";
-
+import { HeaderBar } from "@/components/Wrapper";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
-  const { dispatch } = useTools();
+  const navigate = useNavigate()
   useEffect(() => {
-    dispatch(login({ username: "mansabmeer", password: "123" }));
-  });
-  return <div>Home</div>;
+    navigate("/school")
+
+  })
+  return (
+    <div>
+      <HeaderBar title={"DASHBOARD"} />
+    </div>
+  );
 };

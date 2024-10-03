@@ -30,17 +30,26 @@ const qrSlice = createSlice({
       })
       .addCase(getAllQr.fulfilled, (state, { payload }) => {
         state.qr = payload.data;
+        state.loading = false;
+
+      })
+      .addCase(getAllQr.pending, (state) => {
+        state.loading = true;
       })
       .addCase(updateQr.fulfilled, (state, { payload }) => {
         state.qr = [...state.qr].map((item) => {
           if (item._id === payload.data._id) return payload.data;
           return item;
         });
-      }).addCase(deleteQr.fulfilled, (state, { payload }) => {
-        state.qr = [...state.qr].filter((item) => item._id  !== payload.data._id)
+      })
+      .addCase(deleteQr.fulfilled, (state, { payload }) => {
+        state.qr = [...state.qr].filter(
+          (item) => item._id !== payload.data._id
+        );
       });
   },
 });
 
 export const serlectQr = (state) => state.qr.qr;
+export const qrLoading = (state) => state.qr.loading;
 export const { reducer: qrReducer } = qrSlice;

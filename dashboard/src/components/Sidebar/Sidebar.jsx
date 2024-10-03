@@ -1,6 +1,6 @@
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import { Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Collapse from "@mui/material/Collapse";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -10,6 +10,8 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { routes } from "./routes";
+import { useTools } from "@/hooks/useTools";
+import { logout } from "@/slices/adminSlice";
 
 const CreateIcon = ({ MyIcon }) => {
   return MyIcon ? <MyIcon sx={{ color: "black" }} /> : null;
@@ -27,10 +29,16 @@ export const Sidebar = () => {
     setOpen(open === index ? -1 : index);
   };
 
-    return (
+  const { dispatch } = useTools();
+
+  return (
     <List sx={{ borderRight: "2px solid grey", pr: 3, minHeight: "100vh" }}>
-      <Typography textAlign={"center"}>CODECHIP</Typography>
-      <Typography textAlign={"center"}>DASHBOARD</Typography>
+      <Typography textAlign={"center"} fontWeight={"bold"}>
+        STUDYDIPLOMA
+      </Typography>
+      <Typography textAlign={"center"} fontWeight={"bold"}>
+        DASHBOARD
+      </Typography>
       {routes.map((route, mainIndex) => {
         const { path, name, icon, subMenu } = route;
 
@@ -89,6 +97,20 @@ export const Sidebar = () => {
           </div>
         );
       })}
+
+      <Box m={"5px"}>
+        <Button
+          fullWidth
+          variant='contained'
+          disableElevation
+          onClick={() => {
+            dispatch(logout());
+          }}
+        >
+          {" "}
+          Log Out
+        </Button>
+      </Box>
     </List>
   );
 };

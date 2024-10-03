@@ -4,6 +4,7 @@ import { useTools } from "@/hooks/useTools";
 import { selectSchool } from "@/slices/schoolSlice";
 import {
   addSchool,
+  deleteSchool,
   getAllLocation,
   getAllSchools,
   updateSchool,
@@ -16,6 +17,7 @@ import {
   formDefinitions,
   tableColumns,
 } from "../../constants/index";
+import { Loader } from "@/components/Loader/Loader";
 
 const { schoolForm } = formDefinitions;
 const { schoolPayload } = apiPayloads;
@@ -32,7 +34,7 @@ export const School = () => {
   const [school, setSchool] = useState({ ...schoolPayload });
   const [paginationMode, setPaginationModel] = useState({
     page: 0,
-    pageSize: 20,
+    pageSize: 10,
   });
   const { dispatch, useSelector } = useTools();
 
@@ -43,6 +45,7 @@ export const School = () => {
  */
 
   const schoolState = useSelector(selectSchool);
+  const { loading : isSchoolLoading} = schoolState
 
 
 
@@ -73,21 +76,25 @@ export const School = () => {
     setForm(true);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const formData = new FormData();
     formData.append("schoolName", school.schoolName);
     formData.append("schoolBanner", school.schoolBanner);
     formData.append("schoolLogo", school.schoolLogo);
     formData.append("location", school.location);
     if (status === "CREATE") {
-      dispatch(addSchool(formData));
+      await dispatch(addSchool(formData)).unwrap();
+      handleCancel()
     } else if (status === "EDIT") {
-      console.log(school);
       formData.append("schoolId", school._id);
-      dispatch(updateSchool(formData));
+     await dispatch(updateSchool(formData));
+      handleCancel()
     }
   };
 
+  const handleDelete = (deleteId) => {
+    dispatch(deleteSchool({schoolId : deleteId}));
+  }
   const handleCancel = () => {
     setForm(false);
     setSchool(schoolPayload);
@@ -118,6 +125,7 @@ export const School = () => {
 
   return (
     <>
+      {isSchoolLoading && <Loader />}
       <Box bgcolor={"white"} py={2} boxShadow={2}>
         <Container>
           <Typography variant='h3' fontWeight={"bold"}>
@@ -137,6 +145,7 @@ export const School = () => {
               rows={schoolState.schools}
               columns={schoolColumns}
               handleEdit={handleEdit}
+              handleDelete={handleDelete}
               totalCount={schoolState?.count}
               paginationModel={paginationMode}
               setPaginationModel={setPaginationModel}
@@ -154,7 +163,7 @@ export const School = () => {
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             onCancel={handleCancel}
-          />
+          ></FormComponent>
         </Wrapper>
       )}
     </>

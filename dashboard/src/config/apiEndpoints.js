@@ -9,12 +9,14 @@ export const ADD_PROGRAM_OFFERING = `${API_BASE_URL}/program/add`;
 export const GET_ALL_PROGRAM_OFFERINGS = `${API_BASE_URL}/program/getall`;
 export const GET_PROGRAM_OFFERING_BY_ID = `${API_BASE_URL}/program/getbyid`;
 export const UPDATE_PROGRAM_OFFERING = `${API_BASE_URL}/program/update`;
+export const DELETE_PROGRAM = `${API_BASE_URL}/program/delete`;
 
 // School routes
 export const ADD_SCHOOL = `${API_BASE_URL}/schools/add`;
 export const GET_ALL_SCHOOLS = `${API_BASE_URL}/schools/getall`;
 export const GET_SCHOOL_BY_ID = `${API_BASE_URL}/schools/getbyid`;
 export const UPDATE_SCHOOL = `${API_BASE_URL}/schools/update`;
+export const DELETE_SCHOOL  = `${API_BASE_URL}/schools/delete`
 
 //locations
 export const ADD_LOCATION = `${API_BASE_URL}/location/add`;

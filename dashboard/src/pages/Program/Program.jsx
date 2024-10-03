@@ -11,6 +11,7 @@ import {
 } from "../../constants/index";
 import {
   addProgramOffering,
+  deleteProgramOffering,
   getAllProgramOfferings,
   getAllSchools,
   updateProgramOffering,
@@ -18,6 +19,7 @@ import {
 import { selectProgram } from "@/slices/programSlice";
 import { selectSchool } from "@/slices/schoolSlice";
 import RichTextEditor from "@/components/RichTextEditor/RichTextEditor";
+import { Loader } from "@/components/Loader/Loader";
 
 const { programOfferingForm } = formDefinitions;
 const { programOfferingPayload } = apiPayloads;
@@ -36,17 +38,20 @@ export const Program = () => {
   const [isForm, setForm] = useState(false);
   const [status, setStatus] = useState("CREATE");
   const [pageData, setPageData] = useState({ ...programOfferingPayload });
+  const  [pageLoad, setPageLoad] = useState(false)
 
   const [programInfo, setProgramInfo] = useState("");
 
   const { dispatch, useSelector } = useTools();
 
-  const { programOfferings, count } = useSelector(selectProgram);
+  const {
+    programOfferings,
+    count,
+    loading: programLoading,
+  } = useSelector(selectProgram);
   const { schools } = useSelector(selectSchool);
 
-  console.log(schools)
-
-  programOfferingForm[7].options = schools ?? [];
+  programOfferingForm[programOfferingForm.length -1].options = schools ?? [];
 
   /*
   ########################################################################
@@ -77,13 +82,25 @@ export const Program = () => {
     setForm(true);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     pageData.programInfo = programInfo;
     if (status === "CREATE") {
-      dispatch(addProgramOffering(pageData));
+      setPageLoad(true)
+      await dispatch(addProgramOffering(pageData));
+      handleCancel();
+      setPageLoad(false);
     } else if (status === "EDIT") {
-      dispatch(updateProgramOffering(pageData));
+      setPageLoad(true);
+
+      await dispatch(updateProgramOffering(pageData));
+      handleCancel();
+      setPageLoad(false);
+
     }
+  };
+
+  const handleDelete = (programId) => {
+    dispatch(deleteProgramOffering({ programId: programId }));
   };
 
   const handleCancel = () => {
@@ -105,9 +122,9 @@ export const Program = () => {
   useEffect(() => {
     dispatch(getAllProgramOfferings());
   }, []);
-
   return (
     <>
+      {(programLoading  || pageLoad  )&& <Loader />}
       <HeaderBar title={"PROGRAM"} />
       {isForm === false ? (
         <Wrapper>
@@ -120,6 +137,7 @@ export const Program = () => {
             <DataTable
               rows={programOfferings}
               handleEdit={handleEdit}
+              handleDelete={handleDelete}
               columns={programOfferingColumns}
               totalCount={count}
               paginationModel={paginationMode}
@@ -141,6 +159,7 @@ export const Program = () => {
             handleSubmit={handleSubmit}
             onCancel={handleCancel}
           >
+
             <Box>
               <Typography mb={2}>Program Info Detail:</Typography>
               <RichTextEditor

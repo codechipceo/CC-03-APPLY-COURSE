@@ -42,9 +42,9 @@ const DataTable = ({
           columns={[...columns, actionColumn]}
           getRowId={(row) => row._id}
           className=''
-          pagination
+          pagination={true}
           rowCount={totalCount}
-          pageSizeOptions={[10, 50, 100]}
+          pageSizeOptions={[10]}
           paginationMode={"server"}
           onPaginationModelChange={setPaginationModel}
           paginationModel={paginationModel}
