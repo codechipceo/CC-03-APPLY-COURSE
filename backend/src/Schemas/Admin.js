@@ -7,6 +7,7 @@ const adminSchema = new Schema(
     name: {
       type: String,
       required: true,
+      default:"Admin"
     },
     username: {
       type: String,

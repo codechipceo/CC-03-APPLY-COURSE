@@ -19,8 +19,7 @@ export const schoolCtrl = {
       msg: "",
     });
   }),
-  getById: asyncHandler(
-    asyncHandler(async (req, res, next) => {
+  getById: asyncHandler(async (req, res, next) => {
       const docData = req.body;
       const savedRes = await serviceLayer.getById(docData);
       return successResponse({
@@ -29,9 +28,8 @@ export const schoolCtrl = {
         msg: "",
       });
     })
-  ),
-  update: asyncHandler(
-    asyncHandler(async (req, res, next) => {
+  ,
+  update:  asyncHandler(async (req, res, next) => {
       const docData = req.body;
       const savedRes = await serviceLayer.update(docData);
       return successResponse({
@@ -40,5 +38,16 @@ export const schoolCtrl = {
         msg: "",
       });
     })
-  ),
+  ,
+
+  deleteSchool: asyncHandler(async (req, res, next) => {
+      const docData = req.body;
+      const deletedRes = await serviceLayer.delete(docData);
+      return successResponse({
+        res,
+        data: deletedRes,
+        msg: "",
+      });
+    })
+  ,
 };

@@ -38,9 +38,9 @@ export const schoolService = {
         ],
       };
     }
-    const totalCount = await model.totalCounts(query)
+    const totalCount = await model.totalCounts(query);
     const docs = await model.getAllDocuments(query, data);
-    return {docs, totalCount}
+    return { docs, totalCount };
   }),
   update: serviceHandler(async (updateData) => {
     const { schoolId } = updateData;
@@ -48,5 +48,12 @@ export const schoolService = {
     const updatePayload = { ...updateData };
     const updatedDoc = await model.updateDocument(filter, updatePayload);
     return updatedDoc;
+  }),
+
+  delete: serviceHandler(async (data) => {
+    const { schoolId } = data;
+
+    const deletedDoc = await model.deleteDocument({ _id: schoolId });
+    return deletedDoc;
   }),
 };

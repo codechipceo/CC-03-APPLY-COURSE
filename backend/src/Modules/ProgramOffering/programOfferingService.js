@@ -144,4 +144,10 @@ export const programOfferingService = {
 
     return filters;
   }),
+
+  deleteProgramOffering: serviceHandler(async (data) => {
+    const { programId } = data
+    const deletedProgram = await model.deleteDocument({ _id: programId })
+    return deletedProgram;
+  })
 };

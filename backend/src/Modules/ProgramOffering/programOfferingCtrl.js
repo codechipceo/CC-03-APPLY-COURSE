@@ -62,4 +62,10 @@ export const programOfferingCtrl = {
     ]);
     return successResponse({ res, data: filters });
   }),
+
+  deleteProgram: asyncHandler(async (req, res, next) => {
+    const data = req.body;
+    const deletedData = await serviceLayer.deleteProgramOffering(data);
+    return successResponse({ res, data: deletedData, msg: "Program deleted" });
+  }),
 };

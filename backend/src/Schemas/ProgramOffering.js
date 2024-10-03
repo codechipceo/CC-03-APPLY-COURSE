@@ -16,14 +16,6 @@ const programOfferingSchema = new Schema(
       type: String,
       required: true,
     },
-    applicationFee: {
-      type: String,
-      required: true,
-    },
-    costOfLiving: {
-      type: String,
-      required: true,
-    },
     tuitionFee: {
       type: String,
       required: true,
