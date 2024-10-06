@@ -142,6 +142,8 @@ export const programOfferingService = {
       programLength,
     };
 
+    console.log(filters)
+
     return filters;
   }),
 

@@ -24,11 +24,6 @@ const programOfferingSchema = new Schema(
       type: String,
       required: true,
     },
-    tags: [
-      {
-        type: String,
-      },
-    ],
     schoolId: {
       type: ObjectId,
       ref: "School",
