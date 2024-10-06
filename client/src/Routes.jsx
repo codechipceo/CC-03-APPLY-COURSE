@@ -7,6 +7,7 @@ import { Contact } from "./pages/Contact/Contact";
 import { Institutions } from "./pages/Institutions/Institutions";
 import Footer from "./components/Footer";
 import { Women } from "./pages/Women/Women";
+import { ABoutUs } from "./pages/About/ABoutUs";
 
 const routeArr = [
   {
@@ -32,6 +33,11 @@ const routeArr = [
   {
     path: '/women',
     element : <Women />
+
+  },
+  {
+    path: '/about-us',
+    element : <ABoutUs />
 
   },
   {
