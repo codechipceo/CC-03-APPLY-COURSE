@@ -18,13 +18,13 @@ export const eligibilityForm = [
     type: "text",
   },
   {
-    name: "dob",
-    label: "Date of Birth",
+    name: "contactNumber",
+    label: "Phone Number",
     type: "text",
   },
   {
-    name: "age",
-    label: "Age",
+    name: "postalCode",
+    label: "Postal Code",
     type: "text",
   },
   {
@@ -39,7 +39,7 @@ export const eligibilityForm = [
         Gender: "Female",
       },
       { value: "male", Gender: "Male", _id: 2 },
-    ], // Populate options dynamically from the ProgramOffering model
+    ],
     displayKey: "Gender",
   },
 ];

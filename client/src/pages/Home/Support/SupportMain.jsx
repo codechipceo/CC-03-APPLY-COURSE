@@ -18,11 +18,6 @@ const SupportMain = () => {
       >
         A Platform That Supports You End-to-End
       </Typography>
-      <Typography sx={{ typography: theme.typography.p, maxWidth: "922px" }}>
-        Figma ipsum component variant main layer. Auto pencil align reesizing
-        group underline undo. Bullet thumbnail pixel flatten slice align align
-        bold opacity distribute.
-      </Typography>
       <Box
         sx={{ display: { md: "grid", xs: "block" } }}
         gridTemplateColumns='repeat(2, 1fr)'

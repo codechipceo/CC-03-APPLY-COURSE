@@ -5,30 +5,11 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { metaData, navigationList } from "@/constants/footer";
 import useStyle from "@/hooks/useStyle";
-
-// const FooterTree = ({ data }) => {
-//   return (
-//     data &&
-//     data.length > 0 &&
-//     data.map((node) =>
-//       node.children && node.newLine ? (
-//         <Box sx={{ color: "#fff" }}>
-//           <Typography sx={{ fontWeight: "bold" }} key={node.heading}>
-//             {node.heading}
-//             <FooterTree data={node.children} />
-//           </Typography>
-//         </Box>
-//       ) : (
-//         <Typography sx={{ mt: 0.5 }} key={node.heading}>
-//           {node.heading}
-//         </Typography>
-//       )
-//     )
-//   );
-// };
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { theme, Box, Typography, GradientButton } = useStyle();
+
   return (
     <Box
       sx={{
@@ -36,126 +17,109 @@ const Footer = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "grid",
-        gridTemplateColumns: "repeat(4,1fr)",
-
-        py: 5,
-        px: { md: 15, xs: 2 },
-        gap: { md: 9, xs: 2 },
-        textAlign: "start",
+        gridTemplateColumns: {
+          xs: "1fr",
+          sm: "repeat(2, 1fr)",
+          md: "repeat(4, 1fr)",
+        },
+        py: { xs: 3, md: 5 },
+        px: { xs: 2, md: 15 },
+        gap: { xs: 3, md: 5 },
+        textAlign: { xs: "center", md: "start" },
       }}
     >
-      <Box sx={{ color: "#fff" }}>
+      {/* Logo and Heading */}
+      <Box sx={{ color: "#fff", textAlign: { xs: "center", md: "start" } }}>
         <LogoImg logoImg={metaData.logo} />
         <Typography
           sx={{
             typography: {
-              md: theme.typography.heading3,
               xs: theme.typography.font3,
+              md: theme.typography.heading3,
             },
-            mt: 3,
+            mt: { xs: 2, md: 3 },
           }}
         >
           {metaData.heading}
         </Typography>
+      </Box>
 
-        <Typography
-          sx={{
-            typography: theme.typography.font3,
-            color: "#fff",
-          }}
-        >
+      {/* Services Section */}
+      <Box sx={{ color: "#fff", textAlign: { xs: "center", md: "start" } }}>
+        <Typography sx={{ fontWeight: "bold" }}>Services</Typography>
+        <Typography sx={{ mt: 0.5 }}>
+          <Link to='/students'>Students</Link>
+        </Typography>
+        <Typography sx={{ mt: 0.5 }}>
+          <Link to='/recruitment-partners'>Recruitment Partners</Link>
+        </Typography>
+        <Typography sx={{ mt: 0.5 }}>
+          <Link to='/institutions'>Institutions</Link>
+        </Typography>
+      </Box>
+
+      {/* Discover Section */}
+      <Box sx={{ color: "#fff", textAlign: { xs: "center", md: "start" } }}>
+        <Typography sx={{ fontWeight: "bold" }}>Discover</Typography>
+        <Typography sx={{ mt: 0.5 }}>
+          <Link to='/about-us'>About Us</Link>
+        </Typography>
+        <Typography sx={{ mt: 0.5 }}>
+          <Link to='/privacy-policy'>Privacy Policy</Link>
+        </Typography>
+        <Typography sx={{ mt: 0.5 }}>
+          <Link to='/terms-conditions'>Terms & Conditions</Link>
+        </Typography>
+      </Box>
+
+      {/* Reach Out Section */}
+      <Box sx={{ color: "#fff", textAlign: { xs: "center", md: "start" } }}>
+        <Typography sx={{ fontWeight: "bold" }}>Reach Out</Typography>
+        <Typography sx={{ typography: theme.typography.font3 }}>
           {metaData.address}
         </Typography>
         <Typography sx={{ mt: 1, fontWeight: "bold" }}>Contact Us</Typography>
         <Typography sx={{ mt: 0.5 }}>{metaData.contactMail}</Typography>
       </Box>
 
-      {/* {navigationList.length > 0 ? <FooterTree data={navigationList} /> : null} */}
-      <Box sx={{ color: "#fff" }}>
-        <Box>
-          <Typography sx={{ fontWeight: "bold" }}>Students</Typography>
-
-          <Typography sx={{ mt: 0.5 }}>Institutions</Typography>
-          <Typography sx={{ mt: 0.5 }}>Recruiters</Typography>
-        </Box>
-        <Box sx={{ mt: 2 }}>
-          <Typography sx={{ fontWeight: "bold" }}>Explore</Typography>
-
-          <Typography sx={{ mt: 0.5 }}>Explore Schools & Programs</Typography>
-          <Typography sx={{ mt: 0.5 }}>Register</Typography>
-        </Box>
+      {/* Copyright */}
+      <Box
+        sx={{
+          gridColumn: { xs: "span 1", md: "span 4" },
+          textAlign: "center",
+          color: "#fff",
+          mt: 2,
+        }}
+      >
+        <Typography sx={{ fontSize: "small" }}>{metaData.copyRight}</Typography>
       </Box>
 
-      <Box sx={{ color: "#fff" }}>
-        <Box>
-          <Typography sx={{ fontWeight: "bold" }}>Discover</Typography>
-
-          <Typography sx={{ mt: 0.5 }}>Our Story</Typography>
-          <Typography sx={{ mt: 0.5 }}>Careers</Typography>
-          <Typography sx={{ mt: 0.5 }}>Knowledge Hub</Typography>
-          <Typography sx={{ mt: 0.5 }}>Press</Typography>
-          <Typography sx={{ mt: 0.5 }}>Life at ApplyBoard</Typography>
-          <Typography sx={{ mt: 0.5 }}>Leadership</Typography>
-
-          <Typography sx={{ mt: 0.5 }}>Contact</Typography>
-        </Box>
-      </Box>
-
-      <Box sx={{ color: "#fff" }}>
-        <Box>
-          <Typography sx={{ fontWeight: "bold" }}>Resources</Typography>
-
-          <Typography sx={{ mt: 0.5 }}>UK Resources</Typography>
-          <Typography sx={{ mt: 0.5 }}>AU Resources</Typography>
-        </Box>
-        <Box sx={{ mt: 2 }}>
-          <Typography sx={{ fontWeight: "bold" }}>Legal</Typography>
-
-          <Typography sx={{ mt: 0.5 }}>Privacy & Cookies Policy</Typography>
-          <Typography sx={{ mt: 0.5 }}>Terms & Conditions</Typography>
-          <Typography sx={{ mt: 0.5 }}>Accessibility</Typography>
-          <Typography sx={{ mt: 0.5 }}>Modern Slavery Statement</Typography>
-          <Typography sx={{ mt: 0.5 }}>ApplyBoard Fees</Typography>
-        </Box>
-      </Box>
-
-      <Box>
-        <Typography sx={{ fontSize: "small", color: "#fff" }}>
-          {metaData.copyRight}
-        </Typography>
-      </Box>
-      <Box />
-      <Box />
-      <Box display="flex" justifyContent="space-between">
+      {/* Social Media Icons */}
+      {/* Uncomment this block to include social media icons */}
+      {/* <Box
+        sx={{
+          display: "flex",
+          justifyContent: { xs: "center", md: "flex-start" },
+          mt: { xs: 2, md: 0 },
+        }}
+      >
         <GradientButton
           Icon={<InstagramIcon />}
-          styles={{
-            border: "1px solid #fff",
-            background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)",
-          }}
+          styles={{ border: "1px solid #fff", background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)" }}
         />
         <GradientButton
           Icon={<LinkedInIcon />}
-          styles={{
-            border: "1px solid #fff",
-            background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)",
-          }}
+          styles={{ border: "1px solid #fff", background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)" }}
         />
         <GradientButton
           Icon={<FacebookIcon />}
-          styles={{
-            border: "1px solid #fff",
-            background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)",
-          }}
+          styles={{ border: "1px solid #fff", background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)" }}
         />
         <GradientButton
           Icon={<TwitterIcon />}
-          styles={{
-            border: "1px solid #fff",
-            background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)",
-          }}
+          styles={{ border: "1px solid #fff", background: "linear-gradient(180deg, #BF5AF2 0%, #615CE7 100%)" }}
         />
-      </Box>
+      </Box> */}
     </Box>
   );
 };

@@ -20,12 +20,13 @@ const MyCard = ({ heading, p, img, url = "/students" }) => {
         position: "relative",
       }}
     >
-      <MyImg img={img} />
+      {img}
       <Box display='grid' gridTemplateColumns='1fr .2fr'>
         <Box>
           <Typography
             sx={{
-              typography: theme.typography.heading4,
+              typography: theme.typography.h6,
+              fontWeight:'bold'
             }}
           >
             {heading}
@@ -35,9 +36,9 @@ const MyCard = ({ heading, p, img, url = "/students" }) => {
           </Typography>
         </Box>
       </Box>
-      <Box position='absolute' right={20} bottom={20}>
+      {/* <Box position='absolute' right={20} bottom={20}>
         <GradientButton Icon={<EastIcon />} handleClick={() => navigate(url)} />
-      </Box>
+      </Box> */}
     </Card>
   );
 };

@@ -2,8 +2,6 @@ import { createRequest } from "@/config/apiRequest";
 import { createThunk } from "./createThunk";
 import { GET_PROGRAM_BY_SEARCH } from "@/config/apiEndpoints";
 import { axiosInstance } from "@/config/axiosInstance";
-import { fontSize } from "@mui/system";
-import { fontStyle } from "@mui/system";
 
 export const getSearchedProgram = createThunk(
   "programOffering/search",

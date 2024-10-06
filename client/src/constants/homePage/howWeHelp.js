@@ -1,33 +1,38 @@
 export const metaData = {
-  heading: "How We Help",
-  paragraph:""
-    // "Figma ipsum component variant main layer. Auto pencil align reesizing group underline undo. Bullet thumbnail pixel flatten slice align align bold opacity distribute.",
+  heading: "Why choose us?",
+  paragraph: "",
+  // "Figma ipsum component variant main layer. Auto pencil align reesizing group underline undo. Bullet thumbnail pixel flatten slice align align bold opacity distribute.",
 };
 
 export const help = [
   {
     img: new URL("@/assets/icons/find.svg", import.meta.url).href,
-    heading: "Find Your Program",
-    p: "Discover the best program that matches your career goals and interests.",
+    heading: "Career & Finance Advising",
+    p: "Our dedicated team of career and finance advisors is here to guide you on your path to success.",
   },
   {
     img: new URL("@/assets/icons/advice.svg", import.meta.url).href,
-    heading: "Meet Your Program Advisor",
-    p: "Get personalized guidance from our expert advisors to help you make the best choice.",
+    heading: "Holding Hand Service",
+    p: "Our “Holding Hand Service” is a mentorship program designed to provide you with invaluable support",
   },
   {
     img: new URL("@/assets/icons/application.svg", import.meta.url).href,
-    heading: "Application Submission",
-    p: "Submit your application with confidence using our streamlined process.",
+    heading: "Practicum & Job Placements",
+    p: "At “WE,” we recognize the importance of practical experience in launching a successful career. That’s why we offer practicum.",
   },
   {
     img: new URL("@/assets/icons/school.svg", import.meta.url).href,
-    heading: "Get Started in School",
-    p: "Receive support to smoothly transition into your new academic journey.",
+    heading: "Student Advocacy",
+    p: "At “WE,” we are passionate about advocating for women students and ensuring they have a supportive learning environment.",
   },
   {
     img: new URL("@/assets/icons/support.svg", import.meta.url).href,
-    heading: "After-Career Support",
-    p: "Benefit from our continuous support even after you graduate to ensure your career success.",
+    heading: "Bridging to New Career",
+    p: "If you’re looking to transition to a new career, our “Bridging to New Career” program is designed to support your goals.",
+  },
+  {
+    img: new URL("@/assets/icons/support.svg", import.meta.url).href,
+    heading: "Immigrants & Refugees",
+    p: "We recognize the unique challenges faced by immigrant and refugee women as they navigate their way into",
   },
 ];

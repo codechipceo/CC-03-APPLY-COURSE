@@ -7,6 +7,7 @@ import { RouterProvider } from "react-router-dom";
 import routes from "./Routes";
 import Footer from "./components/Footer";
 import { ToastContainer } from "react-toastify";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   const { showThankYou } = useSelector(selectProgram);
@@ -15,8 +16,9 @@ function App() {
       {!showThankYou ? (
         <>
           {" "}
-          <RouterProvider router={routes} />
-          <Footer />
+          <RouterProvider router={routes}></RouterProvider>
+
+          
         </>
       ) : (
         <ThankYouScreen />

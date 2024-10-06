@@ -6,6 +6,8 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  InputLabel,
+  TextField,
   Typography,
 } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
@@ -28,9 +30,9 @@ export const CollageCardDetail = ({ data }) => {
     lastName: "",
     email: "",
     contactNumber: "",
-    dOB: "",
+    postalCode: "",
+
     gender: "",
-    age: "",
   });
 
   const { dispatch } = useTools();
@@ -112,6 +114,21 @@ export const CollageCardDetail = ({ data }) => {
             />
           </Box>
           <CustomModal open={open} handleClose={handleClose}>
+            <TextField
+              fullWidth
+              aria-readonly
+              size='small'
+              sx={{ backgroundColor: "white", marginBottom:'5px' }}
+              value={data?.name}
+
+            />
+            <TextField
+              fullWidth
+              aria-readonly
+              size='small'
+              sx={{ backgroundColor: "white" }}
+              value={data?.school?.schoolName}
+            />
             <EligibilityForm
               formData={formData}
               onSubmit={onSubmit}

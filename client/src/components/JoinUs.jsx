@@ -54,7 +54,7 @@ const JoinUs = () => {
         </Typography>
         <Box sx={{ mt: 4 }}>
           <GradientButton
-            handleClick={() => navigate("/contact")}
+            handleClick={() => navigate("/contact-us")}
             buttonText='Contact Us'
             styles={{ borderRadius: "5px" }}
           />

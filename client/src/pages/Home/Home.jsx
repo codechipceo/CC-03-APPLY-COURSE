@@ -16,7 +16,7 @@ import { keyframes } from "@emotion/react";
 import { Container } from "@mui/material";
 import Reveal from "react-awesome-reveal";
 
-function CustomReveal({ children }) {
+export function CustomReveal({ children }) {
   const customAnimation = keyframes`
   from {
     opacity: 0;
@@ -30,7 +30,7 @@ function CustomReveal({ children }) {
 `;
 
   return (
-    <Reveal triggerOnce={true} delay={500} keyframes={customAnimation}>
+    <Reveal triggerOnce={true} delay={300} keyframes={customAnimation}>
       {children}
     </Reveal>
   );

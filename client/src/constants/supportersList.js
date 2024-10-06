@@ -4,7 +4,7 @@ export const supportersList = [
     paragraph:
       "We believe in your dreams and work hard to make them a realty. get matched with and apply to programs and institutions that align with your background, skills, and interests",
     img: new URL("@/assets/home/students.png", import.meta.url).href,
-    url:"/students"
+    url:"/"
   },
   {
     heading: "Recruitment Partners",

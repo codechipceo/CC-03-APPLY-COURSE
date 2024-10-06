@@ -54,13 +54,13 @@ export const filterForm = [
     ],
     displayKey: "programLength",
   },
-  {
-    name: "applicationFee",
-    label: "Application Fee",
-    type: "select",
-    options: [
+  // {
+  //   name: "applicationFee",
+  //   label: "Application Fee",
+  //   type: "select",
+  //   options: [
 
-    ]
-    , 
-  },
+  //   ]
+  //   ,
+  // },
 ];

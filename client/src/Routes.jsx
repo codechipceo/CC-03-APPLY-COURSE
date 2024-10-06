@@ -5,23 +5,17 @@ import { CollageDetail } from "./pages/CollageDetail/CollageDetail";
 import { RecruitmentPartners } from "./pages/RecruitmentPartners/RecruitmentPartners";
 import { Contact } from "./pages/Contact/Contact";
 import { Institutions } from "./pages/Institutions/Institutions";
+import Footer from "./components/Footer";
+import { Women } from "./pages/Women/Women";
 
-const routes = createBrowserRouter([
+const routeArr = [
   {
     path: "/",
-    element: <Home />,
+    element: <Students />,
   },
   {
     path: "/students",
     element: <Students />,
-  },
-  {
-    path: "/recruitment",
-    element: <Students />,
-  },
-  {
-    path: "/collage-detail",
-    element: <CollageDetail />,
   },
   {
     path: "/recruitment-partners",
@@ -32,10 +26,29 @@ const routes = createBrowserRouter([
     element: <Institutions />,
   },
   {
-    path: "/contact",
+    path: "/contact-us",
     element: <Contact />,
   },
-]);
+  {
+    path: '/women',
+    element : <Women />
+
+  },
+  {
+    path: '/*',
+    element:<> <h1>404 error</h1></>
+  }
+  ]
+const updatedRoutes = routeArr.map((item) => {
+  return {
+    path: item.path,
+    element: <>
+      {item.element}
+      <Footer />
+    </>
+  }
+})
+const routes = createBrowserRouter(updatedRoutes);
 
 const GuardComponent = () => {};
 

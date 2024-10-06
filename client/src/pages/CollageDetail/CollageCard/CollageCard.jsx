@@ -22,7 +22,6 @@ export const CollageCard = ({ data }) => {
 
     dispatch(setCurrentProgramReducer(data))
   }
-console.log(currentProgramOffering);
   return (
     <Card
       sx={{

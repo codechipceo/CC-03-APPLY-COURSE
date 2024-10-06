@@ -17,21 +17,21 @@ export const transformProgramData = (data) => {
       subTitle: "Program Level",
       mainTitle: data.programLevel,
     },
-    {
-      img: costOfLivingImage,
-      subTitle: "Cost of Living",
-      mainTitle: data.costOfLiving,
-    },
+    // {
+    //   img: costOfLivingImage,
+    //   subTitle: "Cost of Living",
+    //   mainTitle: data.costOfLiving,
+    // },
     {
       img: TuitionFee,
       subTitle: "Tuition",
-      mainTitle: data.tuitionFee,
+      mainTitle: `$${data.tuitionFee}`,
     },
-    {
-      img: applicationFee,
-      subTitle: "Application Fee",
-      mainTitle: data.applicationFee,
-    },
+    // {
+    //   img: applicationFee,
+    //   subTitle: "Application Fee",
+    //   mainTitle: data.applicationFee,
+    // },
 
     {
       img: programLength,

@@ -14,13 +14,66 @@ import LogoImg from "./LogoImg";
 import useStyle from "@/hooks/useStyle";
 import { useNavigate } from "react-router-dom";
 import newLogo from "@/assets/img/newlogo.png";
-// swipper
-// counter up
+import { useState } from "react";
+
+
+const SubMenu = () => {
+  const [anchorElServices, setAnchorElServices] = useState(null);
+  const handleOpenServicesMenu = (event) => {
+    setAnchorElServices(event.currentTarget);
+  };
+  const handleCloseServicesMenu = () => {
+    setAnchorElServices(null);
+  };
+
+
+  return (
+    <>
+      <div>
+        {/* Button to trigger submenu */}
+        <Button
+          aria-controls='services-menu'
+          aria-haspopup='true'
+          onClick={handleOpenServicesMenu} // Open submenu on click
+          sx={{
+            my: 2,
+            color: "black",
+            backgroundColor: "#0064e11a",
+          }}
+        >
+          Discover
+        </Button>
+
+        {/* Submenu */}
+        <Menu
+          id='services-menu'
+          anchorEl={anchorElServices}
+          open={Boolean(anchorElServices)} // Open submenu if anchorEl is set
+          onClose={handleCloseServicesMenu} // Close on menu item click or clicking outside
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }} // Positioning
+          transformOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+          <MenuItem onClick={handleCloseServicesMenu}>
+            <Link to='/women'>For Women</Link>
+          </MenuItem>
+          <MenuItem onClick={handleCloseServicesMenu}>
+            <Link to='/about-us'>About Us</Link>
+          </MenuItem>
+          <MenuItem onClick={handleCloseServicesMenu}>
+            <Link to='/contact-us'>Contact Us</Link>
+          </MenuItem>
+        </Menu>
+      </div>
+    </>
+  );
+}
 
 function ResponsiveAppBar({ logoImg  }) {
   const { theme, Box, Typography, MyImg, GradientButton } = useStyle();
 
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+
+  const [anchorElNav, setAnchorElNav] = useState(null);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -101,7 +154,8 @@ function ResponsiveAppBar({ logoImg  }) {
                   </MenuItem>
                 </Link>
               ))}
-              <GradientButton buttonText='Get Started' />
+              <SubMenu />
+              {/* <GradientButton buttonText='Get Started' /> */}
             </Menu>
           </Box>
 
@@ -147,10 +201,11 @@ function ResponsiveAppBar({ logoImg  }) {
           </Box>
 
           <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <GradientButton
+            {<SubMenu />}
+            {/* <GradientButton
               buttonText='Get Started'
               handleClick={() => navigate("/students")}
-            />
+            /> */}
           </Box>
         </Toolbar>
       </Container>

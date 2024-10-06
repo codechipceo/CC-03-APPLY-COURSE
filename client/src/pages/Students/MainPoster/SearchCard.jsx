@@ -74,8 +74,6 @@ const SearchCard = () => {
     }
     const params = new URLSearchParams({ searchQuery: query, ...formData });
 
-    console.log(params);
-
     dispatch(getSearchedProgram(params));
   };
 
@@ -104,10 +102,10 @@ const SearchCard = () => {
   filterForm[1].options = programLevelFilter ?? [];
   filterForm[2].options = tuitionFeeFilter ?? [];
   filterForm[3].options = programLengthFilter ?? [];
-  filterForm[4].options = applicationFeeFilter ?? [];
+  // filterForm[4].options = applicationFeeFilter ?? [];
 
   const clearFilters = () => {
-      const isFormDataEmpty = Object.values(formData).every((item) => !item);
+    const isFormDataEmpty = Object.values(formData).every((item) => !item);
 
     if (isFormDataEmpty === false) {
       setFormData({
@@ -186,7 +184,7 @@ const SearchCard = () => {
                 type='submit'
               />
             </FormControl>
-            <Button
+            <Button variant="outlined" fullWidth
               onClick={() => {
                 clearFilters();
               }}

@@ -13,31 +13,23 @@ const contactData = [
   {
     id: 1,
     title: "Email",
-    link: "mailto:help@applyboard.com",
-    linkTitle: "help@applyboard.com",
+    link: "mailto:info@weeducation.ca",
+    linkTitle: "info@weeducation.ca",
     text: "Please email us with your inquiries.",
-  },
-  {
-    id: 2,
-    title: "Live Chat",
-    span: "(For registered users only )",
-    link: "#",
-    linkTitle: "Login",
-    text: "Available 24/7",
   },
   {
     id: 3,
     title: "Canada",
-    link: "tel:1-844-972-7759",
-    linkTitle: "Toll Free : 1-844-972-7759",
+    link: "tel:+1(855)500-5190",
+    linkTitle: "Toll Free : +1(855)500-5190",
     text: "Monday–Friday 9 AM–5:30 PM EST",
   },
   {
     id: 4,
-    title: "India",
-    link: "tel:1-800-208-3444",
-    linkTitle: "Toll Free : 1-800-208-3444",
-    text: "Available 24/7",
+    title: "Location",
+
+    // linkTitle: "Toll Free : 1-800-208-3444",
+    text: "1055, 11th ST SW Calgary, Alberta T2R1G8",
   },
 ];
 
@@ -73,7 +65,7 @@ export const Contact = () => {
           </Grid>
         ))}
 
-        <Grid item xs={12} md={8} textAlign="center">
+        {/* <Grid item xs={12} md={8} textAlign="center">
           <Typography variant="" component={"p"} mt={4} mb={2}>
             If you are an existing customer and have a question, please contact
             your Account Representative for assistance. Existing customers can
@@ -112,7 +104,7 @@ export const Contact = () => {
               }}
             />
           </Box>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Container>
   );

@@ -33,6 +33,7 @@ export const DynamicForm = ({
                   color='secondary'
                   fullWidth
                   label={field.label}
+                  sx={{backgroundColor:'white'}}
                 >
                   {field.options.map((option) => {
                     return (
@@ -56,9 +57,11 @@ export const DynamicForm = ({
               <Typography>{field.label}</Typography>
 
               <FormControl>
+
                 <input
                   type='file'
                   id='file-upload'
+                  style={{backgroundColor:'white'}}
                   name={field.name}
                   onChange={handleChange}
                   accept={field.mimeType}
@@ -78,7 +81,7 @@ export const DynamicForm = ({
                 size='small'
                 value={formData[field.name]}
                 onChange={handleChange}
-                sx={{ ...styleProps }}
+                sx={{ ...styleProps , backgroundColor:'white' }}
               />
             </FormControl>
           );

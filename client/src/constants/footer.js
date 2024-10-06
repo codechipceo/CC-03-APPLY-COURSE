@@ -1,10 +1,10 @@
 export const metaData = {
-  logo: new URL("@/assets/img/logo.png", import.meta.url).href,
+  logo: new URL("@/assets/img/newlogo.png", import.meta.url).href,
   backgroundImg: new URL("@/assets/footerBackground.png", import.meta.url).href,
-  heading: "Enhance Your Productivity",
-  address: "101 Frederik St, Kitchener, ON N2H 6R3",
-  contactMail: "info@applyabroad.in",
-  copyRight: "© 2023, All Right Reserved |",
+  heading: "Enhance Your Career",
+  address: " Calgary, Alberta T2R1G8",
+  contactMail: " info@weeducation.ca",
+  copyRight: `© ${new Date().getFullYear()}, All Right Reserved`,
 };
 
 export const navigationList = [
