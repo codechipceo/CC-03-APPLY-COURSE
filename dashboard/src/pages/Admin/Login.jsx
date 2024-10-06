@@ -97,7 +97,7 @@ const dispatch  = useDispatch()
               fontWeight={"300"}
             >
               Developed By <br />{" "}
-              <a color='#c35df7' to={"https://codechip.in"} target='_blank'>
+              <a color='#c35df7' href={"https://codechip.in"} target='_blank'>
                 {" "}
                 Codechip Studios
               </a>

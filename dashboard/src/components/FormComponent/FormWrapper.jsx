@@ -8,7 +8,7 @@ export const FormComponent = ({
   onCancel,
   handleChange,
   handleSubmit,
-  children
+  children,
 }) => {
   return (
     <div>

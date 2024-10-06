@@ -38,8 +38,6 @@ export const Program = () => {
   const [isForm, setForm] = useState(false);
   const [status, setStatus] = useState("CREATE");
   const [pageData, setPageData] = useState({ ...programOfferingPayload });
-  const  [pageLoad, setPageLoad] = useState(false)
-
   const [programInfo, setProgramInfo] = useState("");
 
   const { dispatch, useSelector } = useTools();
@@ -51,7 +49,7 @@ export const Program = () => {
   } = useSelector(selectProgram);
   const { schools } = useSelector(selectSchool);
 
-  programOfferingForm[programOfferingForm.length -1].options = schools ?? [];
+  programOfferingForm[programOfferingForm.length - 1].options = schools ?? [];
 
   /*
   ########################################################################
@@ -85,17 +83,11 @@ export const Program = () => {
   const handleSubmit = async () => {
     pageData.programInfo = programInfo;
     if (status === "CREATE") {
-      setPageLoad(true)
       await dispatch(addProgramOffering(pageData));
       handleCancel();
-      setPageLoad(false);
     } else if (status === "EDIT") {
-      setPageLoad(true);
-
       await dispatch(updateProgramOffering(pageData));
       handleCancel();
-      setPageLoad(false);
-
     }
   };
 
@@ -124,7 +116,7 @@ export const Program = () => {
   }, []);
   return (
     <>
-      {(programLoading  || pageLoad  )&& <Loader />}
+      {programLoading && <Loader />}
       <HeaderBar title={"PROGRAM"} />
       {isForm === false ? (
         <Wrapper>
@@ -159,7 +151,6 @@ export const Program = () => {
             handleSubmit={handleSubmit}
             onCancel={handleCancel}
           >
-
             <Box>
               <Typography mb={2}>Program Info Detail:</Typography>
               <RichTextEditor

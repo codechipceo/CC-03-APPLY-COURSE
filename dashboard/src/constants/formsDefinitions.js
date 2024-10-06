@@ -77,11 +77,11 @@ const programOfferingForm = [
     label: "Program Length",
     type: "text",
   },
-  {
-    name: "tags",
-    label: "Tags",
-    type: "text", // Multiple tags can be added as a comma-separated string or an array of inputs
-  },
+  // {
+  //   name: "tags",
+  //   label: "Tags",
+  //   type: "text", // Multiple tags can be added as a comma-separated string or an array of inputs
+  // },
   {
     name: "schoolId",
     label: "School",
