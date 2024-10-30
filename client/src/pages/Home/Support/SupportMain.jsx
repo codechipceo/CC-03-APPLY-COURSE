@@ -7,11 +7,11 @@ import Support from "./Support";
 const SupportMain = () => {
   const { Box, Typography, theme } = useStyle();
   return (
-    <Box sx={{ mt: 10, mx: 2 }}>
+    <Box sx={{ my: 10, mx: 2 }}>
       <Typography
         sx={{
           typography: {
-            md: theme.typography.heading2,
+            md: theme.typography.heading3,
             xs: theme.typography.heading3,
           },
         }}
@@ -19,12 +19,13 @@ const SupportMain = () => {
         A Platform That Supports You End-to-End
       </Typography>
       <Box
+        
         sx={{ display: { md: "grid", xs: "block" } }}
         gridTemplateColumns='repeat(2, 1fr)'
-        gap={3}
+        // gap={3}
       >
         {supportersList.length > 0
-          ? supportersList.map((item, i) => (
+          ? supportersList.map((item) => (
               <Support
                 key={item.heading + item.paragraph}
                 heading={item.heading}

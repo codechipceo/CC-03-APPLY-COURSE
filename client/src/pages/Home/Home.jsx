@@ -15,6 +15,8 @@ import MyAppBar from "@/components/TopBar/AppBar";
 import { keyframes } from "@emotion/react";
 import { Container } from "@mui/material";
 import Reveal from "react-awesome-reveal";
+import MainPoster from "../Students/MainPoster/MainPoster";
+import { AboutWeEducation } from "./AboutWeEducation";
 
 export function CustomReveal({ children }) {
   const customAnimation = keyframes`
@@ -38,33 +40,32 @@ export function CustomReveal({ children }) {
 
 const Home = () => {
   return (
+    <>
+      {/* <MyAppBar logoImg={newlogo} /> */}
+      <MainPoster />
     <Container
       disableGutters
       sx={{ overflow: "hidden", mt: 1, textAlign: "justify" }}
     >
-      <MyAppBar logoImg={newlogo} />
-      <MainBanner mainHeading='Simplifying Career Changes' />
-
+        {/* <MainBanner mainHeading='Simplifying Career Changes' /> */}
+        <AboutWeEducation />
       <CustomReveal>
         <SupportMain />
       </CustomReveal>
-
       <CustomReveal>
         <ServicesCard />
       </CustomReveal>
       <CustomReveal>
         <Help />
       </CustomReveal>
-
       <Hero />
       <Universities />
       <ChooseUsContainer />
       <Main />
-
       <StoriesContainer />
-
       <JoinUs />
     </Container>
+    </>
   );
 };
 

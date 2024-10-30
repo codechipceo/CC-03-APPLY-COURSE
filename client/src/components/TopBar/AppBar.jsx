@@ -38,7 +38,7 @@ const SubMenu = () => {
           sx={{
             my: 2,
             color: "black",
-            backgroundColor: "#0064e11a",
+            backgroundColor: "#FFC600",
           }}
         >
           Discover
@@ -84,21 +84,21 @@ function ResponsiveAppBar({ logoImg  }) {
   const navigate = useNavigate();
   return (
     <AppBar
-      position='static'
       sx={{
         background: theme.palette.bg3,
-        borderRadius: { xs: "20px", md: "20px" },
         boxShadow: 0,
-        border: "#ccc solid 1px",
+        position:'relative', top:0
       }}
     >
-      <Container maxWidth='xl'>
+
         <Toolbar
           disableGutters
           sx={{
             justifyContent: { md: "space-between" },
           }}
-        >
+      >
+        <Container sx={{display:'flex' , justifyContent:'space-between', alignItems:'center' , maxWidth:'1600px'}}>
+
           <Typography
             variant='h6'
             noWrap
@@ -147,6 +147,7 @@ function ResponsiveAppBar({ logoImg  }) {
                 display: { xs: "block", md: "none" },
               }}
             >
+              {/* FOR MOBILE */}
               {screens.map((page, i) => (
                 <Link to={page.link} key={page.text + i}>
                   <MenuItem onClick={handleCloseNavMenu} variant='span'>
@@ -183,14 +184,18 @@ function ResponsiveAppBar({ logoImg  }) {
               display: { xs: "none", md: "flex" },
             }}
           >
+            {/* FOR DESKTOP */}
             {screens.map((page, i) => (
               <Link to={page.link} key={page.text + i}>
                 <Button
-                  variant='span'
                   onClick={handleCloseNavMenu}
                   sx={{
                     my: 2,
-                    color: "black",
+                    color: "#333333",
+                    "&:hover": {
+                      color: "#FFC600",
+                      backgroundColor:'transparent'
+                    },
                     display: "block",
                   }}
                 >
@@ -207,8 +212,8 @@ function ResponsiveAppBar({ logoImg  }) {
               handleClick={() => navigate("/students")}
             /> */}
           </Box>
+        </Container>
         </Toolbar>
-      </Container>
     </AppBar>
   );
 }
