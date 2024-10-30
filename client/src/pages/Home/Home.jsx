@@ -17,6 +17,8 @@ import { Container } from "@mui/material";
 import Reveal from "react-awesome-reveal";
 import MainPoster from "../Students/MainPoster/MainPoster";
 import { AboutWeEducation } from "./AboutWeEducation";
+import { Box } from "@mui/system";
+import { JoiningSteps } from "./JoiningSteps";
 
 export function CustomReveal({ children }) {
   const customAnimation = keyframes`
@@ -43,28 +45,37 @@ const Home = () => {
     <>
       {/* <MyAppBar logoImg={newlogo} /> */}
       <MainPoster />
-    <Container
-      disableGutters
-      sx={{ overflow: "hidden", mt: 1, textAlign: "justify" }}
-    >
+      <Container
+        disableGutters
+        sx={{ overflow: "hidden", mt: 1, textAlign: "justify" }}
+      >
         {/* <MainBanner mainHeading='Simplifying Career Changes' /> */}
         <AboutWeEducation />
-      <CustomReveal>
-        <SupportMain />
-      </CustomReveal>
-      <CustomReveal>
+        <CustomReveal>
+          <SupportMain />
+        </CustomReveal>
+        {/* <CustomReveal>
         <ServicesCard />
-      </CustomReveal>
-      <CustomReveal>
-        <Help />
-      </CustomReveal>
+      </CustomReveal> */}
+      </Container>
+      <Box bgcolor={"#07294d"}>
+        <Container>
+
+        <CustomReveal>
+          <Help />
+        </CustomReveal>
+        </Container>
+      </Box>
+
+      <Box>
+        <JoiningSteps />
+      </Box>
       <Hero />
       <Universities />
       <ChooseUsContainer />
       <Main />
       <StoriesContainer />
       <JoinUs />
-    </Container>
     </>
   );
 };
