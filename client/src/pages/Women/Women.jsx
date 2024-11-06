@@ -1,15 +1,16 @@
-import { Box, Container } from "@mui/system";
-import React from "react";
-import bgVideo from "../../assets/studydiploma_1.mp4";
+import GradientButton from "@/components/Buttons/GradientButton";
+import JoinUs from "@/components/JoinUs";
 import MyAppBar from "@/components/TopBar/AppBar";
-import { Button, Typography } from "@mui/material";
 import useStyle from "@/hooks/useStyle";
 import { useTools } from "@/hooks/useTools";
+import { Typography } from "@mui/material";
+import { Box, Container } from "@mui/system";
+import bgVideo from "../../assets/studydiploma_1.mp4";
 import Help from "../Home/HowWeHelp/Help";
-import { AboutWomen } from "./AboutWomen";
-import ServicesCard from "../Home/Services/ServicesCard";
 import StoriesContainer from "../Home/Stories/StoriesContainer";
-import JoinUs from "@/components/JoinUs";
+import { AboutWomen } from "./AboutWomen";
+
+
 
 export const Women = () => {
   const { theme } = useStyle();
@@ -17,6 +18,8 @@ export const Women = () => {
 
   return (
     <div>
+      <MyAppBar logoImg={"logoImg"} />
+
       <Box
         sx={{
           height: "100vh", // Full-screen height or adjust as needed
@@ -25,9 +28,7 @@ export const Women = () => {
         }}
       >
         <Container>
-          <Box mt={5}>
-            <MyAppBar logoImg={"logoImg"} />
-          </Box>
+         
           <Box display={"flex"} alignItems={"center"} height={"60vh"}>
             <Box>
               <Typography
@@ -44,19 +45,16 @@ export const Women = () => {
                 Women Through Education
               </Typography>
               <Box>
-                <Button
+                <GradientButton
                   variant='contained'
+                  buttonText={"Explore Programs"}
                   sx={{
                     color: "white",
                     background: theme.gradients.primaryGradient,
                     fontWeight: "bold",
                   }}
-                  onClick={() => {
-                    navigate("/students");
-                  }}
-                >
-                  Explore Programs
-                </Button>
+                  handleClick={() => navigate("/students")}
+                ></GradientButton>
               </Box>
             </Box>
           </Box>

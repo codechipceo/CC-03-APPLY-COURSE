@@ -1,7 +1,7 @@
 export const metaData = {
   heading: "Top Universities",
   paragraph:
-    "We partner with top universities worldwide to offer you the best options",
+    "We partner with top universities across Canada to offer you the best options",
 };
 
 export const universitiesData = [

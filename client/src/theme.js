@@ -1,7 +1,10 @@
 import { createTheme } from "@mui/material/styles";
+import { textAlign } from "@mui/system";
 
 const shd1 = "#4B28D8";
 const shd2 = "#760DC9";
+
+const theme50= "#FFC600"
 
 const config = {
   components: {
@@ -22,31 +25,35 @@ const config = {
     },
   },
   palette: {
+    theme50: theme50,
+    primaryFontColor: "#012d4c",
+    darkBlue: "#07294D",
+    darkBlueHover: "#092E56",
     shade1: shd1,
     shade2: shd2,
     shade3: "rgba(191, 90, 242, 1)",
     bg1: "rgba(0, 100, 225, .05)",
     bg2: "rgba(0, 100, 225, .1)",
-    bg3: "rgba(243, 240, 255, 1)",
+    bg3: "#FFFFFF",
     linkShade1: "#0064E1",
   },
   gradients: {
-    primaryGradient: `linear-gradient(90deg,${shd1}, ${shd2})`,
+    primaryGradient:  "#FFC600",
+    // primaryGradient: `linear-gradient(90deg,${shd1}, ${shd2})`,
     secondaryGradient: `linear-gradient(180deg,${shd1},${shd2})`,
   },
   typography: {
     fontFamily: "sans-serif",
     StudentsPageHeading: {
       fontSize: "80px",
-      color: "#fff",
-      fontWeight: "800",
+      fontWeight: "700",
     },
     heading1: {
       fontSize: "90px",
       fontWeight: "700",
     },
     heading2: {
-      fontWeight: "700",
+      fontWeight: "600",
       fontSize: "48px",
     },
     heading3: {

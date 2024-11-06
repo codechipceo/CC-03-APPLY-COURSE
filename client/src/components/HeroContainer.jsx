@@ -21,10 +21,11 @@ const HeroContainer = ({ heading, paragraph, children }) => {
                 xs: theme.typography.heading3,
               },
             }}
+            color={theme.palette.primaryFontColor}
           >
             {heading}
           </Typography>
-          <Typography sx={{ typography: theme.typography.font3 }}>
+          <Typography sx={{ typography: theme.typography.font3 }} color={'grey'}>
             {paragraph}
           </Typography>
         </Box>

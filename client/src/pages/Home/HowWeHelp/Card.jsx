@@ -8,32 +8,34 @@ const MyCard = ({ heading, p, img, url = "/students" }) => {
   const navigate = useNavigate();
   return (
     <Card
+      elevation={0}
       sx={{
-        backgroundColor: theme.palette.bg1,
-        borderRadius: "20px",
-        py: 3,
-        px: 4,
-        mt: 2,
+        border: "1px solid #EFECEC ",
+        borderRadius: 0,
+
+        py: 2,
+        px: 2,
+        my: 1,
         "&:hover": {
-          bgcolor: theme.palette.bg2, // Changes background color on hover
+          bgcolor:"white", // Changes background color on hover
         },
         position: "relative",
       }}
     >
-      {img}
-      <Box display='grid' gridTemplateColumns='1fr .2fr'>
-        <Box>
-          <Typography
-            sx={{
-              typography: theme.typography.h6,
-              fontWeight:'bold'
-            }}
-          >
-            {heading}
-          </Typography>
-          <Typography sx={{ typography: theme.typography.font3, mt: 1 }}>
-            {p}
-          </Typography>
+      <Box display={"flex"} gap={1} alignItems={"start"}>
+        <Box height={"80px"} width={"100px"}>
+          {img}
+        </Box>
+
+        <Box display='grid' gridTemplateColumns='1fr .2fr'>
+          <Box>
+            <Typography fontWeight={600} fontSize={20} color={"#012D4C"}>
+              {heading}
+            </Typography>
+            <Typography color={"#333333"} variant="body1"  mt={2}>
+              {p}
+            </Typography>
+          </Box>
         </Box>
       </Box>
       {/* <Box position='absolute' right={20} bottom={20}>

@@ -10,14 +10,13 @@ export const CollageDetail = () => {
 
   const { programs, currentProgramOffering } = useSelector(selectProgram);
 
-
   return (
     <>
-      <Container sx={{ paddingBlock: "60px" }}>
+      <Container sx={{ paddingBlock: "60px" }} disableGutters>
         <Grid container spacing={2}>
           <Grid
             xs={10}
-            md={4}
+            md={3}
             xl={4}
             sx={{
               height: "150vh",
@@ -32,9 +31,9 @@ export const CollageDetail = () => {
               : null}
           </Grid>
 
-          <Grid xs={12} md={8} xl={8} paddingInline={1}>
+          <Grid xs={12} md={9} xl={8} paddingInline={1}>
             <Box>
-              <CollageCardDetail data={currentProgramOffering}  />
+              <CollageCardDetail data={currentProgramOffering }  />
             </Box>
           </Grid>
         </Grid>

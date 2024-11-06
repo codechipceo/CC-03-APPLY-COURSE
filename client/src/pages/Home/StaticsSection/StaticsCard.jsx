@@ -8,11 +8,15 @@ const StaticsCard = ({ count, text }) => {
 
   return (
     <Box mx={2}>
-      <GradientText variant="p" gutterBottom fontSize={48}>
+      {/* <GradientText variant='p' gutterBottom fontSize={48}>
         <CountUp end={count} enableScrollSpy duration={2} />+
-      </GradientText>
+      </GradientText> */}
 
-      <Typography sx={{ typography: theme.typography.heading4 }}>
+      <Typography variant='p' gutterBottom fontSize={"28px"} fontWeight={700} color={"#092E56"}>
+        <CountUp end={count} enableScrollSpy duration={2} />+
+      </Typography>
+
+      <Typography sx={{ typography: theme.typography.p ,}}>
         {text}
       </Typography>
     </Box>

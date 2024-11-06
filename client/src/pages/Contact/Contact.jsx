@@ -35,8 +35,9 @@ const contactData = [
 
 export const Contact = () => {
   return (
-    <Container sx={{ pt: 5, pb: 16 }}>
+    <>
       <MyAppBar logoImg={logoImg} />
+    <Container sx={{  pb: 16 }}>
 
       <Grid container rowSpacing={4} columnSpacing={2} justifyContent="center">
         <Grid item xs={12} textAlign="center">
@@ -107,5 +108,6 @@ export const Contact = () => {
         </Grid> */}
       </Grid>
     </Container>
+    </>
   );
 };

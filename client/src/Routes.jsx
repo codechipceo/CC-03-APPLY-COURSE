@@ -12,7 +12,7 @@ import { ABoutUs } from "./pages/About/ABoutUs";
 const routeArr = [
   {
     path: "/",
-    element: <Students />,
+    element: <Home />,
   },
   {
     path: "/students",

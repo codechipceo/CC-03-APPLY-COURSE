@@ -8,7 +8,7 @@ export const RecruitmentPartners = () => {
     <>
       <RecruitHero
         heroTitle="Your Success is Our Success – We’re Here to See You Grow"
-        heroText="Studydiploma is more than a platform. It’s your trusted partner to help you do what you do best: help as many students as possible fulfill their international education dreams."
+        heroText="WeEducation is more than a platform. It’s your trusted partner to help you do what you do best: help as many students as possible fulfill their international education dreams."
         herotBtn="Partner with us"
       />
       <Education />

@@ -6,21 +6,19 @@ import { useNavigate } from "react-router-dom";
 const GradientButton = ({ buttonText, Icon,handleClick, styles,url, radius, ...props }) => {
   const theme = useTheme();
 
-
+console.log(typeof handleClick)
 
   return Icon ? (
     <IconButton
       sx={{
         background: theme.gradients.primaryGradient,
         borderRadius: "20px",
-        color: "white",
+        color: "black",
 
         typography: "button",
         "&:hover": {
-          boxShadow: 8,
-        },
-        "&:active": {
-          boxShadow: 0,
+          backgroundColor: "#d3d3d3",
+          color: "black",
         },
         ...styles,
       }}
@@ -35,22 +33,18 @@ const GradientButton = ({ buttonText, Icon,handleClick, styles,url, radius, ...p
       sx={{
         background: theme.gradients.primaryGradient,
         borderRadius: "20px",
-        color: "white",
+        color: "black",
         py: 1,
         px: 3,
-        boxShadow:
-          "0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset,0px -3px 4px 0px rgba(0, 0, 0, 0.25) inset,0px 0px 6.7px 2px rgba(255, 255, 255, 0.57)",
         "&:hover": {
-          boxShadow:
-            "0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset,0px -3px 4px 0px rgba(0, 0, 0, 0.25) inset,0px 0px 6.7px 2px rgba(255, 255, 255, 0.57)",
+          backgroundColor: "#d3d3d3",
+          color: "black",
         },
-        "&:active": {
-          boxShadow: 0,
-        },
+
         typography: "button",
         ...styles,
       }}
-      onClick={()=>handleClick()}
+      onClick={handleClick}
     >
       {buttonText}
     </Button>
