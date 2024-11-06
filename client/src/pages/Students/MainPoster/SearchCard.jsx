@@ -125,34 +125,20 @@ const SearchCard = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "rgba(255, 255, 255, 0.9)",
         my: { md: 10 },
-        boxShadow: { md: 3, xs: "auto" },
-        px: { md: 10, xs: 2 },
-        py: 5,
-        borderRadius: "20px",
-        position: "absolute",
-        bottom: { md: -200, xs: -480 },
-        right: { md: "9%" },
-        width: { md: "70%" },
       }}
     >
       <Typography
         sx={{
-          typography: theme.typography.heading4,
+          // typography: theme.typography.heading4,
 
-          mb: 4,
-          textAlign: "justify",
+          textAlign: "left",
 
           position: "relative",
         }}
+        fontSize={28}
+        color={"white"}
       >
-        {/* <Typography
-          variant='span'
-          sx={{ position: "absolute", top: -120, left: -130 }}
-        >
-          <MyImg img={roboImg} />
-        </Typography> */}
         Use our AI-powered platform to find your perfect program in seconds
       </Typography>
 
@@ -164,17 +150,25 @@ const SearchCard = () => {
               formPayload={formData}
               handleChange={handleChange}
               grid={false}
-              styleProps={{
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: "35px",
-                  border: "none",
-                },
-              }}
             />
           </Box>
           <Box>
             <FormControl margin='dense' fullWidth>
-              <GradientButton
+              <Button
+                aria-controls='services-menu'
+                aria-haspopup='true'
+                sx={{
+                  color: "black",
+                  backgroundColor: "#FFC600",
+                  "&:hover": {
+                    background: "#FFC600",
+                  },
+                }}
+                type='submit'
+              >
+                Discover
+              </Button>
+              {/* <GradientButton
                 buttonText='Search'
                 styles={{
                   borderRadius: "40px",
@@ -182,25 +176,35 @@ const SearchCard = () => {
                 }}
                 size='small'
                 type='submit'
-              />
+              /> */}
             </FormControl>
-            <Button variant="outlined" fullWidth
+          </Box>
+        </Box>
+        <Box sx={{ mt: 2, display: "flex", alignItems:'center' }}>
+          <Box width={'95%'} >
+            <FormContainer
+              formDefinition={filterForm}
+              formPayload={formData}
+              handleChange={handleChange}
+              grid={true}
+              gridTemplateColumns={{ md: "repeat(5,1fr)", xs: "repeat(2,1fr)" }}
+            />{" "}
+          </Box>
+          <Box>
+            <Button
+              variant='text'
+              fullWidth
+              sx={{
+                backgroundColor: "#d3d3d3", color: 'black', "&:hover": {
+                background:'#d3d3d3'
+              } }}
               onClick={() => {
                 clearFilters();
               }}
             >
-              Clear Filters
+              Clear
             </Button>
           </Box>
-        </Box>
-        <Box sx={{ mt: 2 }}>
-          <FormContainer
-            formDefinition={filterForm}
-            formPayload={formData}
-            handleChange={handleChange}
-            grid={true}
-            gridTemplateColumns={{ md: "repeat(5,1fr)", xs: "repeat(2,1fr)" }}
-          />
         </Box>
       </form>
     </Box>

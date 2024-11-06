@@ -1,27 +1,31 @@
-import { Container } from "@mui/material";
-import Hero from "../Home/HeroSection/Hero";
-import MainPoster from "./MainPoster/MainPoster.jsx";
 import JoinUs from "@/components/JoinUs";
-import { CollageDetail } from "../CollageDetail/CollageDetail";
+import Loader from "@/components/Loader";
 import { useTools } from "@/hooks/useTools";
 import { selectProgram } from "@/slices/programSlice";
-import Loader from "@/components/Loader";
+import { Container } from "@mui/material";
+import { CollageDetail } from "../CollageDetail/CollageDetail";
 import { CustomReveal } from "../Home/Home";
-import SupportMain from "../Home/Support/SupportMain";
-import ServicesCard from "../Home/Services/ServicesCard";
 import Help from "../Home/HowWeHelp/Help";
-import Universities from "../Home/Universities/Universities";
-import Main from "../Home/StaticsSection/Main";
 import StoriesContainer from "../Home/Stories/StoriesContainer";
-
+import SupportMain from "../Home/Support/SupportMain";
+import Universities from "../Home/Universities/Universities";
+import StudentMainPoster from "./MainPoster/StudentMainPoster";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getAllPrograms } from "@/thunk/indexThunk";
 
 export const Students = () => {
   const { useSelector } = useTools();
   const { programs, loading } = useSelector(selectProgram);
+  const dispatch = useDispatch()
+  useEffect(() => {
+dispatch(getAllPrograms())
+
+  }, [])
 
   return (
     <>
-      <MainPoster />
+<StudentMainPoster />
       {loading ? <Loader /> : programs.length > 0 ? <CollageDetail /> : null}
 
       <Container
@@ -34,14 +38,10 @@ export const Students = () => {
         <CustomReveal>
           <Help />
         </CustomReveal>
-        <CustomReveal>
-          <ServicesCard />
-        </CustomReveal>
 
-        <Hero />
+{/*
         <Universities />
-        <Main />
-        <StoriesContainer />
+        <StoriesContainer /> */}
 
         <JoinUs />
       </Container>

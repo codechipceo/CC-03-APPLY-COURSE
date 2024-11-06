@@ -4,6 +4,7 @@ import Women from "@/assets/women.jpg";
 
 import { useTheme } from "@mui/material/styles";
 import { useTools } from "@/hooks/useTools";
+import GradientButton from "@/components/Buttons/GradientButton";
 
 export const AboutWomen = () => {
   const theme = useTheme();
@@ -32,7 +33,23 @@ export const AboutWomen = () => {
               support they need to reenter the world of education, pursue their
               dreams, and transform their lives.
             </Typography>
-            <Button
+            <Box>
+
+            <GradientButton
+                  variant='contained'
+                  buttonText={"Learn More"}
+                  sx={{
+                    color: "white",
+                    background: theme.gradients.primaryGradient,
+                    fontWeight: "bold",
+
+                  }}
+                  handleClick={() => {
+                    navigate("/about-us");
+                  }}
+                ></GradientButton>
+            </Box>
+            {/* <Button
               variant='contained'
               sx={{
                 color: "white",
@@ -45,7 +62,7 @@ export const AboutWomen = () => {
               }}
             >
               Learn More
-            </Button>
+            </Button> */}
           </Box>
         </Grid>
 

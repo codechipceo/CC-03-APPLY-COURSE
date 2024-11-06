@@ -5,9 +5,10 @@ import posterImg from "@/assets/students/posterImg.png";
 import SearchCard from "./SearchCard";
 import useStyle from "@/hooks/useStyle";
 import mainBennerBg from "@/assets/home/mainBanner01.png";
+import { useNavigate } from "react-router-dom";
 const MainPoster = () => {
   const { theme, Box, Typography, MyImg } = useStyle();
-
+const navigate =useNavigate()
   return (
     <Box>
       <Box
@@ -47,6 +48,7 @@ const MainPoster = () => {
           </Typography>
           <Button
             variant='contained'
+            onClick={() =>navigate("/students")}
             sx={{
               backgroundColor: theme.palette.theme50,
               color: "black",
@@ -64,7 +66,7 @@ const MainPoster = () => {
             }}
           >
             {" "}
-            Start Searching Today
+            Start Exploring Today
           </Button>
         </Container>
       </Box>

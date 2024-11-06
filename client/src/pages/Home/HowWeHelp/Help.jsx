@@ -55,17 +55,17 @@ export const help = [
 const Help = () => {
   const { Box, HeroContainer } = useStyle();
   return (
-  <>
-
+    <>
       <span style={{ borderBottom: `3px solid ${theme.palette.theme50}` }}>
         Features
       </span>
-      <Typography variant='h3' mt={1} color={"white"} fontWeight={600}>
+      <Typography variant='h3' mt={1} color={"#012d4c"} fontWeight={600}>
         {metaData.heading}
       </Typography>{" "}
       <Box
         sx={{ display: { md: "grid", xs: "block" } }}
         gridTemplateColumns='repeat(3,1fr)'
+        mb={10}
         gap={2}
       >
         {help.length > 0
@@ -79,7 +79,7 @@ const Help = () => {
             ))
           : null}
       </Box>{" "}
-  </>
+    </>
     // </HeroContainer>
   );
 };

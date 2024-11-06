@@ -23,6 +23,7 @@ import { GradientText } from "@/components/GradientText/GradientText";
 import EligibilityForm from "./EligibilityForm";
 import { useTools } from "@/hooks/useTools";
 import { toggleThankYou } from "@/slices/programSlice";
+import theme from "@/theme";
 
 export const CollageCardDetail = ({ data }) => {
   const [formData, setFormData] = useState({
@@ -79,48 +80,58 @@ export const CollageCardDetail = ({ data }) => {
   console.log(data);
   return (
     <Card sx={{ boxShadow: 0, border: "1px solid #ddd", borderRadius: "20px" }}>
-      <CardMedia
-        sx={{ height: 240 }}
-        image={data?.school?.schoolBanner}
-        title="Queen's University"
-      />
+      <CardMedia sx={{ height: 240 }} image={data?.school?.schoolBanner} />
       <CardContent>
         <Box display='flex' flexWrap='wrap' gap={1} alignItems='center'>
           <Box flex={1}>
             <Box display='flex' gap={2} alignItems='center'>
               <Avatar
                 src={data?.school?.schoolLogo}
-                alt="Queen's University"
                 sx={{ width: 80, height: 80, objectFit: "contain" }}
               />
               <Box flex={1}>
-                <GradientText variant='h2' gutterBottom fontSize={40}>
-                  {data.school.schoolName}
-                </GradientText>
-
-                <Box display='flex' gap={1}>
-                  <LocationOnOutlinedIcon />
-                  <Typography variant='body1' color='initial'>
-                    {data?.school?.locationDetails?.location}
-                  </Typography>
-                </Box>
+                <Typography
+                  variant='h3'
+                  fontWeight={700}
+                  sx={{ fontSize: 36, color: theme.palette.primaryFontColor }}
+                  mb={2}
+                >
+                  {data.name}
+                </Typography>
+                {/* <Typography variant='h2' gutterBottom fontSize={40}>
+                  {data?.school?.schoolName}
+                </Typography> */}
               </Box>
+            </Box>
+            <Box display='flex' gap={1}>
+              <LocationOnOutlinedIcon />
+              <Typography variant='body1' color='initial' fontWeight={700}>
+                {data?.school?.schoolName}, {data?.school?.location?.name}
+              </Typography>
             </Box>
           </Box>
           <Box>
-            <GradientButton
-              handleClick={handleOpen}
-              buttonText='Check Eligibility Now'
-            />
+            <Button
+              aria-controls='services-menu'
+              aria-haspopup='true'
+              onClick={handleOpen}
+              sx={{
+                my: 2,
+                color: "black",
+                backgroundColor: "#FFC600",
+              }}
+            >
+              Check Eligibility Now
+            </Button>
+          
           </Box>
           <CustomModal open={open} handleClose={handleClose}>
             <TextField
               fullWidth
               aria-readonly
               size='small'
-              sx={{ backgroundColor: "white", marginBottom:'5px' }}
+              sx={{ backgroundColor: "white", marginBottom: "5px" }}
               value={data?.name}
-
             />
             <TextField
               fullWidth
@@ -144,14 +155,11 @@ export const CollageCardDetail = ({ data }) => {
           padding={5}
         >
           <Grid container spacing={3}>
-            {data.details.map((detail, i) => (
-              <Grid item xs={6} sm={6} key={i}>
+            {data?.details.map((detail, i) => (
+              <Grid item xs={6} sm={4} key={i}>
                 <Box display='flex' gap={2}>
-                  <Avatar
-                    src={detail.img}
-                    alt='Certificate Icon'
-                    sx={{ width: "50px", height: "50px", objectFit: "contain" }}
-                  />
+                  {detail.img}
+
                   <Box>
                     <Typography
                       variant='subtitle1'
@@ -172,9 +180,13 @@ export const CollageCardDetail = ({ data }) => {
         </Box>
 
         <Box>
-          <GradientText variant='h3' sx={{ fontSize: 30 }} mb={2}>
-            {data.name}
-          </GradientText>
+          <Typography
+            variant='h3'
+            sx={{ fontSize: 30, color: theme.palette.primaryFontColor }}
+            mb={2}
+          >
+            Course Details
+          </Typography>
 
           <Typography
             variant='h5'

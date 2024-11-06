@@ -26,8 +26,9 @@ const config = {
   },
   palette: {
     theme50: theme50,
+    primaryFontColor: "#012d4c",
     darkBlue: "#07294D",
-    darkBlueHover:'#092E56',
+    darkBlueHover: "#092E56",
     shade1: shd1,
     shade2: shd2,
     shade3: "rgba(191, 90, 242, 1)",
@@ -37,7 +38,8 @@ const config = {
     linkShade1: "#0064E1",
   },
   gradients: {
-    primaryGradient: `linear-gradient(90deg,${shd1}, ${shd2})`,
+    primaryGradient:  "#FFC600",
+    // primaryGradient: `linear-gradient(90deg,${shd1}, ${shd2})`,
     secondaryGradient: `linear-gradient(180deg,${shd1},${shd2})`,
   },
   typography: {

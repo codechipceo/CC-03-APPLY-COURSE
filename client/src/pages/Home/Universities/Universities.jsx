@@ -1,6 +1,6 @@
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 import { useRef } from "react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
 import { metaData, universitiesData } from "@/constants/homePage/topUniverSec";
@@ -24,8 +24,12 @@ const Universities = () => {
         }}
       >
         <MySwiper
-          modules={[Navigation]}
+          modules={[Navigation, Autoplay]}
           space={30}
+          autoplay={{
+            delay: 1000, // 3 seconds delay between slides
+            disableOnInteraction: false, // Continue autoplay even when user interacts
+          }}
           breakpoints={{
             0: {
               slidesPerView: 1,
@@ -44,12 +48,12 @@ const Universities = () => {
               ? universitiesData.map((university, i) => (
                   <SwiperSlide key={university.universityName + i}>
                     <ImageListItem>
-                      <img src={university.img} loading="lazy" />
+                      <img src={university.img} loading='lazy' />
                       <ImageListItemBar
                         title={university.universityName}
                         sx={{
                           borderRadius: "0px 0px 28px 28px",
-                          background: `linear-gradient(rgba(0, 0, 0, 0), ${theme.palette.shade1})`,
+                          // background: `linear-gradient(rgba(0, 0, 0, 0), ${theme.palette.shade1})`,
                           pt: 10,
                           pb: 3,
                           px: 1,
@@ -62,19 +66,16 @@ const Universities = () => {
           </ImageList>
         </MySwiper>
 
-        <Box>
-
-        </Box>
+        <Box></Box>
         <GradientButton
           styles={{
             position: "absolute",
             top: "45%",
             zIndex: 20,
             left: -20,
-            background: theme.gradients.secondaryGradient,
+            background: theme.palette.theme50,
           }}
           handleClick={() => swiperRef.current?.slidePrev()}
-
           Icon={<WestIcon />}
         />
         <GradientButton
@@ -83,7 +84,7 @@ const Universities = () => {
             top: "45%",
             zIndex: 20,
             right: -20,
-            background: theme.gradients.secondaryGradient,
+            background: theme.palette.theme50,
           }}
           handleClick={() => swiperRef.current?.slideNext()}
           Icon={<EastIcon />}

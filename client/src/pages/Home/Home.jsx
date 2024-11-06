@@ -1,30 +1,29 @@
 import ChooseUsContainer from "./ChooseUs/ChooseUsContainer";
 import Hero from "./HeroSection/Hero";
 import Help from "./HowWeHelp/Help";
-import MainBanner from "./MainBanner/MainBanner";
-import ServicesCard from "./Services/ServicesCard";
 import Main from "./StaticsSection/Main";
 import SupportMain from "./Support/SupportMain";
 
 import StoriesContainer from "./Stories/StoriesContainer";
 import Universities from "./Universities/Universities";
 
-import newlogo from "@/assets/img/newlogo.png";
 import JoinUs from "@/components/JoinUs";
-import MyAppBar from "@/components/TopBar/AppBar";
 import { keyframes } from "@emotion/react";
 import { Container } from "@mui/material";
+import { Box } from "@mui/system";
 import Reveal from "react-awesome-reveal";
 import MainPoster from "../Students/MainPoster/MainPoster";
 import { AboutWeEducation } from "./AboutWeEducation";
-import { Box } from "@mui/system";
+import { Consultation } from "./Consultation";
 import { JoiningSteps } from "./JoiningSteps";
+import OurCourses from "./OurCourses";
+import LeadForm from "./LeadForm";
 
 export function CustomReveal({ children }) {
   const customAnimation = keyframes`
   from {
     opacity: 0;
-    transform: translate3d(0, 200px, 0);
+    transform: translate3d(0, 100px, 0);
   }
 
   to {
@@ -34,7 +33,7 @@ export function CustomReveal({ children }) {
 `;
 
   return (
-    <Reveal triggerOnce={true} delay={300} keyframes={customAnimation}>
+    <Reveal triggerOnce={true} delay={200} keyframes={customAnimation}>
       {children}
     </Reveal>
   );
@@ -50,32 +49,43 @@ const Home = () => {
         sx={{ overflow: "hidden", mt: 1, textAlign: "justify" }}
       >
         {/* <MainBanner mainHeading='Simplifying Career Changes' /> */}
-        <AboutWeEducation />
         <CustomReveal>
+
+        <AboutWeEducation />
+        </CustomReveal>
+        <CustomReveal>
+
           <SupportMain />
         </CustomReveal>
-        {/* <CustomReveal>
-        <ServicesCard />
-      </CustomReveal> */}
-      </Container>
-      <Box bgcolor={"#07294d"}>
-        <Container>
 
-        <CustomReveal>
-          <Help />
-        </CustomReveal>
+
+      </Container>
+
+      <CustomReveal>
+
+      <OurCourses />
+      </CustomReveal>
+
+    
+      <Box bgcolor={"#07294d"}><Consultation />  </Box>
+      <Box bgcolor={"white"}>
+        <Container>
+          <CustomReveal>
+            <Help />
+          </CustomReveal>
         </Container>
       </Box>
 
       <Box>
         <JoiningSteps />
       </Box>
-      <Hero />
+      <LeadForm />
+      {/* <Hero /> */}
       <Universities />
-      <ChooseUsContainer />
-      <Main />
+      {/* <ChooseUsContainer /> */}
+      {/* <Main /> */}
       <StoriesContainer />
-      <JoinUs />
+      {/* <JoinUs /> */}
     </>
   );
 };

@@ -84,11 +84,8 @@ export const ABoutUs = () => {
     const isTab = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <div>
-      <Container>
-        <Box mt={5}>
           <MyAppBar />
-        </Box>
-      </Container>
+ 
       <Box bgcolor={"#f3f0ff"} my={2} py={4}>
         <Typography variant='h1' textAlign={"center"} fontWeight={"bold"}>
           {" "}

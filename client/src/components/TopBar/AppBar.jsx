@@ -13,8 +13,11 @@ import { screens } from "@/constants/TopbarMenu";
 import LogoImg from "./LogoImg";
 import useStyle from "@/hooks/useStyle";
 import { useNavigate } from "react-router-dom";
-import newLogo from "@/assets/img/newlogo.png";
+// import newLogo from "@/assets/img/newlogo.png";
+// import newLogo from "../../assets/";
+import LogoComponent from './SvgLogo'
 import { useState } from "react";
+
 
 
 const SubMenu = () => {
@@ -87,18 +90,24 @@ function ResponsiveAppBar({ logoImg  }) {
       sx={{
         background: theme.palette.bg3,
         boxShadow: 0,
-        position:'relative', top:0
+        position: "relative",
+        top: 0,
       }}
     >
-
-        <Toolbar
-          disableGutters
-          sx={{
-            justifyContent: { md: "space-between" },
-          }}
+      <Toolbar
+        disableGutters
+        sx={{
+          justifyContent: { md: "space-between" },
+        }}
       >
-        <Container sx={{display:'flex' , justifyContent:'space-between', alignItems:'center' , maxWidth:'1600px'}}>
-
+        <Container
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            maxWidth: "1600px",
+          }}
+        >
           <Typography
             variant='h6'
             noWrap
@@ -115,7 +124,8 @@ function ResponsiveAppBar({ logoImg  }) {
             }}
           >
             <Link to={"/"}>
-              <LogoImg logoImg={newLogo} />
+              <LogoComponent />
+              {/* <LogoImg logoImg={Logo} /> */}
             </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -176,7 +186,7 @@ function ResponsiveAppBar({ logoImg  }) {
             }}
           >
             <Link to={"/"}>
-              <LogoImg logoImg={logoImg} />
+              <LogoComponent />
             </Link>
           </Typography>
           <Box
@@ -194,7 +204,7 @@ function ResponsiveAppBar({ logoImg  }) {
                     color: "#333333",
                     "&:hover": {
                       color: "#FFC600",
-                      backgroundColor:'transparent'
+                      backgroundColor: "transparent",
                     },
                     display: "block",
                   }}
@@ -213,7 +223,7 @@ function ResponsiveAppBar({ logoImg  }) {
             /> */}
           </Box>
         </Container>
-        </Toolbar>
+      </Toolbar>
     </AppBar>
   );
 }

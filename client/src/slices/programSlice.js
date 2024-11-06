@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllPrograms, getSearchedProgram } from "@/thunk/indexThunk";
-import { transformProgramData } from "@/helpers/helper";
+import { transformProgramData } from "../helpers/helper";
+
 
 const programsSlice = createSlice({
   name: "programs",
   initialState: {
     programs: [],
+    allprograms: [],
     currentProgramOffering: null,
     loading: false,
     count: 0,
@@ -38,6 +40,15 @@ const programsSlice = createSlice({
       .addCase(getSearchedProgram.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+      })
+      .addCase(getAllPrograms.fulfilled, (state, { payload }) => {
+        state.allprograms = payload.data;
+        state.programs = payload.data.map((item) => ({
+          ...item,
+          school: item.schoolId,
+          details: transformProgramData(item),
+        }));
+        state.currentProgramOffering = state.programs[0];
       });
   },
 });
@@ -45,4 +56,5 @@ const programsSlice = createSlice({
 export const { toggleThankYou, setCurrentProgramReducer } =
   programsSlice.actions;
 export const selectProgram = (state) => state.programs;
+export const allPrograms = state =>state.programs.allprograms
 export default programsSlice.reducer;
