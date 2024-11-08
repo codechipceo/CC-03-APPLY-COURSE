@@ -1,13 +1,9 @@
-import ChooseUsContainer from "./ChooseUs/ChooseUsContainer";
-import Hero from "./HeroSection/Hero";
 import Help from "./HowWeHelp/Help";
-import Main from "./StaticsSection/Main";
 import SupportMain from "./Support/SupportMain";
 
 import StoriesContainer from "./Stories/StoriesContainer";
 import Universities from "./Universities/Universities";
 
-import JoinUs from "@/components/JoinUs";
 import { keyframes } from "@emotion/react";
 import { Container } from "@mui/material";
 import { Box } from "@mui/system";
@@ -16,8 +12,8 @@ import MainPoster from "../Students/MainPoster/MainPoster";
 import { AboutWeEducation } from "./AboutWeEducation";
 import { Consultation } from "./Consultation";
 import { JoiningSteps } from "./JoiningSteps";
-import OurCourses from "./OurCourses";
 import LeadForm from "./LeadForm";
+import OurCourses from "./OurCourses";
 
 export function CustomReveal({ children }) {
   const customAnimation = keyframes`
@@ -52,9 +48,7 @@ const Home = () => {
         <CustomReveal>
 
         <AboutWeEducation />
-        </CustomReveal>
-        <CustomReveal>
-
+       
           <SupportMain />
         </CustomReveal>
 
@@ -66,7 +60,7 @@ const Home = () => {
       <OurCourses />
       </CustomReveal>
 
-    
+
       <Box bgcolor={"#07294d"}><Consultation />  </Box>
       <Box bgcolor={"white"}>
         <Container>

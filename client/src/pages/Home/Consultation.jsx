@@ -1,8 +1,10 @@
 import theme from "@/theme";
 import { Button, Grid, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 export const Consultation = () => {
+  const  navigate = useNavigate()
   return (
     <Container>
       <Box
@@ -19,6 +21,7 @@ export const Consultation = () => {
         </Typography>
         <Button
           variant='contained'
+          
           sx={{
             backgroundColor: theme.palette.theme50,
             color: "black",
@@ -32,8 +35,11 @@ export const Consultation = () => {
             },
           }}
         >
+          <a href="#lead-form">
+
           {" "}
           Book Your Free Consultation Now
+          </a>
         </Button>
 
       </Box>

@@ -6,14 +6,14 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import { metaData, navigationList } from "@/constants/footer";
 import useStyle from "@/hooks/useStyle";
 import { Link } from "react-router-dom";
-
+import SVGComponent from "./FooterSvg";
 const Footer = () => {
   const { theme, Box, Typography, GradientButton } = useStyle();
 
   return (
     <Box
       sx={{
-        backgroundImage: `url(${metaData.backgroundImg})`,
+      background:theme.palette.primaryFontColor,
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "grid",
@@ -30,7 +30,9 @@ const Footer = () => {
     >
       {/* Logo and Heading */}
       <Box sx={{ color: "#fff", textAlign: { xs: "center", md: "start" } }}>
-        <LogoImg logoImg={metaData.logo} />
+
+        <SVGComponent />
+
         <Typography
           sx={{
             typography: {
@@ -92,6 +94,7 @@ const Footer = () => {
         }}
       >
         <Typography sx={{ fontSize: "small" }}>{metaData.copyRight}</Typography>
+        <Typography sx={{ fontSize: "small" }}>Design & Devloped by <a href="https://www.codechip.in" target="_blank">Codechip</a></Typography>
       </Box>
 
       {/* Social Media Icons */}
