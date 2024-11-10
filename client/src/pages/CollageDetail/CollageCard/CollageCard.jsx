@@ -52,13 +52,13 @@ export const CollageCard = ({ data }) => {
           <Grid item maxWidth={"60px"}>
             <img
               src={`${data?.school?.schoolLogo}`}
-              alt={data?.school.schoolName}
+              alt={data?.school?.schoolName}
               style={{ width: 40, height: 40, borderRadius: "50%" }}
             />
           </Grid>
           <Grid item>
             <Typography variant='h1' sx={{ color: theme.palette.primaryFontColor }} fontSize={18} fontWeight={600}>
-              {data.name}
+              {data?.name}
             </Typography>
             <Typography
               variant='body1'
@@ -66,7 +66,7 @@ export const CollageCard = ({ data }) => {
               fontWeight={400}
               sx={{ mb: 2 }}
             >
-              {data.school.schoolName}
+              {data?.school?.schoolName}
             </Typography>
           </Grid>
         </Grid>
@@ -74,7 +74,7 @@ export const CollageCard = ({ data }) => {
           {data?.details?.map((detail, i) => (
             <Grid item xs={6} sm={6} key={i}>
               <Box display='flex' gap={1}>
-                {detail.img }
+                {detail?.img }
                 {/* <Avatar
                   src={detail.img}
                   alt='Certificate Icon'

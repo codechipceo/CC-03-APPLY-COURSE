@@ -33,7 +33,7 @@ dispatch(getAllPrograms())
         sx={{ overflow: "hidden", textAlign: "justify" }}
       >
         <CustomReveal>
-          <SupportMain />
+          {/* <SupportMain /> */}
         </CustomReveal>
         <CustomReveal>
           <Help />
